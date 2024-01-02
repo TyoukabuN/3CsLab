@@ -137,7 +137,7 @@ namespace TinyGame
 
             velocity += GetJumpVelocity();
 
-            UpdateJumpAnimationProperty();
+            //UpdateJumpAnimationProperty();
 
 
             _rigidbody.velocity = velocity;
@@ -210,8 +210,8 @@ namespace TinyGame
                 jumpBlend = -2;
             }
 
-            //Animator_SetInt(Define.ANIME_HASH_JUMP_STATE, jumpVal);
-            //Animator_SetInt(Define.ANIME_HASH_JUMP_INT_VALUE, jumpBlend);
+            Animator_SetInt(Define.ANIME_HASH_JUMP_STATE, jumpVal);
+            Animator_SetInt(Define.ANIME_HASH_JUMP_INT_VALUE, jumpBlend);
         }
 
         public void SetJumpCount(int value)

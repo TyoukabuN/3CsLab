@@ -235,19 +235,22 @@ namespace TinyGame
                 var direction = rayDirections[i];
                 if (Physics.Raycast(shoulder.position, direction, out raycastHit, rayDistance[i], 1 << LayerMask.NameToLayer("Wall")))
                 {
-                    //Gizmos.color = Color.yellow;
                     Vector3 normal = -raycastHit.normal;
                     Vector3 dir = (raycastHit.point - shoulder.position);
                     dir = normal * (Vector3.Dot(dir, normal) + IKInteractivePointOffset);
-                    //Gizmos.DrawLine(shoulder.position, shoulder.position + dir);
                     interactivePoint = shoulder.position + dir;
                     found = true;
+                    //if (isDebug) Gizmos.color = Color.yellow;
+                    //if (isDebug) Handles.DrawLine(shoulder.position, shoulder.position + dir);
                     break;
                 }
                 else
                 {
-                    //Gizmos.color = Color.red;
-                    //Gizmos.DrawLine(shoulder.position, shoulder.position + direction * rayDistance[i]);
+                    if (isDebug)
+                    {
+                        //Gizmos.color = Color.red;
+                        //Handles.DrawLine(shoulder.position, shoulder.position + direction * rayDistance[i]);
+                    }
                 }
             }
 
