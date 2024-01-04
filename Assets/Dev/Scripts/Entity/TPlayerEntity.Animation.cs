@@ -87,19 +87,37 @@ namespace TinyGame
             else
             {
             }
+
         }
         protected void FixedUpdate_Animation()
         {
-            if (!Animation_Attacking())
+            //if (!Animation_Attacking())
+            //{
+            //    //直接使用Animancer的IK的
+            //    if (upperarm_l)
+            //        Animatiom_HandWallInteractiveIK(AvatarIKGoal.LeftHand, upperarm_l);
+            //    if (upperarm_r)
+            //        Animatiom_HandWallInteractiveIK(AvatarIKGoal.RightHand, upperarm_r);
+            //}
+            //else
+            //{
+            //    Animatiom_SetIKActive(false);
+            //}
+
+            if (IKApproach.Equals(IKApproachType.AnimationRigging))
             {
-                if (upperarm_l)
-                    Animatiom_HandWallInteractiveIK(AvatarIKGoal.LeftHand, upperarm_l);
-                if (upperarm_r)
-                    Animatiom_HandWallInteractiveIK(AvatarIKGoal.RightHand, upperarm_r);
-            }
-            else
-            {
-                Animatiom_SetIKActive(false);
+                if (!Animation_Attacking())
+                {
+                    //直接使用Animancer的IK的
+                    if (upperarm_l)
+                        Animatiom_HandWallInteractive_TwoBoneIKConstraint(AvatarIKGoal.LeftHand, upperarm_l);
+                    if (upperarm_r)
+                        Animatiom_HandWallInteractive_TwoBoneIKConstraint(AvatarIKGoal.RightHand, upperarm_r);
+                }
+                else
+                {
+                    Animatiom_SetIKActive_RigConstraint(false);
+                }
             }
         }
 
@@ -184,7 +202,14 @@ namespace TinyGame
 
         #region IK
 
+        public enum IKApproachType
+        { 
+            OldSchoolAnimator,
+            AnimationRigging
+        }
+        [SerializeField] private IKApproachType IKApproach = IKApproachType.AnimationRigging;
         [SerializeField] private IKPuppetTarget[] _IKTargets;
+        [SerializeField] private RigConstraintHandle[] _RigConstraintHandles;
 
         public string path_upperarm_l = "root/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l";
         public string path_upperarm_r = "root/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r";
@@ -195,6 +220,7 @@ namespace TinyGame
         {
             animancer.Layers[0].ApplyAnimatorIK = true;
             Animatiom_SetIKActive(false);
+            Animatiom_SetIKActive_RigConstraint(false);
             //
             var model = mainAnimator.transform;
             upperarm_l = model.transform.Find(path_upperarm_l);
@@ -256,35 +282,81 @@ namespace TinyGame
 
             if (found)
             {
-                Animatiom_IKSwitch(avatarIKGoal, true, interactivePoint, IKPuppetTarget.ValueChangeApproach.Tween);
+                Animatiom_IKSwitch(avatarIKGoal, true, interactivePoint, ValueChangeApproach.Tween);
             }
             else
             {
                 Animatiom_IKSwitch(avatarIKGoal, false);
             }
         }
+
+
+        /// <summary>
+        /// 手部与墙体交互的IK逻辑,使用AnimationRigging的TwoBoneIKConstrain
+        /// </summary>
+        /// <param name="avatarIKGoal"></param>
+        /// <param name="shoulder"></param>
+        public void Animatiom_HandWallInteractive_TwoBoneIKConstraint(AvatarIKGoal avatarIKGoal, Transform shoulder)
+        {
+            if (shoulder == null)
+                return;
+
+            bool found = false;
+            Vector3 interactivePoint = default;
+            Vector3 side = transform.right;
+            if (avatarIKGoal == AvatarIKGoal.LeftHand)
+                side = -side;
+
+            RaycastHit raycastHit;
+
+            rayDirections[0] = transform.forward;
+            rayDirections[1] = (forward + side).normalized;
+            rayDirections[2] = side;
+
+            for (int i = 0; i < rayDirections.Length; i++)
+            {
+                var direction = rayDirections[i];
+                if (Physics.Raycast(shoulder.position, direction, out raycastHit, rayDistance[i], 1 << LayerMask.NameToLayer("Wall")))
+                {
+                    Vector3 normal = -raycastHit.normal;
+                    Vector3 dir = (raycastHit.point - shoulder.position);
+                    dir = normal * (Vector3.Dot(dir, normal) + IKInteractivePointOffset);
+                    interactivePoint = shoulder.position + dir;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found)
+            {
+                Animatiom_IKSwitch_RigConstraint(avatarIKGoal, true, interactivePoint, ValueChangeApproach.Tween);
+            }
+            else
+            {
+                Animatiom_IKSwitch_RigConstraint(avatarIKGoal,false, ValueChangeApproach.Tween);
+            }
+        }
         public override void OnAnimatorIK()
         {
             base.OnAnimatorIK();
 
-
+            if(IKApproach.Equals(IKApproachType.OldSchoolAnimator)) Animation_UpdateIK();
+        }
+        public void Animation_UpdateIK()
+        {
             for (int i = 0; i < _IKTargets.Length; i++)
             {
                 _IKTargets[i].UpdateAnimatorIK(animancer.Animator);
             }
         }
-        /// <summary>
-        /// IK开关
-        /// </summary>
-        /// <param name="enable"></param>
         public void Animatiom_SetIKActive(bool enable)
         {
             for (int i = 0; i < _IKTargets.Length; i++)
             {
-                _IKTargets[i].SetAnimatorIK(animancer.Animator, enable ? 1 : 0, IKPuppetTarget.ValueChangeApproach.Immediately);
+                _IKTargets[i].SetAnimatorIK(animancer.Animator, enable ? 1 : 0, ValueChangeApproach.Immediately);
             }
         }
-        public void Animatiom_IKSwitch(AvatarIKGoal _type, bool enable, Vector3 worldPosition = default, IKPuppetTarget.ValueChangeApproach approach = IKPuppetTarget.ValueChangeApproach.Tween)
+        public void Animatiom_IKSwitch(AvatarIKGoal _type, bool enable, Vector3 worldPosition = default, ValueChangeApproach approach = ValueChangeApproach.Tween)
         {
             for (int i = 0; i < _IKTargets.Length; i++)
             {
@@ -293,6 +365,42 @@ namespace TinyGame
                 _IKTargets[i].SetAnimatorIK(animancer.Animator, enable ? 1 : 0, approach);
                 if (worldPosition != default)
                     _IKTargets[i].transform.position = worldPosition;
+            }
+        }
+
+        //RigConstraint
+        public void Animation_UpdateIK_RigConstraint()
+        {
+            for (int i = 0; i < _RigConstraintHandles.Length; i++)
+            {
+                _RigConstraintHandles[i].UpdateAnimatorIK();
+            }
+        }
+        public void Animatiom_SetIKActive_RigConstraint(bool enable, ValueChangeApproach approach = ValueChangeApproach.Immediately)
+        {
+            for (int i = 0; i < _RigConstraintHandles.Length; i++)
+            {
+                _RigConstraintHandles[i].SetAnimatorIK(enable ? 1 : 0, ValueChangeApproach.Immediately);
+            }
+        }
+        public void Animatiom_IKSwitch_RigConstraint(AvatarIKGoal _type, bool enable, Vector3 worldPosition = default, ValueChangeApproach approach = ValueChangeApproach.Tween)
+        {
+            for (int i = 0; i < _RigConstraintHandles.Length; i++)
+            {
+                if (_RigConstraintHandles[i].AvatarIKGoal != _type)
+                    continue;
+                _RigConstraintHandles[i].SetAnimatorIK(enable ? 1 : 0, approach);
+                if (worldPosition != default)
+                    _RigConstraintHandles[i].SetTargetPosition(worldPosition);
+            }
+        }
+        public void Animatiom_IKSwitch_RigConstraint(AvatarIKGoal _type, bool enable,ValueChangeApproach approach = ValueChangeApproach.Tween)
+        {
+            for (int i = 0; i < _RigConstraintHandles.Length; i++)
+            {
+                if (_RigConstraintHandles[i].AvatarIKGoal != _type)
+                    continue;
+                _RigConstraintHandles[i].SetAnimatorIK(enable ? 1 : 0, approach);
             }
         }
         #endregion

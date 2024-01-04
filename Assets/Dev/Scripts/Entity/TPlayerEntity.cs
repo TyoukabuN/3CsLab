@@ -106,6 +106,11 @@ namespace TinyGame
 
             Update_Input();
             Update_Animation();
+            FixedUpdate_Animation();
+            Animation_UpdateIK_RigConstraint();
+        }
+        protected void LateUpdate()
+        {
         }
 
         private Vector3 velocity;
@@ -144,7 +149,6 @@ namespace TinyGame
 
             Collision_ClearState();
 
-            FixedUpdate_Animation();
         }
 
         private void UpdateDashProperty()

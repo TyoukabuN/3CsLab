@@ -8,10 +8,6 @@ namespace TinyGame
         [SerializeField, Range(0, 1)] private float _PositionWeight = 1;
         [SerializeField, Range(0, 1)] private float _RotationWeight = 0;
 
-        public enum ValueChangeApproach { 
-            Tween,
-            Immediately,
-        }
         public ValueChangeApproach valueChangeApproach = ValueChangeApproach.Tween;
         public AvatarIKGoal AvatarIKGoal => _Type;
 

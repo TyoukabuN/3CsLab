@@ -6,6 +6,8 @@ namespace TinyGame {
     public class AnimatorAgency : MonoBehaviour, IAnimatorEventReceiver
     {
         public IAnimatorEventReceiver animatorEventReceiver;
+        void Start() { 
+        }
         public void OnAnimatorIK()
         {
             if (animatorEventReceiver != null) animatorEventReceiver.OnAnimatorIK();

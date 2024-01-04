@@ -96,6 +96,7 @@ namespace TinyGame
             cameraSpot.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
 
         }
+        public bool canOperate = true;
 
         public bool CanOperate()
         {
@@ -106,7 +107,7 @@ namespace TinyGame
             //    return false;
             //if (!TinyGameManager.playerControllable)
             //    return false;
-            return true;
+            return canOperate;
         }
 
         public void Input_Attack()

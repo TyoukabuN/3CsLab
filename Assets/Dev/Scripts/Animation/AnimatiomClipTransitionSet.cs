@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 using Animancer;
 using System.IO;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 //[CreateAssetMenu(menuName = "Custom/AnimatiomClipTransitionSet", fileName = "AnimatiomClipTransitionSet")]
 public class AnimatiomClipTransitionSet : SerializedScriptableObject
@@ -15,6 +17,7 @@ public class AnimatiomClipTransitionSet : SerializedScriptableObject
     [DictionaryDrawerSettings(KeyLabel = "Name", ValueLabel = "Clip")]
     public Dictionary<string, ClipTransition> clips = new Dictionary<string, ClipTransition>();
 
+#if UNITY_EDITOR
     [MenuItem("Assets/Create/Custom/AnimatiomClipTransitionSet")]
     public static void CreateAnimatiomClipTransitionSet() {
         string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
@@ -40,4 +43,6 @@ public class AnimatiomClipTransitionSet : SerializedScriptableObject
             return;
         }
     }
+#endif
+
 }

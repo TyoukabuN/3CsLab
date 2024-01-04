@@ -151,4 +151,10 @@ namespace TinyGame
         Bottom = 3,
         Top = 4,
     }
+
+    public enum ValueChangeApproach
+    {
+        Tween,
+        Immediately,
+    }
 }
