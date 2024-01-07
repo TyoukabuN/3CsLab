@@ -39,7 +39,6 @@ namespace TinyGame
         public Action<int> onOutOfSight;
         public Action onAnimationClipEvent;
 
-        public bool m_outOfSightTrigger = true;
 
         public float distanceFromPlayer
         {
@@ -152,16 +151,6 @@ namespace TinyGame
 
         [HideInInspector]public float OutOfSightOffset = 0.1f;
         [HideInInspector]public bool isOutOfSight = true;
-
-        /// <summary>
-        /// 重置视界检查,复活用
-        /// </summary>
-        public virtual void ResetCheckOutOfSight()
-        {
-            isOutOfSight = true;
-            m_outOfSightTrigger = true;
-        }
-       
 
         public virtual void OnAnimationClipEvent()
         {

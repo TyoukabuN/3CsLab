@@ -222,7 +222,6 @@ namespace TinyGame
             Vector2 pos = TinyGameManager.instance.cameraSpot.position;
 
             player.ClearTweenerPosY();
-            player.ResetCheckOutOfSight();
 
             float dis = floorCheckRange;
             Vector2 rayOrigin = new Vector2(player.transform.position.x, player.transform.position.y + dis) + floorCheckOffset;

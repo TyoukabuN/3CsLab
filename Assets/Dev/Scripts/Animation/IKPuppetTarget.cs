@@ -33,6 +33,7 @@ namespace TinyGame
                 this.factor = _factor;
             else
                 _targetFactor = _factor;
+            this.valueChangeApproach = valueChangeApproach;
         }
     }
 }

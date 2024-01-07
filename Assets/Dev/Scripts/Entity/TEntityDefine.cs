@@ -157,4 +157,9 @@ namespace TinyGame
         Tween,
         Immediately,
     }
+    public enum AnimanerUpdateAproach 
+    { 
+        Auto,
+        Manually,
+    }
 }

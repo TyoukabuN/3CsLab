@@ -31,19 +31,15 @@ namespace TinyGame
             if (_twoBoneIKconstraint) _PositionWeight = _twoBoneIKconstraint.weight;
             if (_multiRotationConstraint) _RotationWeight = _multiRotationConstraint.weight;
         }
-         void Start()
-        {
-
-        }
 
         public void UpdateAnimatorIK()
         {
             if (valueChangeApproach == ValueChangeApproach.Tween)
+            { 
                 factor = Mathf.MoveTowards(factor, _targetFactor, Time.deltaTime * tweenSpeed);
-
-            //Debug.Log(string.Format("{0} {1}", _twoBoneIKconstraint.weight.ToString("f2"), (_PositionWeight * factor).ToString("f2")));
-            _twoBoneIKconstraint.weight = _PositionWeight * factor;
-            _multiRotationConstraint.weight = _RotationWeight * factor;
+                if (_twoBoneIKconstraint) _twoBoneIKconstraint.weight =  factor;
+                if (_multiRotationConstraint) _multiRotationConstraint.weight =  factor;
+            }
         }
 
         public void SetTargetPosition(Vector3 worldPosition)
@@ -56,9 +52,14 @@ namespace TinyGame
         {
             //Debug.Log("[SetAnimatorIK]  " + _factor.ToString("f2"));
             if (valueChangeApproach == ValueChangeApproach.Immediately)
+            { 
                 this.factor = _factor;
+                if(_twoBoneIKconstraint) _twoBoneIKconstraint.weight =  factor;
+                if (_multiRotationConstraint) _multiRotationConstraint.weight =  factor;
+            }
             else
                 _targetFactor = _factor;
+            this.valueChangeApproach = valueChangeApproach;
         }
     }
 }

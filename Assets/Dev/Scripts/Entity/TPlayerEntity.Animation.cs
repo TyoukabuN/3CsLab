@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Animancer;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+using UnityEngine.Animations.Rigging;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 namespace TinyGame
 {
+    [DefaultExecutionOrder(1000)]
     [Serializable]
     public partial class TPlayerEntity : TEntity, INumericalControl, IActionControl
     {
@@ -44,9 +42,38 @@ namespace TinyGame
             BR = "Dash_Back_R"
         };
 
+        [SerializeField] protected bool _keepChildrenConnected = true;
+        [SerializeField] protected AnimanerUpdateAproach _animanerUpdateAproach = AnimanerUpdateAproach.Manually;
+        protected RigBuilder _rigBuilder;
         protected override void Init_Animation()
         {
             base.Init_Animation();
+
+            _rigBuilder = GetComponentInChildren<RigBuilder>();
+
+            if (animancer != null) 
+            {
+                //IK Target
+                //https://kybernetik.com.au/animancer/docs/examples/integration/animation-rigging/#ik-targets
+                if (_rigBuilder != null)
+                { 
+                    animancer.InitializePlayable(_rigBuilder.graph);
+                    animancer.Playable.KeepChildrenConnected = _keepChildrenConnected;
+                    animancer.Layers[0].ApplyAnimatorIK = true;
+                }
+                //For Rebind iusse
+                //https://kybernetik.com.au/animancer/docs/examples/integration/animation-rigging/#limitations
+                if (animationClipTransitionSet)
+                {
+                    foreach (var pair in animationClipTransitionSet.clips) {
+                        animancer.Layers[0].GetOrCreateState(pair.Value);
+                    }
+                }
+
+                if(_animanerUpdateAproach == AnimanerUpdateAproach.Manually)
+                    animancer.Playable.PauseGraph();
+            }
+
 
             Animation_InitIK();
         }
@@ -55,6 +82,40 @@ namespace TinyGame
             return Animation_CanExitJump() && Animation_CanExitAttack();
         }
         protected void Update_Animation()
+        {
+            Animation_UpdateMovement();
+            Animation_UpdateIK_RigConstraint();
+            Animation_UpdateAnimancer();
+        }
+
+        protected void FixedUpdate_Animation()
+        {
+            if (!Animation_Attacking())
+            {
+                if (IKApproach.Equals(IKApproachType.OldSchool))
+                {
+                    if (upperarm_l) Animatiom_HandWallInteractiveIK(AvatarIKGoal.LeftHand, upperarm_l);
+                    if (upperarm_r) Animatiom_HandWallInteractiveIK(AvatarIKGoal.RightHand, upperarm_r);
+                }
+                else
+                {
+                    if (upperarm_l) Animatiom_HandWallInteractive_TwoBoneIKConstraint(AvatarIKGoal.LeftHand, upperarm_l);
+                    if (upperarm_r) Animatiom_HandWallInteractive_TwoBoneIKConstraint(AvatarIKGoal.RightHand, upperarm_r);
+                }
+            }
+            else
+            {
+                if (IKApproach.Equals(IKApproachType.OldSchool))
+                    Animatiom_SetIKActive(false);
+                else
+                    Animatiom_SetIKActive_RigConstraint(false);
+            }
+        }
+
+        /// <summary>
+        /// play movement animation according to user input
+        /// </summary>
+        protected void Animation_UpdateMovement() 
         {
             if (OnGround && CanPlayMovementAnima())
             {
@@ -84,40 +145,18 @@ namespace TinyGame
                     Animancer_Play(CNAME_IDLE);
                 }
             }
-            else
-            {
-            }
-
         }
-        protected void FixedUpdate_Animation()
-        {
-            //if (!Animation_Attacking())
-            //{
-            //    //直接使用Animancer的IK的
-            //    if (upperarm_l)
-            //        Animatiom_HandWallInteractiveIK(AvatarIKGoal.LeftHand, upperarm_l);
-            //    if (upperarm_r)
-            //        Animatiom_HandWallInteractiveIK(AvatarIKGoal.RightHand, upperarm_r);
-            //}
-            //else
-            //{
-            //    Animatiom_SetIKActive(false);
-            //}
 
-            if (IKApproach.Equals(IKApproachType.AnimationRigging))
+        protected void Animation_UpdateAnimancer() 
+        {
+
+            if (_animanerUpdateAproach == AnimanerUpdateAproach.Manually)
             {
-                if (!Animation_Attacking())
-                {
-                    //直接使用Animancer的IK的
-                    if (upperarm_l)
-                        Animatiom_HandWallInteractive_TwoBoneIKConstraint(AvatarIKGoal.LeftHand, upperarm_l);
-                    if (upperarm_r)
-                        Animatiom_HandWallInteractive_TwoBoneIKConstraint(AvatarIKGoal.RightHand, upperarm_r);
-                }
-                else
-                {
-                    Animatiom_SetIKActive_RigConstraint(false);
-                }
+                animancer.Evaluate(Time.deltaTime);
+            }
+            else if (animancer != null && animancer.IsPlayableInitialized && !animancer.Playable.IsPlaying())
+            {
+                animancer.Playable.UnpauseGraph();
             }
         }
 
@@ -203,8 +242,14 @@ namespace TinyGame
         #region IK
 
         public enum IKApproachType
-        { 
-            OldSchoolAnimator,
+        {
+            /// <summary>
+            /// Animator IK for Humanoid Rigs 
+            /// </summary>
+            OldSchool,
+            /// <summary>
+            /// Using AnimatiomRigging Constraint to implement IK
+            /// </summary>
             AnimationRigging
         }
         [SerializeField] private IKApproachType IKApproach = IKApproachType.AnimationRigging;
@@ -340,7 +385,7 @@ namespace TinyGame
         {
             base.OnAnimatorIK();
 
-            if(IKApproach.Equals(IKApproachType.OldSchoolAnimator)) Animation_UpdateIK();
+            if(IKApproach.Equals(IKApproachType.OldSchool)) Animation_UpdateIK();
         }
         public void Animation_UpdateIK()
         {
