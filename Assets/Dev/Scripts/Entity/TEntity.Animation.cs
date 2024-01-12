@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Animancer;
+using System;
 
 namespace TinyGame
 {
@@ -13,6 +14,14 @@ namespace TinyGame
         //
         //[SerializeField] public AnimatiomClipSet animationClipSet;
         [SerializeField] public AnimatiomClipTransitionSet animationClipTransitionSet;
+
+        [SerializeField] private List<AvatarMask> avatarMasks;
+        [Serializable]
+        public enum AnimationLayerType : int
+        {
+            Base = 0,
+            Action = 1,
+        }
         protected virtual void Init_Animation()
         {
             mainAnimator = GetComponentInChildren<Animator>();
@@ -20,6 +29,16 @@ namespace TinyGame
             //
             animatorAgency = GetComponentInChildren<AnimatorAgency>();
             animatorAgency.animatorEventReceiver = this;
+        }
+        protected void Setup_AvaterMask()
+        {
+            if (animancer == null)
+                return;
+
+            for (int layerIndex = 0; layerIndex < avatarMasks.Count; layerIndex++)
+            {
+                animancer.Layers[layerIndex].SetMask(avatarMasks[layerIndex]);
+            }
         }
         public void Animator_SetEnabled(bool enabled)
         {
@@ -47,18 +66,24 @@ namespace TinyGame
         }
         public AnimancerState Animancer_Play(string clipName)
         {
+            return Animancer_Play(clipName,0);
+        }
+        public AnimancerState Animancer_Play(string clipName,int layerIndex)
+        {
             if (animancer == null) return null;
+            var layer = animancer.Layers[layerIndex];
             if (TryGetClip(clipName, out ClipTransition clip)) { 
-                return animancer.Play(clip);
+                return layer.Play(clip);
             }
             return null;
         }
-        public AnimancerState Animancer_Play(string clipName, float transition = 0.25f, FadeMode mode = default)
+        public AnimancerState Animancer_Play(string clipName, float transition = 0.25f, FadeMode mode = default,int layerIndex = 0)
         {
             if (animancer == null) return null;
+            var layer = animancer.Layers[layerIndex];
             if (TryGetClip(clipName, out ClipTransition clip))
             {
-                return animancer.Play(clip, transition, mode);
+                return layer.Play(clip, transition, mode);
             }
             return null;
         }
@@ -164,4 +189,6 @@ namespace TinyGame
         }
         #endregion
     }
+
+
 }

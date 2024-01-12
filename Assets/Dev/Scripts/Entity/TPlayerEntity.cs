@@ -410,11 +410,13 @@ namespace TinyGame
             var ground = string.Format("<color=red>着地:{0}</color>", OnGround.ToString());
             var speed = string.Format("<color=red>移动输入:{0}</color>", horizontalInput.ToString());
             var velocity = string.Format("<color=red>速度:{0}</color>", _rigidbody == null ?0:_rigidbody.velocity.ToString());
+            var canPlayMovementAnima1 = string.Format("<color=red>XZAnima:{0}</color>", canPlayMovementAnima);
             builder.Clear();
             builder.AppendLine(jump);
             builder.AppendLine(ground);
             builder.AppendLine(speed);
             builder.AppendLine(velocity);
+            builder.AppendLine(canPlayMovementAnima1);
             Handles.Label(transform.position, builder.ToString(), GizmosGUIStyle);
             Handles.color = Color.red;
 
