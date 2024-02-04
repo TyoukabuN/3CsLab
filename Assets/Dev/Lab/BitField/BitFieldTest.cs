@@ -24,7 +24,9 @@ public class BitFieldTest : MonoBehaviour
         // Test_FlagCombin();
         // Test_FlagCombinNative();
         // Test_FlagCombinStruct();
+        Test_OverlapsFlagGroup();
         Test_OverlapsFlagGroupNative();
+        Test_OverlapsFlagGroupStruc();
     }
 
     void Test_FlagCombin()
@@ -79,7 +81,6 @@ public class BitFieldTest : MonoBehaviour
     }
     public void Test_OverlapsFlagGroupNative(int length = 100000, int includedBitsCount = 2)
     {
-        Profiler.BeginSample("Test_OverlapsFlagGroupNative");
         int bitwise = 32;
         int step = bitwise / includedBitsCount;
         FlagCombinNative[] bitArray1 = new FlagCombinNative[length];
@@ -111,6 +112,9 @@ public class BitFieldTest : MonoBehaviour
         }
 
         ///------------------------------------BitField
+        ///
+        Profiler.BeginSample("Test_OverlapsFlagGroupNative");
+
         var now = System.DateTime.Now;
 
         int trues = 0;
@@ -160,7 +164,6 @@ public class BitFieldTest : MonoBehaviour
     }
     public void Test_OverlapsFlagGroupStruc(int length = 100000, int includedBitsCount = 2)
     {
-        Profiler.BeginSample("Test_OverlapsFlagGroupStruc");
 
         int bitwise = 32;
         int step = bitwise / includedBitsCount;
@@ -194,6 +197,7 @@ public class BitFieldTest : MonoBehaviour
                 tagArray2[i].AddTag(bit2.ToString());
             }
         }
+        Profiler.BeginSample("Test_OverlapsFlagGroupStruc");
 
         ///------------------------------------BitField
         var now = System.DateTime.Now;
@@ -234,6 +238,82 @@ public class BitFieldTest : MonoBehaviour
         Debug.Log($"[Falses]: {falses}");
         Profiler.EndSample();
     }
+    
+        public void Test_OverlapsFlagGroup(int length = 100000, int includedBitsCount = 2)
+    {
+        int bitwise = 32;
+        int step = bitwise / includedBitsCount;
+        FlagCombin[] bitArray1 = new FlagCombin[length];
+        FlagCombin[] bitArray2 = new FlagCombin[length];
+        //
+        MotionTag[] tagArray1 = new MotionTag[length];
+        MotionTag[] tagArray2 = new MotionTag[length];
+
+        for (int i = 0; i < length; i++)
+        {
+
+            bitArray1[i] = new FlagCombin();
+            bitArray2[i] = new FlagCombin();
+            //
+            tagArray1[i] = new MotionTag();
+            tagArray2[i] = new MotionTag();
+            for (int j = 0; j < includedBitsCount; j++)
+            {
+                int bPos = j * step;
+                int ePos = (j + 1) * step - 1;
+                int bit1 = Random.Range(bPos, ePos);
+                int bit2 = Random.Range(bPos, ePos);
+                bitArray1[i] |= FlagGroup.Grouped(bit1);
+                bitArray2[i] |= FlagGroup.Grouped(bit2);
+                //
+                tagArray1[i].AddTag(bit1.ToString());
+                tagArray2[i].AddTag(bit2.ToString());
+            }
+        }
+
+        ///------------------------------------BitField
+        ///
+        Profiler.BeginSample("Test_OverlapsFlagGroup");
+
+        var now = System.DateTime.Now;
+
+        int trues = 0;
+        int falses = 0;
+
+        for (int i = 0; i < length; i++)
+        {
+            if (bitArray1[i].Overlaps(bitArray2[i]))
+                trues++;
+            else
+                falses++;
+        }
+        Debug.Log($"[Count] {length}");
+        Debug.Log($"[-------------------------------------------------------]");
+        Debug.Log($"[------------------FlagGroup------------------]");
+        Debug.Log($"[Cost]: {(System.DateTime.Now - now).TotalMilliseconds} ms");
+        Debug.Log($"[Trues]: {trues}");
+        Debug.Log($"[Falses]: {falses}");
+
+        ///------------------------------------MotionTag
+        trues = 0;
+        falses = 0;
+
+        now = System.DateTime.Now;
+
+        for (int i = 0; i < length; i++)
+        {
+            if (tagArray1[i].TagHashes.Overlaps(tagArray2[i].TagHashes))
+                trues++;
+            else
+                falses++;
+        }
+        Debug.Log($"[------------------MotionTag--------------]");
+        Debug.Log($"[Cost]: {(System.DateTime.Now - now).TotalMilliseconds} ms");
+        Debug.Log($"[Trues]: {trues}");
+        Debug.Log($"[Falses]: {falses}");
+        Profiler.EndSample();
+    }
+    
 }
 
 public static class BitFieldExtension
