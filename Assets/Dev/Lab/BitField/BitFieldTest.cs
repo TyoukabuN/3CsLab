@@ -126,7 +126,7 @@ public class BitFieldTest : MonoBehaviour
                 trues++;
             else
                 falses++;
-        }
+        } 
         for (int i = 0; i < length; i++)
         {
             bitArray1[i].Dispose();
