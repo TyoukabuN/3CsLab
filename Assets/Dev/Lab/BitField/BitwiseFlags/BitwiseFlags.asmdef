@@ -1,0 +1,16 @@
+{
+    "name": "BitwiseFlags",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "MOTION_FSM"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
