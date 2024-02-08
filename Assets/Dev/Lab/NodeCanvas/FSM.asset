@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
+  m_Name: FSM
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":246.0,"y":352.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_onEnterList":{"executionMode":1,"actions":[]},"_onUpdateList":{"executionMode":1,"actions":[{"inputActionAsset":1,"saveValueAs":{"_type":"UnityEngine.RectTransform+Axis","_name":"Horizontal","_targetVariableID":"6a707446-e326-46b4-84b3-11ef53c8f81e"},"selectedActionID":"87b03879-6eea-4165-ab62-290924485ee5","$type":"NodeCanvas.Tasks.Actions.GetActionInputValue"},{"inputActionAsset":1,"saveValueAs":{"_type":"UnityEngine.RectTransform+Axis","_name":"Vertical","_targetVariableID":"ae3af1b8-0407-41b1-b271-86b151c72020"},"selectedActionID":"5ff17f39-b070-4fae-b58e-4074633fb69c","$type":"NodeCanvas.Tasks.Actions.GetActionInputValue"},{"strafe":{"_name":"Horizontal","_targetVariableID":"6a707446-e326-46b4-84b3-11ef53c8f81e"},"turn":{"_name":""},"forward":{"_name":"Vertical","_targetVariableID":"ae3af1b8-0407-41b1-b271-86b151c72020"},"up":{"_name":""},"moveSpeed":{"_value":1.0},"rotationSpeed":{"_value":1.0},"$type":"NodeCanvas.Tasks.Actions.InputMove"}]},"_onExitList":{"executionMode":1,"actions":[]},"foldUpdate":true,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":280.0,"y":581.0},"$type":"NodeCanvas.StateMachines.SuperActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"overrideAgent":{"_type":"UnityEngine.Transform","_name":"GlobalBackboard/DestroyTarget","_targetVariableID":"04520231-9157-4c9d-8506-fa6ccc7e4dec"},"$type":"NodeCanvas.Tasks.Actions.DestroyGameObject"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":560.0,"y":595.0},"$type":"NodeCanvas.StateMachines.ActionState"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Horizontal":{"_name":"Horizontal","_id":"6a707446-e326-46b4-84b3-11ef53c8f81e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.RectTransform+Axis,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Vertical":{"_name":"Vertical","_id":"ae3af1b8-0407-41b1-b271-86b151c72020","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.RectTransform+Axis,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: -944628639613478452, guid: a8448a6aa10e5724bac89edb6bd61d96, type: 3}
+  _graphSource:
+    _version: 3.29
+    _category: 
+    _comments: 
+    _translation: {x: 77, y: -9}
+    _zoomFactor: 1
+  _haltSerialization: 0
+  _externalSerializationFile: {fileID: 0}

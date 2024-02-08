@@ -1021,11 +1021,51 @@ public class BitFieldTestEditor : Editor
                 Debug.Log(string.Format("The diff is:   {0:N0}", ram1 - ram2));
                 Debug.Log(System.GC.CollectionCount(0));
             }
-        }
-    }
-    
-    
 
+            if (GUILayout.Button("Enum Test"))
+            {
+                Type type = typeof(CharacterAction);
+                var values = Enum.GetValues(type);
+                var names = Enum.GetNames(type);
+                for (int i = 0; i < values.Length; i++)
+                {
+                    Debug.Log($"{names[i]} = {(int)(object)values.GetValue(i)}");
+                }
+            }
+
+            if (GUILayout.Button("Enum Test"))
+            {
+                Debug.Log(CharacterAction.Aim.ToString());
+                LogName(CharacterAction.Attack);
+            }
+
+        }
+
+
+    }
+    public void LogName(CharacterAction value)
+    {
+        Debug.Log(value.ToString());
+    }
+    public enum CharacterAction
+    {
+        None = 0,
+        Run = 1,
+        Jump = 2,
+        Roll = 3,
+        Attack = 4,
+        Aim = 5,
+        AimCancel = 6,
+        Shoot = 7,
+        AttackCharge = 8,
+        AttackJustRelease = 9,
+        AttackRelease = 10,
+        Defend = 21,
+        UseItem = 70,
+        Interact = 80,
+        TestTemp = 99,
+        
+    }
     class BitField64DebugView
     {
         BitField64 Data;
