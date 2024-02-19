@@ -11,7 +11,7 @@ using UnityEditor;
 
 namespace TinyGame
 {
-    public partial class TPlayerEntity : TEntity, INumericalControl, IActionControl
+    public partial class TPlayerEntity : StateMachineEntity , INumericalControl, IActionControl
     {
         //motion require
         private Rigidbody _rigidbody;
@@ -38,7 +38,7 @@ namespace TinyGame
         {
             get
             {
-                if (!OnGround) return Vector3.up;
+                if (!Grounded) return Vector3.up;
                 return contactNormal;
             }
             set
@@ -61,7 +61,7 @@ namespace TinyGame
         public Vector3 right => Vector3.Cross(Vector3.up, cameraForward).normalized;
         public Vector3 forward {
             get {
-                if (!OnGround) {
+                if (!Grounded) {
                     return cameraForward;
                 }
                 return Vector3.Cross(Vector3.Cross(floorUp, cameraForward), floorUp).normalized;
@@ -83,6 +83,7 @@ namespace TinyGame
         protected override void Awake()
         {
             base.Awake();
+            Awake_State();
         }
 
 
@@ -100,11 +101,12 @@ namespace TinyGame
         protected override void Update()
         {
             base.Update();
-
+            
             if (!IsVaild())
                 return;
 
             Update_Input();
+            Update_State();
             Update_Animation();
         }
         protected void LateUpdate()
@@ -120,15 +122,15 @@ namespace TinyGame
             Collision_UpdateState();
             velocity = _rigidbody.velocity;
             //un hang
-            if (m_isUpArrowClick)
-            {
-                m_isUpArrowClick = false;
+            //if (m_isUpArrowClick)
+            //{
+            //    m_isUpArrowClick = false;
 
-                if (CanHang() && IsHanging())
-                {
-                    DOHang();
-                }
-            }
+            //    if (CanHang() && IsHanging())
+            //    {
+            //        DOHang();
+            //    }
+            //}
 
             UpdateDashProperty();
 
@@ -189,7 +191,7 @@ namespace TinyGame
         private void UpdateJumpAnimationProperty()
         {
             int jumpVal = 1;
-            if (!IsJumping() || OnGround)
+            if (!IsJumping() || Grounded)
                 jumpVal = 0;
 
             int jumpBlend = 0;
@@ -201,7 +203,7 @@ namespace TinyGame
             {
                 jumpBlend = 1;
             }
-            else if (!OnGround)
+            else if (!Grounded)
             {
                 OnFallBegin();
                 jumpBlend = -1;
@@ -256,7 +258,7 @@ namespace TinyGame
         [SerializeField, Range(0f, 1f)]
         float originVelocityRate = 0.75f;
 
-        private float acceleration => OnGround ? maxAcceleration : maxAirAcceleration;
+        private float acceleration => Grounded ? maxAcceleration : maxAirAcceleration;
 
         Vector3 ProjectOnContactPlane(Vector3 vector)
         {
@@ -271,7 +273,7 @@ namespace TinyGame
             Vector3 zAxis = this.forward;
             Vector3 yAxis = contactNormal;
 
-            Vector3 desiredVelocity = new Vector3(horizontalInput.x, 0, horizontalInput.y) + debugVec3;
+            Vector3 desiredVelocity = new Vector3(inputAxi.x, 0, inputAxi.y) + debugVec3;
             desiredVelocity.y = -Vector3.Dot(desiredVelocity.normalized, yAxis);
             desiredVelocity  *= factor;
             //
@@ -308,7 +310,7 @@ namespace TinyGame
                 m_isSpaceClick = false;
                 SetJumpCount(jumpCounter + 1);
                 Collision_ClearStayingFloor();
-                Animation_OnJumpStart();
+                //Animation_OnJumpStart();
 
                 this.ExtraActionMapRemove(TPlayerActionType.KeepOnFloor);
 
@@ -406,17 +408,15 @@ namespace TinyGame
             if (builder == null) { 
                 builder = new StringBuilder();
             }
-            var jump = string.Format("<color=red>跳跃:{0}/{1}</color>", jumpCounter.ToString(), jumpableTimes.ToString());
-            var ground = string.Format("<color=red>着地:{0}</color>", OnGround.ToString());
-            var speed = string.Format("<color=red>移动输入:{0}</color>", horizontalInput.ToString());
-            var velocity = string.Format("<color=red>速度:{0}</color>", _rigidbody == null ?0:_rigidbody.velocity.ToString());
-            var canPlayMovementAnima1 = string.Format("<color=red>XZAnima:{0}</color>", canPlayMovementAnima);
             builder.Clear();
-            builder.AppendLine(jump);
-            builder.AppendLine(ground);
-            builder.AppendLine(speed);
-            builder.AppendLine(velocity);
-            builder.AppendLine(canPlayMovementAnima1);
+
+            builder.AppendLine(string.Format("<color=red>跳跃:{0}/{1}</color>", jumpCounter.ToString(), jumpableTimes.ToString()));
+            builder.AppendLine(string.Format("<color=red>着地:{0}</color>", Grounded.ToString()));
+            builder.AppendLine(string.Format("<color=red>移动输入:{0}</color>", inputAxi.ToString()));
+            builder.AppendLine(string.Format("<color=red>速度:{0}</color>", _rigidbody == null ?0:_rigidbody.velocity.ToString()));
+            builder.AppendLine(string.Format("<color=red>XZAnima:{0}</color>", inputAxi));
+            builder.AppendLine(string.Format("<color=red>状态:{0}</color>", currentEState.ToString()));
+
             Handles.Label(transform.position, builder.ToString(), GizmosGUIStyle);
             Handles.color = Color.red;
 

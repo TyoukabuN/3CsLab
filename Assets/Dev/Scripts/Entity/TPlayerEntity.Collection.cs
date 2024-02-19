@@ -6,7 +6,7 @@ using Define = TinyGame.TEntityDefine;
 
 namespace TinyGame
 {
-    public partial class TPlayerEntity : TEntity, INumericalControl, IActionControl
+    public partial class TPlayerEntity : StateMachineEntity, INumericalControl, IActionControl
     {
         [Range(0, 90)] public float maxGroundAngle = 25f;
         private float minGroundDotProduct
@@ -40,7 +40,7 @@ namespace TinyGame
                 Collision_Evaluate(collision);
                 if (groundContactCount > 0)
                 {
-                    Animation_OnJumpLand();
+                    Collision_OnGrounded();
                     SetJumpCount(0);
                 }
             };
@@ -55,7 +55,7 @@ namespace TinyGame
                 if (Collision_ExistStayingFloor(instanceId))
                 {
                     Collision_RemoveStayingFloor(instanceId);
-                    if (!OnGround)
+                    if (!Grounded)
                     {
                         obstructColliderID = 0;
 
@@ -87,7 +87,14 @@ namespace TinyGame
             };
             SetAsDefaultColliderMask();
         }
-        
+
+        void Collision_OnGrounded()
+        {
+            //Animation_OnJumpLand();
+            //states[(int)currentEState]?.OnGrounded();
+            //State_Change(IsMoving() ? EPlayerState.Walk : EPlayerState.Stand);
+        }
+
         void Collision_Evaluate(Collision collision)
         {
             for (int i = 0; i < collision.contactCount; i++)
@@ -109,7 +116,7 @@ namespace TinyGame
 
         void Collision_UpdateState()
         {
-            if (OnGround)
+            if (Grounded)
             {
                 SetJumpCount(0);
                 if (groundContactCount > 1)
@@ -127,18 +134,11 @@ namespace TinyGame
             _rigidbody.isKinematic = simulated;
         }
 
-        public bool OnGround
+        public override bool Grounded
         {
             get
             {
                 return groundContactCount > 0 || (StayingFloors != null && StayingFloors.Count > 0) ;
-            }
-        }
-        public bool RealOnFloor
-        {
-            get
-            {
-                return (StayingFloors != null && StayingFloors.Count > 0);
             }
         }
 
@@ -149,7 +149,7 @@ namespace TinyGame
             {
                 try
                 {
-                    onGroundedChange.Invoke(OnGround);
+                    onGroundedChange.Invoke(Grounded);
                 }
                 catch (Exception e)
                 {

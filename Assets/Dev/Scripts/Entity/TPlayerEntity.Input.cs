@@ -7,38 +7,59 @@ using UnityEngine.InputSystem;
 namespace TinyGame
 {
     [RequireComponent(typeof(PlayerInput))]
-    public partial class TPlayerEntity : TEntity, INumericalControl, IActionControl
+    public partial class TPlayerEntity : StateMachineEntity, INumericalControl, IActionControl
     {
         protected bool m_lastCanUp = false;
         public Action<bool> onCanUpChange;
 
         protected float rotationPower = 0.15f;
 
-        protected Vector2 horizontalInput;
-        protected Vector2 _look;
-        protected float _run;
+        protected Vector2 inputAxi;
+        protected Vector2 mouseDelta;
+        protected float runValue;
+
+        protected void Awake_Input()
+        { 
+        }
 
         #region Input System Message
         protected void OnMove(InputValue value)
         {
-            horizontalInput = value.Get<Vector2>();
+            inputAxi = value.Get<Vector2>();
+            if (inputAxi.magnitude > 0)
+            {
+                State_Change(EPlayerState.Walk);
+            }
+            else
+            {
+                State_Change(EPlayerState.Stand);
+            }
         }
 
         protected void OnLook(InputValue value)
         {
-            _look = value.Get<Vector2>();
+            mouseDelta = value.Get<Vector2>();
         }
 
         protected void OnRun(InputValue value)
         {
-            _run = value.Get<float>();
+            runValue = value.Get<float>();
+            if (IsRunning())
+            {
+                State_Change(EPlayerState.Running);
+            }
+            else
+            {
+                State_Change(EPlayerState.Walk);
+            }
         }
 
         protected void OnJump(InputValue value)
         {
             if (CanJump())
             {
-                Input_Jump();
+                if (Input_Jump())
+                    State_Change(EPlayerState.Jump_Begin);
             }
             else if (IsHanging())
             {
@@ -70,8 +91,8 @@ namespace TinyGame
             }
 
             //¼ÆËãcameraSpotµÄÐý×ª
-            cameraSpot.transform.rotation *= Quaternion.AngleAxis(_look.x * rotationPower, Vector3.up);
-            cameraSpot.transform.rotation *= Quaternion.AngleAxis(-_look.y * rotationPower, Vector3.right);
+            cameraSpot.transform.rotation *= Quaternion.AngleAxis(mouseDelta.x * rotationPower, Vector3.up);
+            cameraSpot.transform.rotation *= Quaternion.AngleAxis(-mouseDelta.y * rotationPower, Vector3.right);
 
             var angles = cameraSpot.transform.localEulerAngles;
             angles.z = 0;
@@ -110,48 +131,52 @@ namespace TinyGame
             return canOperate;
         }
 
-        public void Input_Attack()
+        public bool Input_Attack()
         {
             if (!CanOperate())
-                return;
+                return false;
             if(!CanAttack())
-                return;
+                return false;
             Animation_Attack();
+            return true;
         }
-        public void Input_UnHang()
+        public bool Input_UnHang()
         {
             if (!CanOperate())
-                return;
+                return false;
             m_isUpArrowClick = true;
+            return true;
         }
-        public void Input_Dash()
+        public bool Input_Dash()
         {
             if (!CanOperate())
-                return;
+                return false;
             if (!CanDash())
-                return;
+                return false;
             m_isLeftControlClick = true;
+            return true;
         }
-        public void Input_Jump()
+        public bool Input_Jump()
         {
             if (!CanOperate())
-                return;
+                return false;
             if (!CanJump())
-                return;
+                return false;
             m_isSpaceClick = true;
+            return true;
         }
         public bool IsRunning()
         {
-            return _run > 0;
+            return runValue > 0;
         }
         public bool IsMoving()
         {
-            return horizontalInput.magnitude > 0;
+            return inputAxi.magnitude > 0;
         }
 
         public bool CanAttack() 
         {
-            return OnGround;
+            return Grounded;
         }
         public bool CanDash()
         {
@@ -170,7 +195,7 @@ namespace TinyGame
         public bool IsJumping()
         {
             //return rig.velocity.y < -0.05f || rig.velocity.y > 0.05f;
-            return !OnGround;
+            return !Grounded;
         }
         public bool CanJump()
         {

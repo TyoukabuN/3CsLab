@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TinyGame
 {
-    public partial class TPlayerEntity : TEntity, INumericalControl, IActionControl
+    public partial class TPlayerEntity : StateMachineEntity, INumericalControl, IActionControl
     {
         public Action<ExtraAction> onActionControlBegin;
         public Action<ExtraAction> onActionControlUpdate;

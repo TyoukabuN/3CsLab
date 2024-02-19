@@ -39,18 +39,6 @@ namespace TinyGame
         public Action<int> onOutOfSight;
         public Action onAnimationClipEvent;
 
-
-        public float distanceFromPlayer
-        {
-            get {
-                if(!IsVaild())
-                    return -1;
-                if (!TinyGameManager.instance.player)
-                    return -1;
-                var diff = TinyGameManager.instance.player.transform.position - transform.position;
-                return diff.magnitude;
-            }
-        }
         public bool IsVaild()
         {
             //if (TinyGameManager.instance == null)

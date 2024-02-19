@@ -11,7 +11,7 @@ namespace TinyGame
 {
     [DefaultExecutionOrder(1000)]
     [Serializable]
-    public partial class TPlayerEntity : TEntity, INumericalControl, IActionControl
+    public partial class TPlayerEntity : StateMachineEntity, INumericalControl, IActionControl
     {
         public const string CNAME_IDLE = "Idle";
 
@@ -87,7 +87,7 @@ namespace TinyGame
         }
         protected void Update_Animation()
         {
-            Animation_UpdateMovement();
+            //Animation_UpdateMovement();
             Animation_UpdateIK_RigConstraint();
             Animation_UpdateAnimancer();
         }
@@ -123,7 +123,7 @@ namespace TinyGame
         {
             canPlayMovementAnima = false;
 
-            if (OnGround && CanPlayMovementAnima())
+            if (Grounded && CanPlayMovementAnima())
             {
                 Animation_ClearJump();
                 Animation_ClearAttack();
@@ -132,18 +132,18 @@ namespace TinyGame
                 if (IsRunning())
                     moveSet = Dash;
 
-                if (horizontalInput.magnitude > 0)
+                if (inputAxi.magnitude > 0)
                 {
-                    if (Mathf.Abs(horizontalInput.x) <= 0.001f)
+                    if (Mathf.Abs(inputAxi.x) <= 0.001f)
                     {
-                        Animancer_Play(horizontalInput.y > 0 ? moveSet.F : moveSet.B);
+                        Animancer_Play(inputAxi.y > 0 ? moveSet.F : moveSet.B);
                     }
                     else
                     {
-                        if (horizontalInput.y > 0)
-                            Animancer_Play(horizontalInput.x > 0 ? moveSet.FR : moveSet.FL);
+                        if (inputAxi.y > 0)
+                            Animancer_Play(inputAxi.x > 0 ? moveSet.FR : moveSet.FL);
                         else
-                            Animancer_Play(horizontalInput.x > 0 ? moveSet.BR : moveSet.BL);
+                            Animancer_Play(inputAxi.x > 0 ? moveSet.BR : moveSet.BL);
                     }
                 }
                 else
@@ -177,24 +177,7 @@ namespace TinyGame
                 return true;
             return jumpAnimaState.NormalizedTime > 0.75f;
         }
-        protected void Animation_OnJumpStart()
-        {
-            jumpAnimaState = Animancer_Play(CNAME_JUMP_START, 0, FadeMode.FromStart);
-            jumpAnimaState.Events.OnEnd = Animation_OnJumpStartEnd;
-        }
-        protected void Animation_OnJumpStartEnd()
-        {
-            if (!OnGround)
-            {
-                Animancer_Play(CNAME_JUMP_KEEP, 0, FadeMode.FromStart);
-            }
-        }
-        protected void Animation_OnJumpLand()
-        {
-            if (jumpAnimaState == null)
-                return;
-            jumpAnimaState = Animancer_Play(IsMoving() ? CNAME_JUMP_LAND_M : CNAME_JUMP_LAND_W);
-        }
+
         private void Animation_ClearJump()
         {
             if (jumpAnimaState != null)
