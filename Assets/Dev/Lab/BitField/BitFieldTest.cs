@@ -888,6 +888,16 @@ public class BitFieldTestEditor : Editor
                 bitArray2.SetBits(33, true);
                 Debug.Log(bitArray1.Overlaps(bitArray2));
 
+                var flag1 = new Flag128();
+                var flag2 = new Flag128();
+                flag1 |= Flag128.Flag(1);
+                flag1 |= Flag128.Flag(33);
+                flag1 |= Flag128.Flag(46);
+                flag2 |= Flag128.Flag(1);
+                flag2 |= Flag128.Flag(33);
+                flag2 |= Flag128.Flag(37);
+                Debug.Log(flag1.HasAny(flag2));
+
 
                 var tagArray1 = new MotionTag();
                 var tagArray2 = new MotionTag();
@@ -896,6 +906,7 @@ public class BitFieldTestEditor : Editor
                 tagArray1.AddTag("46");
                 tagArray2.AddTag("1");
                 tagArray2.AddTag("33");
+                tagArray2.AddTag("37");
                 Debug.Log(tagArray1.TagHashes.Overlaps(tagArray2.TagHashes));
             }
             

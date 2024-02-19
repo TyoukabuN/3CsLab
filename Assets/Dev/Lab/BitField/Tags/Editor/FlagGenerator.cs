@@ -397,7 +397,7 @@ namespace Plugins.HunterMotion
             AppendLine($"public static implicit operator bool({h.className} f)");
             using (Tab(true,true))
             {
-                ForeachFlag(i => AppendLine($"if (f.Value{0} > 0) return true;"));
+                ForeachFlag(i => AppendLine($"if (f.Value{i} > 0) return true;"));
                 AppendLine("return false;");
             }
             
