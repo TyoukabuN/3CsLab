@@ -20,34 +20,36 @@ namespace TinyGame
             states[EPlayerState.Walk] = new WalkState();
             state2transition[EPlayerState.Walk] = new Transition[]
             {
-                new Trans_OnRunning(EPlayerState.Running),
+                Transition<Trans_OnRunning>.Get(EPlayerState.Running),
             };
 
             states[EPlayerState.Running] = new RunningState();
             state2transition[EPlayerState.Running] = new Transition[]
             {
-                new Trans_OnRunning(EPlayerState.Walk,true),
+                Transition<Trans_OnRunning>.Get(EPlayerState.Walk).SetInverse(true),
             };
 
             states[EPlayerState.Jump_Begin] = new JumpBeginState();
             state2transition[EPlayerState.Jump_Begin] = new Transition[] 
             {
-                new Trans_OnStateFinish(EPlayerState.Jump_Falling,0.95f),
-                new Trans_OnGrounded(EPlayerState.Jump_Land,0.5f),
+                Transition<Trans_OnStateFinish>.Get(EPlayerState.Jump_Falling).SetCanExitNormalizeTime(0.95f),
+                Transition<Trans_OnGrounded>.Get(EPlayerState.Jump_Land).SetCanExitNormalizeTime(0.5f),
             };
+
 
             states[EPlayerState.Jump_Falling] = new JumpFallingState();
             state2transition[EPlayerState.Jump_Falling] = new Transition[]
             {
-                new Trans_OnGrounded(EPlayerState.Jump_Land),
+                Transition<Trans_OnGrounded>.Get(EPlayerState.Jump_Land),
             };
 
             states[EPlayerState.Jump_Land] = new JumpLandState();
             state2transition[EPlayerState.Jump_Land] = new Transition[] 
             {
-                new Trans_OnRunning(EPlayerState.Running),
-                new Trans_OnWalking(EPlayerState.Walk),
-                new Trans_OnStateFinish(EPlayerState.Stand),
+                Transition<Trans_OnRunning>.Get(EPlayerState.Running),
+                Transition<Trans_OnWalking>.Get(EPlayerState.Walk),
+                Transition<Trans_OnStateFinish>.Get(EPlayerState.Stand),
+
             };
 
             State_Change(EPlayerState.Stand);

@@ -6,6 +6,9 @@ using static Unity.Collections.AllocatorManager;
 using UnityEngine.InputSystem;
 using Animancer.FSM;
 using Animancer;
+using static System.TimeZoneInfo;
+using System;
+using ParadoxNotion;
 
 namespace TinyGame
 {
@@ -119,58 +122,125 @@ namespace TinyGame
 
     }
 
-    public abstract class Transition
+    public interface IPoolItem
+    {
+        public void OnGet();
+        public void OnRelease();
+    }
+    public abstract class Transition : IPoolItem
     {
         public int toState = -1;
         public bool inverse = false;
-        public Transition(int toState)
+
+        protected Transition() { }
+        protected Transition(int toState)
         { 
             this.toState = toState;
         }
-        public abstract bool Check(State state);
-    }
-    public class Trans_OnGrounded : Transition
-    {
-        private float checkableNormalizeTime = 0;
-        public Trans_OnGrounded(int toState, float checkableNormalizeTime = 0f) : base(toState)
+        public virtual bool Check(State state) => true;
+
+        public float canExitNormalizeTime = 0;
+        public Transition SetCanExitNormalizeTime(float canExitNormalizeTime = 0f)
         {
-            this.checkableNormalizeTime = checkableNormalizeTime;
+            this.canExitNormalizeTime = canExitNormalizeTime;
+            return this;
         }
+        public Transition SetInverse(bool inverse)
+        { 
+            this.inverse = inverse;
+            return this;
+        }
+
+        public Transition SetToState(int toState)
+        { 
+            this.toState = toState;
+            return this;
+        }
+
+        public virtual void OnGet() { }
+        public virtual void OnRelease() { }
+    }
+    public abstract class Transition<TransitionType> : Transition where TransitionType : Transition<TransitionType>
+    {
+        private static Dictionary<Type, Queue<TransitionType>> typeToTransition;
+        protected Transition() { }
+        protected Transition(int toState) : base(toState)
+        {
+        }
+        private static Queue<TransitionType> GetQueue()
+        {
+            if (typeToTransition == null)
+                typeToTransition = new Dictionary<Type, Queue<TransitionType>>();
+
+            Type type = typeof(TransitionType);
+            if (!typeToTransition.TryGetValue(typeof(TransitionType), out var queue))
+            {
+                queue = new Queue<TransitionType>();
+                typeToTransition[type] = queue;
+            }
+            return queue;
+        }
+        public static TransitionType Get(int toState)
+        {
+            var list = GetQueue();
+
+            TransitionType transition = null;
+            if (list.Count > 0)
+            { 
+                transition = list.Dequeue();
+            }
+            else
+            { 
+                transition = (TransitionType)Activator.CreateInstance(typeof(TransitionType),true);
+                transition.toState = toState;
+            }
+
+            transition.OnGet();
+            return transition;
+        }
+
+        public static bool Release(TransitionType transition)
+        {
+            if(transition == null)
+                return false;
+            var list = GetQueue();
+            list.Enqueue(transition);
+
+            transition.OnRelease();
+            return true;
+        }
+    }
+    public class Trans_OnGrounded : Transition<Trans_OnGrounded>
+    {
+        protected Trans_OnGrounded() { }
         public override bool Check(State state)
         {
-            if (state.normalizeTime < checkableNormalizeTime)
+            if (state.normalizeTime < canExitNormalizeTime)
                 return false;
             return state.entity.stateContext.grounded > 0;
         }
     }
-    public class Trans_OnStateFinish : Transition
+    public class Trans_OnStateFinish : Transition<Trans_OnStateFinish>
     {
-        private float checkableNormalizeTime = 0;
-        public Trans_OnStateFinish(int toState,float checkableNormalizeTime = 0f) : base(toState) {
-            this.checkableNormalizeTime = checkableNormalizeTime;
-        }
+        protected Trans_OnStateFinish() { }
         public override bool Check(State state)
         {
-            if (state.normalizeTime < checkableNormalizeTime)
+            if (state.normalizeTime < canExitNormalizeTime)
                 return false;
             return state.phase == State.Phase.End;
         }
     }
-    public class Trans_OnWalking : Transition
+    public class Trans_OnWalking : Transition<Trans_OnWalking>
     {
-        public Trans_OnWalking(int toState) : base(toState) { }
-
+        protected Trans_OnWalking() { }
         public override bool Check(State state)
         {
             return state.entity.stateContext.inputAxi.magnitude > 0;
         }
     }
-    public class Trans_OnRunning : Transition
+    public class Trans_OnRunning : Transition<Trans_OnRunning>
     {
-        public Trans_OnRunning(int toState,bool inverse = false) : base(toState) {
-            this.inverse = inverse;
-        }
-
+        protected Trans_OnRunning() { }
         public override bool Check(State state)
         {
             var context = state.entity.stateContext;

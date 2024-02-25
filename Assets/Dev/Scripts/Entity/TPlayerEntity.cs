@@ -105,12 +105,13 @@ namespace TinyGame
             if (!IsVaild())
                 return;
 
-            Update_Input();
+            //Update_Input();
             Update_State();
             Update_Animation();
         }
         protected void LateUpdate()
         {
+            Update_Input();
         }
 
         private Vector3 velocity;
@@ -136,7 +137,8 @@ namespace TinyGame
 
             Collision_CheckStayingFloor(ref m_floorUp);
 
-            velocity += GetHorizontalVelocity(Time.fixedDeltaTime);
+            if(!mainAnimator.applyRootMotion)
+                velocity += GetHorizontalVelocity(Time.fixedDeltaTime);
 
             //velocity += GetExtraVelocity(Time.fixedDeltaTime);
 

@@ -108,7 +108,6 @@ namespace TinyGame
             {
                 angles.x = 40;
             }
-
             cameraSpot.transform.localEulerAngles = angles;
 
             //因为cameraSpot跟transfrom的Parent关系，将cameraSpot的y轴旋转应用到transfrom

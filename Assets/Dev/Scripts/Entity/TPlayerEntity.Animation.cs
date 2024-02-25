@@ -76,6 +76,8 @@ namespace TinyGame
                     animancer.Playable.PauseGraph();
 
                 Setup_AvaterMask();
+
+                animancer.Animator.applyRootMotion = false;
             }
 
 
@@ -190,7 +192,7 @@ namespace TinyGame
         private string[] attackAnimaNameSet_Hand = new string[] { "Attack_Hand_1", "Attack_Hand_2", "Attack_Hand_3" };
         private float[] exitTimeSet_Hand = new float[] { 0.30f, 0.30f, 0.40f };
         private AttackState attackState;
-        [SerializeField] public AnimationLayerType animationLayerType = AnimationLayerType.Action;
+        [SerializeField] public AnimationLayerType animationLayerType = AnimationLayerType.Base;
         private void Animation_Attack()
         {
             //start
@@ -206,10 +208,10 @@ namespace TinyGame
         private void Animation_OnComboEnd()
         {
             if (attackState != null) {
-                if (attackState.IsLayer(AnimationLayerType.Action))
+                if (attackState.IsLayer(animationLayerType))
                 { 
-                    animancer.Layers[(int)AnimationLayerType.Action].Weight = 0;
-                    animancer.Layers[(int)AnimationLayerType.Action].Stop();
+                    animancer.Layers[(int)animationLayerType].Weight = 0;
+                    animancer.Layers[(int)animationLayerType].Stop();
                 }
                 attackState.Clear();
                 attackState = null;
@@ -507,7 +509,7 @@ namespace TinyGame
         {
             if (!CanNext())
                 return;
-            entity.animancer.Layers[(int)AnimationLayerType.Action].Weight = 1.0f;
+            entity.animancer.Layers[(int)layerType].Weight = 1.0f;
             try
             {
                 attackAnimaState = entity.Animancer_Play(
@@ -519,7 +521,8 @@ namespace TinyGame
             {
                 Debug.Log(e.ToString());
             }
-            entity.animancer.Animator.applyRootMotion = true;
+            if(layerType == AnimationLayerType.Base)
+                entity.animancer.Animator.applyRootMotion = true;
 
             if (onEnd != null)
                 attackAnimaState.Events.OnEnd = onEnd;

@@ -4,7 +4,7 @@ namespace Plugins.HunterMotion
 {
 	public struct Flag128
 	{
-		public static Flag128 Empty =>
+		public static Flag128 Empty =
 			new(){
 				Value0 = 0,
 				Value1 = 0,
