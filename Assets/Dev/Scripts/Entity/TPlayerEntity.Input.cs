@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using CallbackContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 namespace TinyGame
 {
@@ -18,14 +20,33 @@ namespace TinyGame
         protected Vector2 mouseDelta;
         protected float runValue;
 
+        private PlayerInput playerInput;
         protected void Awake_Input()
-        { 
+        {
+            playerInput.GetComponent<PlayerInput>();
+            playerInput.SwitchCurrentActionMap("Player");
+            if (playerInput.actions == null)
+            {
+                return;
+            }
+            var move = playerInput.actions.FindAction("Move");
+            move.performed += OnMove;
+            var look = playerInput.actions.FindAction("Look");
+            look.performed += OnLook;
+            var run = playerInput.actions.FindAction("Run");
+            look.performed += OnRun;
+            var jump = playerInput.actions.FindAction("Jump");
+            jump.performed += OnJump;
+            var dash = playerInput.actions.FindAction("Dash");
+            dash.performed += OnDash;
+            var fire = playerInput.actions.FindAction("Fire");
+            fire.performed += OnFire;
         }
 
         #region Input System Message
-        protected void OnMove(InputValue value)
+        protected void OnMove(CallbackContext callback)
         {
-            inputAxi = value.Get<Vector2>();
+            inputAxi = callback.ReadValue<Vector2>();
             if (inputAxi.magnitude > 0)
             {
                 State_Change(EPlayerState.Walk);
@@ -36,14 +57,14 @@ namespace TinyGame
             }
         }
 
-        protected void OnLook(InputValue value)
+        protected void OnLook(CallbackContext callback)
         {
-            mouseDelta = value.Get<Vector2>();
+            mouseDelta = callback.ReadValue<Vector2>();
         }
 
-        protected void OnRun(InputValue value)
+        protected void OnRun(CallbackContext value)
         {
-            runValue = value.Get<float>();
+            runValue = value.ReadValue<float>();
             if (IsRunning())
             {
                 State_Change(EPlayerState.Running);
@@ -54,7 +75,7 @@ namespace TinyGame
             }
         }
 
-        protected void OnJump(InputValue value)
+        protected void OnJump(CallbackContext value)
         {
             if (CanJump())
             {
@@ -66,14 +87,14 @@ namespace TinyGame
                 Input_UnHang();
             }
         }
-        protected void OnDash(InputValue value)
+        protected void OnDash(CallbackContext value)
         {
-            //TODO:ÏÈ½ûµô³å´Ì
+            //TODO:å…ˆç¦æŽ‰å†²åˆº
             if (true)
                 return;
             Input_Dash();
         }
-        protected void OnFire(InputValue value)
+        protected void OnFire(CallbackContext value)
         {
             Input_Attack();
         }
@@ -90,7 +111,7 @@ namespace TinyGame
                 return;
             }
 
-            //¼ÆËãcameraSpotµÄÐý×ª
+            //è®¡ç®—cameraSpotçš„æ—‹è½¬
             cameraSpot.transform.rotation *= Quaternion.AngleAxis(mouseDelta.x * rotationPower, Vector3.up);
             cameraSpot.transform.rotation *= Quaternion.AngleAxis(-mouseDelta.y * rotationPower, Vector3.right);
 
@@ -99,7 +120,7 @@ namespace TinyGame
 
             var angle = cameraSpot.transform.localEulerAngles.x;
 
-            //ÏÞÖÆÑö/¸©½Ç
+            //é™åˆ¶ä»°/ä¿¯è§’
             if (angle > 180 && angle < 340)
             {
                 angles.x = 340;
@@ -110,9 +131,9 @@ namespace TinyGame
             }
             cameraSpot.transform.localEulerAngles = angles;
 
-            //ÒòÎªcameraSpot¸útransfromµÄParent¹ØÏµ£¬½«cameraSpotµÄyÖáÐý×ªÓ¦ÓÃµ½transfrom
+            //å› ä¸ºcameraSpotè·Ÿtransfromçš„Parentå…³ç³»ï¼Œå°†cameraSpotçš„yè½´æ—‹è½¬åº”ç”¨åˆ°transfrom
             transform.rotation = Quaternion.Euler(0, cameraSpot.transform.rotation.eulerAngles.y, 0);
-            //cameraSpotÖ»ÐèÒª¹Ø×¢xÖáÐý×ª
+            //cameraSpotåªéœ€è¦å…³æ³¨xè½´æ—‹è½¬
             cameraSpot.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
 
         }
