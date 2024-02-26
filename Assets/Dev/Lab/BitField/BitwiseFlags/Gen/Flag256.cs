@@ -13,18 +13,6 @@ public struct Flag256
 			Value6 = 0,
 			Value7 = 0,
 		};
-
-	public static Flag256 Empty2 =>
-		new(){
-			Value0 = 0,
-			Value1 = 0,
-			Value2 = 0,
-			Value3 = 0,
-			Value4 = 0,
-			Value5 = 0,
-			Value6 = 0,
-			Value7 = 0,
-		};
 	
 	public uint Value0;
 	public uint Value1;
@@ -221,21 +209,21 @@ public struct Flag256
 		if (f1.Value7 == f2.Value7) return false;
 		return true;
 	}
-	
-	public static implicit operator bool(Flag256 f)
-	{
-		if (f.Value0 > 0) return true;
-		if (f.Value0 > 0) return true;
-		if (f.Value0 > 0) return true;
-		if (f.Value0 > 0) return true;
-		if (f.Value0 > 0) return true;
-		if (f.Value0 > 0) return true;
-		if (f.Value0 > 0) return true;
-		if (f.Value0 > 0) return true;
-		return false;
-	}
-	
-	public override string ToString()
+
+    public static implicit operator bool(Flag256 f)
+    {
+        if (f.Value0 > 0) return true;
+        if (f.Value1 > 0) return true;
+        if (f.Value2 > 0) return true;
+        if (f.Value3 > 0) return true;
+        if (f.Value4 > 0) return true;
+        if (f.Value5 > 0) return true;
+        if (f.Value6 > 0) return true;
+        if (f.Value7 > 0) return true;
+        return false;
+    }
+
+    public override string ToString()
 	{
 		var sb = new StringBuilder();
 		sb.AppendLine($"[ToString] {nameof(Flag256)}");
