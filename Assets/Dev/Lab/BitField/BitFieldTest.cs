@@ -28,8 +28,8 @@ public class BitFieldTest : MonoBehaviour
         // Test_FlagCombinStruct();
         // Test_OverlapsFlagGroup();
         // Test_OverlapsFlagGroupNative();
-         Test_OverlapsFlagGroupStruc();
-        Test_Allocal();
+        // Test_OverlapsFlagGroupStruc();
+        // Test_Allocal();
     }
 
     void Test_Allocal()
