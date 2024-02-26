@@ -83,6 +83,7 @@ namespace TinyGame
         protected override void Awake()
         {
             base.Awake();
+            Awake_Input();
             Awake_State();
         }
 

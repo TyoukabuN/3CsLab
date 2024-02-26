@@ -23,27 +23,29 @@ namespace TinyGame
         private PlayerInput playerInput;
         protected void Awake_Input()
         {
-            playerInput.GetComponent<PlayerInput>();
+            playerInput = GetComponent<PlayerInput>();
             playerInput.SwitchCurrentActionMap("Player");
             if (playerInput.actions == null)
             {
                 return;
             }
-            var move = playerInput.actions.FindAction("Move");
-            move.performed += OnMove;
-            var look = playerInput.actions.FindAction("Look");
-            look.performed += OnLook;
-            var run = playerInput.actions.FindAction("Run");
-            look.performed += OnRun;
-            var jump = playerInput.actions.FindAction("Jump");
-            jump.performed += OnJump;
-            var dash = playerInput.actions.FindAction("Dash");
-            dash.performed += OnDash;
-            var fire = playerInput.actions.FindAction("Fire");
-            fire.performed += OnFire;
+  
+            RegisterPlayerInputCallback("Move"  ,OnMove ,OnMove);
+            RegisterPlayerInputCallback("Look"  ,OnLook ,OnLook);
+            RegisterPlayerInputCallback("Run"   ,OnRun  ,OnRun);
+            RegisterPlayerInputCallback("Jump"  ,OnJump ,null);
+            RegisterPlayerInputCallback("Dash"  ,OnDash , null);
+            RegisterPlayerInputCallback("Fire"  ,OnFire , null);
         }
 
         #region Input System Message
+
+        protected void RegisterPlayerInputCallback(string actionNameOrId, Action<CallbackContext> performed, Action<CallbackContext> canceled)
+        {
+            var action = playerInput.actions.FindAction(actionNameOrId);
+            if(performed != null) action.performed += performed;
+            if (canceled != null) action.canceled += canceled;
+        }
         protected void OnMove(CallbackContext callback)
         {
             inputAxi = callback.ReadValue<Vector2>();
