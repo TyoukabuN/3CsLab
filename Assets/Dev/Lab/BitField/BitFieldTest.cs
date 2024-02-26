@@ -19,14 +19,39 @@ public class BitFieldTest : MonoBehaviour
     public MotionTag motionTag = new MotionTag();
     public MotionTag motionTag2 = new MotionTag();
 
+    public bool testAlloca_1 = true;
+    public int testAllocaCount = 100000;
     void Update()
     {
         // Test_FlagCombin();
         // Test_FlagCombinNative();
         // Test_FlagCombinStruct();
-        Test_OverlapsFlagGroup();
-        Test_OverlapsFlagGroupNative();
-        Test_OverlapsFlagGroupStruc();
+        // Test_OverlapsFlagGroup();
+        // Test_OverlapsFlagGroupNative();
+         Test_OverlapsFlagGroupStruc();
+        Test_Allocal();
+    }
+
+    void Test_Allocal()
+    {
+        Profiler.BeginSample("Test_Allocal");
+        if (testAlloca_1)
+        {
+            var flag = Flag256.Empty;
+            for (int i = 0; i < testAllocaCount; i++)
+            {
+                flag |= Flag256.Empty;
+            }
+        }
+        else
+        {
+            var flag = Flag256.Empty2;
+            for (int i = 0; i < testAllocaCount; i++)
+            {
+                flag |= Flag256.Empty2;
+            }
+        }
+        Profiler.EndSample();
     }
 
     void Test_FlagCombin()
@@ -956,6 +981,31 @@ public class BitFieldTestEditor : Editor
                 Debug.Log(flagCombin1.Overlaps(flagCombin2));
                 Debug.Log(flagCombin1.Overlaps(flagCombin3));
             }
+
+
+            if (GUILayout.Button("Test3"))
+            {
+                var flag1 = new Flag128();
+                flag1 |= Flag128.Flag(1);
+                flag1 |= Flag128.Flag(33);
+                flag1 |= Flag128.Flag(46);
+
+                Debug.Log(flag1.ToString());
+
+                flag1 &= ~Flag128.Flag(46);
+                Debug.Log(flag1.ToString());
+
+                var flag2 = new Flag128();
+                flag2 |= Flag128.Flag(1);
+                flag2 |= Flag128.Flag(33);
+                flag2 |= Flag128.Flag(46);
+
+                Debug.Log(flag2.ToString());
+
+                flag2 ^= Flag128.Flag(46);
+                Debug.Log(flag2.ToString());
+            }
+
 
             if (GUILayout.Button("Test_flagCombin"))
             {

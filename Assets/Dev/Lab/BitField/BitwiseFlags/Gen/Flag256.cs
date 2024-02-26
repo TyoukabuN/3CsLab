@@ -2,7 +2,19 @@ using System;
 using System.Text;
 public struct Flag256
 {
-	public static Flag256 Empty =>
+	public static readonly Flag256 Empty =
+		new(){
+			Value0 = 0,
+			Value1 = 0,
+			Value2 = 0,
+			Value3 = 0,
+			Value4 = 0,
+			Value5 = 0,
+			Value6 = 0,
+			Value7 = 0,
+		};
+
+	public static Flag256 Empty2 =>
 		new(){
 			Value0 = 0,
 			Value1 = 0,
