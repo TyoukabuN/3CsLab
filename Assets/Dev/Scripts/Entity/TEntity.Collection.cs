@@ -17,6 +17,9 @@ namespace TinyGame
         public Action<Collider> onTriggerEnter;
         public Action<Collider> onTriggerExit;
 
+        //
+        public virtual bool Grounded { get; }
+
         protected virtual void Init_Collection()
         {
             boxCollider = GetComponent<BoxCollider>();
