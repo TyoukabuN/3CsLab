@@ -1,126 +1,94 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using static Animancer.Validate;
 
 [Serializable]
-public abstract partial class FlagBase<FlagType> where FlagType : struct
+public abstract class FlagBase<FlagType> where FlagType : IBitwiseFlag<FlagType>,new()
 {
-    public abstract FlagType Flag { get; protected set; }
-}
+    public abstract FlagType Flag { get; set; }
 
-[Serializable]
-public class MotionFlag : FlagBase<Flag256>
-{
-    private static Dictionary<string, Flag256> _actionEnum2Flag;
-    private static Dictionary<int, Flag256> _flagBitIndex2Flag;
-    private static int _bitCount = -1;
-    
-    private const int TotalBitCount = 256;
-    private const int BITUnit = 32;
+    protected FlagType flag = new FlagType();
 
-    private int _bitIndex = -1;
-    
-    /// <summary>
-    /// 对应系列Flag配置的id，配置可能存在于asset中
-    /// </summary>
-    public int FlagId = -1;
-
-    private string _key = String.Empty;
-    private string Key
-    {
-        get
-        {
-            if (string.IsNullOrEmpty(_key))
-                _key = $"{this.GetType().Name}_{FlagId}";
-            return _key;
-        }
+    private FlagType GetEmpty()
+    { 
+        return flag.GetEmpty();
     }
-
-    private bool _hadInitializeFlag = false;
-    protected Flag256 flag;
-
-    public override Flag256 Flag
+    public abstract FlagType StringToFlag(string key);
+    public abstract FlagType StringToFlag(params string[] keys);
+    public virtual FlagType StringToFlag(List<string> keys)
     {
-        get
-        {
-            if (!_hadInitializeFlag)
-            {
-                _hadInitializeFlag = true;
-
-                if (FlagId >= 0)
-                    flag = RequireFlag(Key, out _bitIndex);
-                else
-                    flag = Flag256.Empty;
-            }
-
-            return flag;
-        }
-        protected set
-        {
-            //有配置的不修改
-            if (FlagId >= 0)
-                return;
-            _hadInitializeFlag = true;
-            flag = value;
-        }
-    }
-
-    public static Flag256 RequireFlag(string key)
-    {
-        return RequireFlag(key, out var targetBitIndex);
-    }
-    /// <summary>
-    /// 申请分配好唯一bit位置的flag
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="targetBitIndex"></param>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public static Flag256 RequireFlag(string key,out int targetBitIndex)
-    {
-        var flag = Flag256.Empty;
-        targetBitIndex = _bitCount + 1;
-        if (targetBitIndex > TotalBitCount)
-        {
-            Debug.LogError($"_bitCount > totalBitCount({TotalBitCount}) ");
-            targetBitIndex = -1;
-            return flag;
-        }
-
-        _actionEnum2Flag ??= new Dictionary<string, Flag256>(256);
-        
-        if (!_actionEnum2Flag.TryGetValue(key, out flag))
-        {
-            _actionEnum2Flag[key] = GetFlagByBitIndex(targetBitIndex);
-            _bitCount++;
-        }
-        return flag;
-    }
-
-    /// <summary>
-    /// 返回对应bit位置为1的flag
-    /// </summary>
-    /// <param name="flagBitIndex"></param>
-    /// <returns></returns>
-    public static Flag256 GetFlagByBitIndex(int flagBitIndex)
-    {
-        _flagBitIndex2Flag ??= new Dictionary<int, Flag256>(256);
-       
-        if (_flagBitIndex2Flag.TryGetValue(flagBitIndex,out Flag256 res))
-            return res;
-
-        int pos = flagBitIndex / BITUnit;
-        var temp = Flag256.Empty;
-        if (pos == 0) temp.Value0 = (uint)(1 << flagBitIndex);
-        if (pos == 1) temp.Value1 = (uint)(1 << flagBitIndex);
-        if (pos == 2) temp.Value2 = (uint)(1 << flagBitIndex);
-        if (pos == 3) temp.Value3 = (uint)(1 << flagBitIndex);
-        if (pos == 4) temp.Value4 = (uint)(1 << flagBitIndex);
-        if (pos == 5) temp.Value5 = (uint)(1 << flagBitIndex);
-        if (pos == 6) temp.Value6 = (uint)(1 << flagBitIndex);
-        if (pos == 7) temp.Value7 = (uint)(1 << flagBitIndex);
-        _flagBitIndex2Flag[flagBitIndex] = temp; 
+        var temp = GetEmpty();
+        for (int i = 0; i < keys.Count; i++)
+            temp.FlagOr(StringToFlag(keys[i]));
         return temp;
     }
+    public void Set(string flagStr)
+    {
+        flag = GetEmpty();
+        flag.FlagOr(StringToFlag(flagStr));
+#if  FLAG_DEBUG
+        this.flagStr = ToString();
+#endif
+    }
+    public void Set(List<string> flags)
+    {
+        flag = GetEmpty();
+        for (int i = 0; i < flags.Count; i++)
+        {
+            flag.FlagOr(StringToFlag(flags[i]));
+        }
+#if  FLAG_DEBUG
+        flagStr = ToString();
+#endif
+    }
+    public void Set(string[] flags)
+    {
+        flag = GetEmpty();
+        for (int i = 0; i < flags.Length; i++)
+        {
+            flag.FlagOr(StringToFlag(flags[i]));
+        }
+#if  FLAG_DEBUG
+        flagStr = ToString();
+#endif
+    }
+}
 
+public interface IBitwiseFlag<FlagType>
+{
+    public FlagType GetEmpty();
+    public bool HasAny(FlagType f);
+    public bool HasAll(FlagType f);
+    bool HasFlag(int pos, uint value);
+    public uint GetFlag(int pos);
+    public void SetFlag(int pos, uint value);
+    public void FlagOr(int pos, uint value);
+    public void FlagAnd(int pos, uint value);
+    public void FlagComplement(int pos);
+    public void FlagOrExclusive(int pos, uint value);
+
+    public FlagType FlagOr(FlagType f2);
+    public FlagType FlagOrExclusive(FlagType f2);
+    public FlagType FlagAnd(FlagType f2);
+    public FlagType FlagComplement(FlagType f1);
+    public bool Equals(FlagType f2);
+}
+
+
+
+//<FlagType> where FlagType : struct
+public static class BitwiseFlag
+{
+    public class BitwiseFlagInstance<T> where T:IBitwiseFlag<T>
+    {
+        public Dictionary<string, T> ActionEnum2Flag => _actionEnum2Flag;
+        private Dictionary<string, T> _actionEnum2Flag;
+        private Dictionary<int, T> _flagBitIndex2Flag;
+    }
+
+    public static BitwiseFlagInstance<T> GetFlag<T>() where T : IBitwiseFlag<T>
+    { 
+        return new BitwiseFlagInstance<T>();
+    }
 }

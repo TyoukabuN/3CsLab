@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 public abstract class IFlag<FlagType> where FlagType : struct
 {

@@ -234,7 +234,7 @@ public class FlagGenerator : EditorWindow
 
             AppendLine("using System;");
             AppendLine("using System.Text;");
-            AppendLine($"public struct {h.className}");
+            AppendLine($"public struct {h.className} : IBitwiseFlag<{h.className}>");
             AppendLine("{");
             using (Tab())
             {
@@ -285,7 +285,7 @@ public class FlagGenerator : EditorWindow
 
     private void Append_Empty()
     {
-        AppendLine($"public static {h.className} Empty =>");
+        AppendLine($"public static readonly {h.className} Empty =");
         using (Tab())
         {
             AppendLine("new(){");
@@ -304,6 +304,13 @@ public class FlagGenerator : EditorWindow
     {
         ForeachFlag(i => AppendLine($"public uint Value{i};"));
         AppendLine();
+
+        AppendLine($"public {h.className} GetEmpty()");
+        using (Tab(true, true))
+        {
+            AppendLine($"return Empty;");
+        }
+        AppendLine();
     }
 
     private void Append_Functions()
@@ -320,48 +327,84 @@ public class FlagGenerator : EditorWindow
             AppendLine($"return (this & f) == f;");
         }
 
-        AppendLine($"private bool HasFlag(int pos, uint value)");
+        AppendLine($"public bool HasFlag(int pos, uint value)");
         using (Tab(true, true))
         {
             ForeachFlag(i => AppendLine($"if (pos == {i}) return (Value{i} & value) != 0;"));
             AppendLine($"return false;");
         }
 
-        AppendLine($"private uint GetFlag(int pos)");
+        AppendLine($"public uint GetFlag(int pos)");
         using (Tab(true, true))
         {
             ForeachFlag(i => AppendLine($"if (pos == {i}) return Value{i};"));
             AppendLine($"return 0;");
         }
 
-        AppendLine($"private void SetFlag(int pos, uint value)");
+        AppendLine($"public void SetFlag(int pos, uint value)");
         using (Tab(true, true))
         {
             ForeachFlag(i => AppendLine($"if (pos == {i}) Value{i} = value;"));
         }
 
-        AppendLine($"private void FlagOr(int pos, uint value)");
+        AppendLine($"public void FlagOr(int pos, uint value)");
         using (Tab(true, true))
         {
             ForeachFlag(i => AppendLine($"if (pos == {i}) Value{i} |= value;"));
         }
 
-        AppendLine($"private void FlagAnd(int pos, uint value)");
+        AppendLine($"public void FlagAnd(int pos, uint value)");
         using (Tab(true, true))
         {
             ForeachFlag(i => AppendLine($"if (pos == {i}) Value{i} &= value;"));
         }
 
-        AppendLine($"private void FlagComplement(int pos)");
+        AppendLine($"public void FlagComplement(int pos)");
         using (Tab(true, true))
         {
             ForeachFlag(i => AppendLine($"if (pos == {i}) Value{i} = ~Value{i};"));
         }
 
-        AppendLine($"private void FlagOrExclusive(int pos, uint value)");
+        AppendLine($"public void FlagOrExclusive(int pos, uint value)");
         using (Tab(true, true))
         {
             ForeachFlag(i => AppendLine($"if (pos == {i}) Value{i} = Value{i} ^ value;"));
+        }
+
+        ///////-----for interface
+        AppendLine($"public {h.className} FlagOr({h.className} f2)");
+        using (Tab(true, true))
+        {
+            ForeachFlag(i => AppendLine($"FlagOr({i}, f2.Value{i});"));
+            AppendLine("return this;");
+        }
+
+        AppendLine($"public {h.className} FlagOrExclusive({h.className} f2)");
+        using (Tab(true, true))
+        {
+            ForeachFlag(i => AppendLine($"FlagOrExclusive({i}, f2.Value{i});"));
+            AppendLine("return this;");
+        }
+
+        AppendLine($"public {h.className} FlagAnd({h.className} f2)");
+        using (Tab(true, true))
+        {
+            ForeachFlag(i => AppendLine($"FlagAnd({i}, f2.Value{i});"));
+            AppendLine("return this;");
+        }
+
+        AppendLine($"public {h.className} FlagComplement({h.className} f1)");
+        using (Tab(true, true))
+        {
+            ForeachFlag(i => AppendLine($"FlagComplement({i});"));
+            AppendLine("return this;");
+        }
+
+        AppendLine($"public bool Equals({h.className} f2)");
+        using (Tab(true, true))
+        {
+            ForeachFlag(i => AppendLine($"if (Value{i} != f2.Value{i}) return false;"));
+            AppendLine("return true;");
         }
 
         ///////-----operator rewrite
@@ -411,10 +454,11 @@ public class FlagGenerator : EditorWindow
         AppendLine($"public static implicit operator bool({h.className} f)");
         using (Tab(true, true))
         {
-            ForeachFlag(i => AppendLine($"if (f.Value{0} > 0) return true;"));
+            ForeachFlag(i => AppendLine($"if (f.Value{i} > 0) return true;"));
             AppendLine("return false;");
         }
 
+        ///////-----other function 
         AppendLine($"public override string ToString()");
         using (Tab(true, true))
         {
@@ -422,6 +466,12 @@ public class FlagGenerator : EditorWindow
             AppendLine($"sb.AppendLine($\"[ToString] {{nameof({h.className})}}\");");
             ForeachFlag(i => AppendLine($"sb.AppendLine(Convert.ToString(Value{i}, 2));"));
             AppendLine("return sb.ToString();");
+        }
+
+        AppendLine($"public bool IsEmpty()");
+        using (Tab(true, true))
+        {
+            AppendLine("return this == Empty;");
         }
     }
 
