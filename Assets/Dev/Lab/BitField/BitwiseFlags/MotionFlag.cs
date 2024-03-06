@@ -4,7 +4,7 @@ using System;
 using Sirenix.OdinInspector;
 
 [Serializable]
-public class MotionFlag// : FlagBase<Flag256>
+public class MotionFlag : FlagBase<Flag256>
 {
     public static Dictionary<string, Flag256> ActionEnum2Flag => _actionEnum2Flag;
     
@@ -22,9 +22,7 @@ public class MotionFlag// : FlagBase<Flag256>
     public string flagStr = String.Empty;
 #endif
 
-    protected Flag256 flag;
-
-    public Flag256 Flag
+    public override Flag256 Flag
     {
         get
         {
@@ -62,53 +60,11 @@ public class MotionFlag// : FlagBase<Flag256>
     {
         Set(flags);
     }
-    public void Set(string flagStr)
-    {
-        flag = Flag256.Empty;
-        flag |= StringToFlag(flagStr);
-#if  FLAG_DEBUG
-        this.flagStr = ToString();
-#endif
-    }
-    public void Set(List<string> flags)
-    {
-        flag = Flag256.Empty;
-        for (int i = 0; i < flags.Count; i++)
-        { 
-            flag |= StringToFlag(flags[i]);
-        }
-#if  FLAG_DEBUG
-        flagStr = ToString();
-#endif
-    }
-    public void Set(string[] flags)
-    {
-        flag = Flag256.Empty;
-        for (int i = 0; i < flags.Length; i++)
-        { 
-            flag |= StringToFlag(flags[i]);
-        }
-#if  FLAG_DEBUG
-        flagStr = ToString();
-#endif
-    }
     protected virtual void OnFindNotConfig()
     {
         //flag = Flag256.Empty;
     }
-    //public bool InitByFlagConfig(int FlagId)
-    //{
-    //    if (FlagId < 0)
-    //        return false;
-    //    var config = MotionFlagConfig.GetConfig(FlagId);
-    //    if (config.IsEmpty())
-    //        return false;
-    //    string key = config.strValue;
-    //    if (string.IsNullOrEmpty(config.strValue))
-    //        key = $"FIND_NOT_MOTION_FLAG_CONFIG_[id: {FlagId}]";
-    //    flag = StringToFlag(key);
-    //    return true;
-    //}
+
     protected virtual bool InitByCustomConfig()
     {
         return false;
@@ -127,11 +83,7 @@ public class MotionFlag// : FlagBase<Flag256>
             return false;
         return motionFlag.Flag.HasAny(Flag);
     } 
-    /// <summary>
-    /// this.Flag是否包含传入的flag的所有位点 
-    /// </summary>
-    /// <param name="motionFlag"></param>
-    /// <returns></returns>
+
     public bool ContainsAll(MotionFlag motionFlag)
     { 
         if (Flag.IsEmpty()) 
@@ -140,56 +92,12 @@ public class MotionFlag// : FlagBase<Flag256>
             Debug.LogError("motionFlag.Flag.IsEmpty"); 
         return Flag.HasAll(motionFlag.Flag);
     }
-    /// <summary>
-    /// 包含传入的flag的所有位点
-    /// </summary>
-    /// <param name="flag256"></param>
-    /// <returns></returns>
-    public bool Contains(Flag256 flag256) {  return Flag.HasAll(flag256); }
     public bool Contains(MotionFlag motionFlag) { return Contains(motionFlag.Flag); }
-    public bool Contains(string flagStr) { return Contains(StringToFlag(flagStr)); }
-    /// <summary>
-    /// 包含传入的flag的某些位点
-    /// </summary>
-    /// <param name="flag256"></param>
-    /// <returns></returns>
-    public bool Overlaps(Flag256 flag256) {return Flag.HasAny(flag256); }
     public bool Overlaps(MotionFlag motionFlag) {return Overlaps(motionFlag.Flag);  }
-    public bool Overlaps(string flagStr) { return Overlaps(StringToFlag(flagStr)); }
-
-#region edit
-
-    /// <summary>
-    /// Or传入flag
-    /// </summary>
-    /// <param name="flag256"></param>
-    public void AddFlag(Flag256 flag256) { Flag |= flag256; }
     public void AddFlag(MotionFlag motionFlag) { AddFlag(motionFlag.Flag); }
-    public void AddFlag(string key) { AddFlag(StringToFlag(key)); }
-    public void AddFlags(List<string> keys)
-    {
-        for (int i = 0; i < keys.Count; i++)
-        {
-            flag |= StringToFlag(keys[i]);
-        }
-
-    }
-    /// <summary>
-    /// Exclusive传入flag
-    /// </summary>
-    /// <param name="flag256"></param>
-    public void RemoveFlag(Flag256 flag256) { Flag ^= flag256; }
     public void RemoveFlag(MotionFlag motionFlag) { RemoveFlag(motionFlag.Flag); }
-    public void RemoveFlag(string key) { RemoveFlag(StringToFlag(key)); }
-    public void RemoveFlags(List<string> keys)
-    {
-        for (int i = 0; i < keys.Count; i++)
-            flag ^= StringToFlag(keys[i]);
-    }
 
-#endregion
-
-    public string ToString()
+    public new string ToString()
     {
         if (_actionEnum2Flag == null)
             return Flag.ToString();
@@ -210,23 +118,9 @@ public class MotionFlag// : FlagBase<Flag256>
         return motionFlag.Flag;
     }
 
-    public static Flag256 StringToFlag(string key)
+    public override Flag256 StringToFlag(string key)
     {
         return StringToFlag(key, out var targetBitIndex);
-    }
-    public static Flag256 StringToFlag(params string[] keys)
-    {
-        var temp = Flag256.Empty;
-        for (int i = 0; i < keys.Length; i++)
-            temp |= StringToFlag(keys[i]);
-        return temp;
-    }
-    public static Flag256 StringToFlag(List<string> keys)
-    {
-        var temp = Flag256.Empty;
-        for (int i = 0; i < keys.Count; i++)
-            temp |= StringToFlag(keys[i]);
-        return temp;
     }
     /// <summary>
     /// 申请分配好唯一bit位置的flag
@@ -289,40 +183,5 @@ public class MotionFlag// : FlagBase<Flag256>
         return temp;
     }
 
-    public class ProfileScope : System.IDisposable
-    {
-        public string name = String.Empty;
-        private DateTime beginStamp;
-
-        private ProfileScope()
-        {
-            beginStamp = System.DateTime.Now;
-        }
-        public ProfileScope(string name) : this()
-        {
-            this.name = name;
-            UnityEngine.Profiling.Profiler.BeginSample(name);
-        }
-
-        public void Dispose()
-        {
-            UnityEngine.Profiling.Profiler.EndSample();
-        }
-    }
-
-    public class MemoryCostScope : IDisposable
-    { 
-        public string name = String.Empty;
-        public long beginStamp; 
-        public MemoryCostScope(string name) {
-            this.name = name;
-            beginStamp = GC.GetTotalMemory(true);
-        }
-        public void Dispose()
-        {
-            long res = (GC.GetTotalMemory(false) - beginStamp) / 1000;
-            Debug.Log($"[Cost][{name}] : [{res}] kb");
-        }
-    }
     #endregion
 }

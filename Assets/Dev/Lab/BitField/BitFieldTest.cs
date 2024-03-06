@@ -35,6 +35,39 @@ public class BitFieldTestEditor : Editor
         var inst = target as BitFieldTest;
         if (inst != null)
         {
+            if (GUILayout.Button("Test"))
+            {
+                var flag1 = new MotionFlag("A");
+                var flag2 = new MotionFlag("B");
+                Debug.Log(flag1.ToString());
+                Debug.Log(flag1.Flag.ToString());
+                Debug.Log(flag2.ToString());
+                Debug.Log(flag2.Flag.ToString());
+                //
+                flag1.AddFlag("B");
+                Debug.Log(flag1.ToString());
+                Debug.Log(flag1.Flag.ToString());
+            }
+            if (GUILayout.Button("Test2"))
+            {
+                var flag1 = new MotionFlag();
+
+                flag1.Set(new string[] { "C", "D" });
+                Debug.Log(flag1.ToString());
+                Debug.Log(flag1.Flag.ToString());
+            }
+            if (GUILayout.Button("Test3"))
+            {
+                var flag1 = new MotionFlag();
+
+                flag1.Set(new string[] { "A" ,"B","C", "D" });
+                Debug.Log(flag1.ToString());
+                Debug.Log(flag1.Flag.ToString());
+
+                flag1.RemoveFlag("B");
+                Debug.Log(flag1.ToString());
+                Debug.Log(flag1.Flag.ToString());
+            }
 
         }
 
