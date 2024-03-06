@@ -1,118 +1,124 @@
 
+using Sirenix.OdinInspector;
 using UnityEngine;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+
+
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
-using System.IO;
 #endif
 
 public class TestJW : MonoBehaviour
 {
+    [InlineButton("SelectAnimatioinFlagConfigId","Select")]
+    public int configId = 1;
+
+    private void SelectAnimatioinFlagConfigId()
+    {
+        Debug.Log("123");
+    }
+
+    [OnStateUpdate("@#(#Tabs).State.Set<int>(\"CurrentTabIndex\", $value - 1)")]
+    [PropertyRange(1, "@#(#Tabs).State.Get<int>(\"TabCount\")")]
+    public int selectTab = 1;
+
+    [TabGroup("Tabs", "Tab 1")]
+    public string str1;
+    [TabGroup("Tabs", "Tab 2")]
+    public string str2;
+    [TabGroup("Tabs", "Tab 3")]
+    public string str3;
+
+    [BoxGroup("Tabs/Tab 1/ExTab 1")]
+    public string str1_1;
+    [BoxGroup("Tabs/Tab 1/ExTab 1")]
+    public string str1_2;
+
+    [HorizontalGroup("Property",LabelWidth = 80)]
+    [BoxGroup("Property/Health")]
+    public string hitPoint;
+    [BoxGroup("Property/Health")]
+    public string shield;
+    [BoxGroup("Property/Energy")]
+    public string mana;
+    [BoxGroup("Property/Energy")]
+    public string aura;
+
+
+
+    [Button("ConfigReadingTest")]
+    public void ConfigReadingTest()
+    {
+         var config = AnimationFlagConfig.GetConfig(configId);
+         Debug.Log(config.ToString());
+    }
+
+    private Coroutine coroutine = null;
+    [Button("CoroutineTest")]
+    public void CoroutineTest()
+    {
+        coroutine = StartCoroutine("_CoroutineTest");
+    }
+    public IEnumerator _CoroutineTest()
+    {
+        yield return new LoadHandler();
+
+        Debug.Log("[Done]");
+
+        yield return 0;
+    }
+    public class LoadHandler : IEnumerator
+    {
+        public List<float> seclist = new List<float>() {1f,2f,3f };
+        public object Current => null;
+
+        public float counter = 0;
+        public int index = 0;
+        public bool MoveNext()
+        {
+            Debug.Log($"[MoveNext]{counter}");
+
+            counter += Time.deltaTime;
+            if (counter > seclist[index])
+            {
+                index++;
+                counter = 0;
+            }
+
+            return index < seclist.Count;
+        }
+
+        public void Reset()
+        {
+            Debug.Log("[Reset]");
+        }
+    }
+
 
 }
 
-#if UNITY_EDITOR
-[CustomEditor(typeof(TestJW))]
-public class TestJWEditor:Editor
-{
-    // public override void OnInspectorGUI()
-    // {
-    //     base.OnInspectorGUI();
-    //     if (GUILayout.Button("Test"))
-    //     {
-    //         int categoryCount = 0;
-    //         var categoryTypes = new List<string>();
-    //         var list = new List<MotionFlagConfigItem>();
-    //         var pairlist = new List<IdConfigPair<int, MotionFlagConfigItem>>();
-    //         var categorys = new Dictionary<int, List<MotionFlagConfigItem>>();
-    //         int id = 0;
-    //         
-    //         var allTypes = TypeCache.GetTypesWithAttribute<MotionTagPresetAttribute>().ToList();
-    //         foreach (var t in allTypes)
-    //         {
-    //             if(!t.IsStatic()) Debug.LogError($"MotionTag类型需要为静态类： {t.FullName}");
-    //         }
-    //
-    //         allTypes.RemoveAll(t => !t.IsStatic());
-    //
-    //         foreach (var t in allTypes)
-    //         {
-    //             
-    //             var attr = t.GetAttribute<MotionTagPresetAttribute>();
-    //             var cate = attr.Category;
-    //             
-    //             //
-    //             int category = categoryTypes.IndexOf(cate);
-    //             if (category < 0)
-    //             {
-    //                 categoryTypes.Add(cate);
-    //                 category = categoryTypes.Count - 1;
-    //             }
-    //             string categortStr = attr.Category;
-    //             if (string.IsNullOrEmpty(categortStr))
-    //                 categortStr = t.FullName;
-    //             //
-    //             
-    //             if (string.IsNullOrEmpty(cate))
-    //             {
-    //                 cate = t.FullName;
-    //             }
-    //             if (!cate.EndsWith("/"))
-    //             {
-    //                 cate += "/";
-    //             }
-    //
-    //             var fields = t.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).Where(f => f.FieldType == typeof(string));
-    //             foreach (var f in fields)
-    //             {
-    //                 var tag = (string)f.GetValue(null);
-    //                 if(string.IsNullOrEmpty(tag)) continue;
-    //                 tag = tag.Replace(" ", "");
-    //                 var fullPath = cate + tag;
-    //
-    //                 var iconAttr = f.GetAttribute<TagIconAttribute>();
-    //                 var textAttr = f.GetAttribute<LabelTextAttribute>();
-    //
-    //                 var tagHash = Animator.StringToHash(tag);
-    //                 var tagInfo = new MotionTagEditorInfo(tag, tagHash, fullPath, textAttr?.Text, iconAttr?.fileName);
-    //                 
-    //                 
-    //                 var config = new MotionFlagConfigItem();
-    //                 if (!categorys.TryGetValue(config.category, out var configs))
-    //                 {
-    //                     configs = new List<MotionFlagConfigItem>();
-    //                     categorys[config.category] = configs;
-    //                 }
-    //
-    //                 config.id = id++;
-    //                 config.category = category;
-    //                 config.strValue = tag;
-    //                 config.categoryStr = cate;
-    //                 config.desc = textAttr != null ? textAttr.Text : string.Empty;
-    //                 config.icon = iconAttr != null ? iconAttr.fileName : string.Empty;
-    //                 
-    //                 configs.Add(config);
-    //                 list.Add(config);
-    //                 pairlist.Add(new IdConfigPair<int, MotionFlagConfigItem>(config.id,config));
-    //             }
-    //         }
-    //         
-    //         string folder = "Assets/__LS_Test/Test_JW/Scripts/ConfigAssets";
-    //         string assetName = "MotionFlagConfigAsset.asset";
-    //
-    //         string assetPath = Path.Combine(folder, assetName); 
-    //     
-    //         var asset = CreateInstance<MotionFlagConfigAsset>();
-    //         
-    //         asset.configs = list;
-    //         asset.IdMaskedConfigs = pairlist;
-    //         
-    //         AssetDatabase.CreateAsset(asset,AssetDatabase.GenerateUniqueAssetPath(assetPath));
-    //         AssetDatabase.SaveAssets();
-    //         AssetDatabase.Refresh();
-    //         EditorUtility.FocusProjectWindow();
-    //         Selection.activeObject = asset;
-    //     }
-    // }
-}
-#endif
+//#if UNITY_EDITOR
+//[CustomEditor(typeof(TestJW))]
+//public class TestJWEditor : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        base.OnInspectorGUI();
+//        var inst = target as TestJW;
+//        if (inst == null)
+//            return;
+
+//        if (GUILayout.Button("ConfigTest"))
+//        {
+//            var config = AnimationFlagConfig.GetConfig(inst.configId);
+//            Debug.Log(config.ToString());
+//        }
+//    }
+//}
+//#endif

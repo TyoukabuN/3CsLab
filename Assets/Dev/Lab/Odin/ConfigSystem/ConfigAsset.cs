@@ -1,29 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using Sirenix.OdinInspector.Editor;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Text;
 using System;
 using UnityEngine.Serialization;
 
-public abstract class ConfigAsset<IdType,ItemType> : SerializedScriptableObject
+public abstract class ConfigAsset<IdType,ItemType> : ConfigAsset
 {
     public int id;
-    [OdinSerialize]
-    public List<ItemType> configs;
-    [OdinSerialize]
-    public List<IdConfigPair<IdType,ItemType>> IdMaskedConfigs;
 
+    [TableList(AlwaysExpanded = false)]
+    [FormerlySerializedAs("terms")] [FormerlySerializedAs("configs")] [OdinSerialize]
+    public List<ItemType> items;
+    [OdinSerialize]
+    [TableList(AlwaysExpanded = false)]
+    public List<IdConfigPair<IdType,ItemType>> IdMaskedConfigs;
+}
+
+public abstract class ConfigAsset : SerializedScriptableObject
+{
     public virtual bool FromJson(string assetPath)
     {
         return true;
     }
 }
 
-//[OdinSerializeType]
 public class IdConfigPair<TKey, TValue>
 {
     [OdinSerialize] private TKey key;

@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using Sirenix.OdinInspector;
 
 [Serializable]
 public class MotionFlag : FlagBase<Flag256>
@@ -22,11 +21,13 @@ public class MotionFlag : FlagBase<Flag256>
     public string flagStr = String.Empty;
 #endif
 
+    [NonSerialized]
+    private bool _init = false;
     public override Flag256 Flag
     {
         get
         {
-            if (flag.IsEmpty())
+            if (!_init)
             {
                 if (InitByCustomConfig())
                 {
@@ -34,6 +35,7 @@ public class MotionFlag : FlagBase<Flag256>
                 else
                     OnFindNotConfig();
 
+                _init = true;
             }
 
             return flag;
