@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589f47322d5f9104f9e965d08650be01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configId: 10000
+  configId: 30004
   selectTab: 3
   str1: 
   str2: 
@@ -577,6 +577,7 @@ MonoBehaviour:
   shield: 2
   mana: 3
   aura: 21
+  Health: 100
 --- !u!4 &1886259661
 Transform:
   m_ObjectHideFlags: 0

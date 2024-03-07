@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 9
     - Name: 
       Entry: 7
       Data: AnimationFlagConfigItem, Assembly-CSharp
@@ -49,6 +49,18 @@ MonoBehaviour:
     - Name: strValue
       Entry: 1
       Data: Torch
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: AnimationFlagConfigItem, Assembly-CSharp
+    - Name: id
+      Entry: 3
+      Data: 30000
+    - Name: strValue
+      Entry: 1
+      Data: Sword
     - Name: 
       Entry: 8
       Data: 
@@ -85,6 +97,42 @@ MonoBehaviour:
     - Name: strValue
       Entry: 1
       Data: Dash
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: AnimationFlagConfigItem, Assembly-CSharp
+    - Name: id
+      Entry: 3
+      Data: 4
+    - Name: strValue
+      Entry: 1
+      Data: Jump_Before
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: AnimationFlagConfigItem, Assembly-CSharp
+    - Name: id
+      Entry: 3
+      Data: 5
+    - Name: strValue
+      Entry: 1
+      Data: Jump_In
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: AnimationFlagConfigItem, Assembly-CSharp
+    - Name: id
+      Entry: 3
+      Data: 6
+    - Name: strValue
+      Entry: 1
+      Data: Jump_Out
     - Name: 
       Entry: 8
       Data: 

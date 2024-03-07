@@ -1,0 +1,19 @@
+{
+  "name": "com.tyoukabun.editorUtil",
+  "displayName": "TEditorUtil",
+  "version": "1.0.0",
+  "unity": "2018.3",
+  "description": "尝试调用Editor Internal类的 localPackage",
+  "keywords": [
+    "unity"
+  ],
+  "category": "Libraries",
+  "repository": {
+    "url": "https://github.com/Unity-Technologies/Unity.Mathematics.git",
+    "type": "git",
+    "revision": "f110c8c230d253654afed153569030a587cc7557"
+  },
+  "upmCi": {
+    "footprint": "f9e81f42318ed88a56c8bf031a82ee5c30370e88"
+  }
+}

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
-// <copyright file="AssemblyImportSettingsAutomation.cs" company="Sirenix IVS">
-// Copyright (c) Sirenix IVS. All rights reserved.
+// <copyright file="AssemblyImportSettingsAutomation.cs" company="Sirenix ApS">
+// Copyright (c) Sirenix ApS. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
@@ -50,6 +50,9 @@ namespace Sirenix.OdinInspector.Editor
             var aotAssemblies = new List<string>();
             var jitAssemblies = new List<string>();
 
+            #region Modified By Hunter (hunter_hb) -- 2023年10月17日
+            if (aotDir.Exists)
+            #endregion
             foreach (var file in aotDir.GetFiles("*.dll"))
             {
                 string path = file.FullName;
@@ -65,6 +68,9 @@ namespace Sirenix.OdinInspector.Editor
                 aotAssemblies.Add(path);
             }
 
+            #region Modified By Hunter (hunter_hb) -- 2023年10月17日
+            if (jitDir.Exists)
+            #endregion
             foreach (var file in jitDir.GetFiles("*.dll"))
             {
                 string path = file.FullName;

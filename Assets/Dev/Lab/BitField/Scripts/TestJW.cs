@@ -5,9 +5,9 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Sirenix.OdinInspector.Editor;
 
-
-
+using static TestJW;
 
 
 #if UNITY_EDITOR
@@ -17,11 +17,20 @@ using UnityEditor;
 public class TestJW : MonoBehaviour
 {
     [InlineButton("SelectAnimatioinFlagConfigId","Select")]
-    public int configId = 1;
+    public int configId = 0;
 
+    private bool configId_valid()
+    { 
+        return configId > 0;
+    }
     private void SelectAnimatioinFlagConfigId()
     {
-        Debug.Log("123");
+        AnimationFlagConfigSelector.Show(OnConfigIdChange);
+    }
+
+    private void OnConfigIdChange(int weaponId, int stateId)
+    { 
+        configId = weaponId + stateId;
     }
 
     [OnStateUpdate("@#(#Tabs).State.Set<int>(\"CurrentTabIndex\", $value - 1)")]
@@ -50,7 +59,9 @@ public class TestJW : MonoBehaviour
     [BoxGroup("Property/Energy")]
     public string aura;
 
-
+    [HealthBarAttribute(100)]
+    [Range(0,100)]
+    public float Health;
 
     [Button("ConfigReadingTest")]
     public void ConfigReadingTest()
@@ -100,6 +111,37 @@ public class TestJW : MonoBehaviour
         }
     }
 
+    public class ConfigItem
+    {
+        public int id;
+        public string strValue;
+    }
+
+    public class HealthBarAttribute : Attribute
+    { 
+        public float MaxHealth;
+        public HealthBarAttribute(float maxHealth)
+        {
+            MaxHealth = maxHealth;
+        }
+    }
+
+#if UNITY_EDITOR
+    public class MyStructDrawer : OdinValueDrawer<ConfigItem>
+    {
+        protected override void DrawPropertyLayout(GUIContent label)
+        {
+            Rect rect = EditorGUILayout.GetControlRect();
+
+            if (label != null)
+            { 
+                rect = EditorGUI.PrefixLabel(rect, label);
+                ConfigItem item = this.ValueEntry.SmartValue;
+            }    
+        }
+    }
+
+#endif
 
 }
 
