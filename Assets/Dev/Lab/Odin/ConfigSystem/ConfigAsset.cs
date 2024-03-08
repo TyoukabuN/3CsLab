@@ -4,17 +4,18 @@ using Sirenix.Serialization;
 using System.Text;
 using System;
 using UnityEngine.Serialization;
+using System.Security.Policy;
 
 public abstract class ConfigAsset<IdType,ItemType> : ConfigAsset
 {
     public int id;
 
-    [TableList(AlwaysExpanded = false)]
-    [FormerlySerializedAs("terms")] [FormerlySerializedAs("configs")] [OdinSerialize]
+    [TableList]
+    [ListDrawerSettings(CustomAddFunction = "Add", CustomRemoveIndexFunction = "RemoveAt")]
     public List<ItemType> items;
-    [OdinSerialize]
-    [TableList(AlwaysExpanded = false)]
-    public List<IdConfigPair<IdType,ItemType>> IdMaskedConfigs;
+
+    public abstract void Add();
+    public abstract void RemoveAt(int index);
 }
 
 public abstract class ConfigAsset : SerializedScriptableObject

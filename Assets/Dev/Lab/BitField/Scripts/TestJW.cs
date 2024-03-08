@@ -8,29 +8,39 @@ using System;
 using Sirenix.OdinInspector.Editor;
 
 using static TestJW;
+using System.Runtime.CompilerServices;
+using Animancer.Examples.StateMachines;
+using static AnimationFlagConfigSelector;
+
+
+
 
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
+[Serializable]
 public class TestJW : MonoBehaviour
 {
-    [InlineButton("SelectAnimatioinFlagConfigId","Select")]
-    public int configId = 0;
+    [InlineButton(action: "SetAnimationFlagConfigHandle", label: "Set")]
+    public AnimationFlagConfigHandler configHandler;
 
-    private bool configId_valid()
-    { 
-        return configId > 0;
-    }
-    private void SelectAnimatioinFlagConfigId()
+    private void SetAnimationFlagConfigHandle()
     {
-        AnimationFlagConfigSelector.Show(OnConfigIdChange);
+        AnimationFlagConfigSelector.Show(configHandler.WeaponId, configHandler.StateId, OnConfigIdChange);
     }
-
-    private void OnConfigIdChange(int weaponId, int stateId)
-    { 
-        configId = weaponId + stateId;
+    private void OnConfigIdChange(AnimationFlagConfigItem item, bool selected)
+    {
+        if (item == null)
+            return;
+        if (item.id >= 10000)
+            configHandler.weaponConfig = selected ? item : null;
+        else
+            configHandler.stateConfig = selected ? item : null;
+#if UNITY_EDITOR
+        //EditorUtility.SetDirty(this);
+#endif
     }
 
     [OnStateUpdate("@#(#Tabs).State.Set<int>(\"CurrentTabIndex\", $value - 1)")]
@@ -63,10 +73,10 @@ public class TestJW : MonoBehaviour
     [Range(0,100)]
     public float Health;
 
-    [Button("ConfigReadingTest")]
+    [Button("ConfigReadingTest")] 
     public void ConfigReadingTest()
     {
-         var config = AnimationFlagConfig.GetConfig(configId);
+         var config = AnimationFlagConfig.GetConfig(configHandler.ConfigId);
          Debug.Log(config.ToString());
     }
 

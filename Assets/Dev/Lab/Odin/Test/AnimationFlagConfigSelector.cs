@@ -1,38 +1,40 @@
 #if UNITY_EDITOR
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using ParadoxNotion.Design;
-using Sirenix;
-using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
-using Sirenix.Utilities;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Progress;
+using UnityEditor;
 
 public class AnimationFlagConfigSelector : OdinMenuEditorWindow
 {
     public delegate void OnConfigIdChange(int weaponId, int stateId);
+
+    public delegate void OnConfigIdChangeForHandler(AnimationFlagConfigItem item,bool selected);
     public static void Show(OnConfigIdChange onChanged)
     {
         var window = GetWindow<AnimationFlagConfigSelector>();
+        window.ClearCallBacks();
         window.onChanged += onChanged;
-    }
-    public static void Show(Vector2 position)
+    }    
+    public static void Show(int weaponId,int stateId,OnConfigIdChangeForHandler onChanged)
     {
         var window = GetWindow<AnimationFlagConfigSelector>();
+        window.ClearCallBacks();
+        window.onChangedForHandler += onChanged;
+        window.weaponId = weaponId;
+        window.stateId = stateId;
     }
 
     private int weaponId = 0;
     private int stateId = 0;
 
     private OnConfigIdChange onChanged;
+    private OnConfigIdChangeForHandler onChangedForHandler;
 
     protected virtual void ClearCallBacks()
     {
+        weaponId = 0;
+        stateId = 0;
         onChanged = null;
+        onChangedForHandler = null;
     }
     protected override void OnDestroy()
     {
@@ -105,6 +107,7 @@ public class AnimationFlagConfigSelector : OdinMenuEditorWindow
             if (tree.Selection.SelectedValue == null)
                 return;
             AnimationFlagConfigItem item = (AnimationFlagConfigItem)tree.Selection.SelectedValue;
+            bool selected = false;
             if (item == null)
                 return;
             if (item.id >= 10000)
@@ -113,6 +116,7 @@ public class AnimationFlagConfigSelector : OdinMenuEditorWindow
                     weaponId = 0;
                 else
                     weaponId = item.id;
+                selected = weaponId == item.id;
             }
             else if (item.id > 0)
             {
@@ -120,10 +124,11 @@ public class AnimationFlagConfigSelector : OdinMenuEditorWindow
                     stateId = 0;
                 else
                     stateId = item.id;
+                selected = stateId == item.id;
             }
 
             onChanged?.Invoke(weaponId, stateId);
-
+            onChangedForHandler?.Invoke(item, selected);
         }
         //Debug.Log(selectionChangedType.ToString());
     }

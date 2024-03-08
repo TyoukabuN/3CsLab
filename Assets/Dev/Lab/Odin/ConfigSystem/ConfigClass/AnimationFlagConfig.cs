@@ -10,7 +10,13 @@ public static class AnimationFlagConfig
     private static string configAssetName = "AnimationFlagConfigAsset";
     private static AnimationFlagConfigAsset asset = null;
 
-    public static void OnInit()
+    public static void OnAssetDirty()
+    { 
+        allWeapons = null;
+        id2strValue = null;
+    }
+
+public static void OnInit()
     {
         Debug.Log($"[Config][Init] {typeof(AnimationFlagConfig)}");
 #if UNITY_EDITOR

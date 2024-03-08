@@ -26,16 +26,4 @@ public static class MotionFlagConfig
             return false;
         return true;
     }
-
-    public static MotionFlagConfigItem GetConfig(int flagId)
-    {
-        if(!IsValid())
-            return MotionFlagConfigItem.Empty;
-        foreach (var pair in asset.IdMaskedConfigs)
-        {
-            if (pair.Key == flagId)
-                return pair.Value;
-        }
-        return MotionFlagConfigItem.Empty;
-    }
 }

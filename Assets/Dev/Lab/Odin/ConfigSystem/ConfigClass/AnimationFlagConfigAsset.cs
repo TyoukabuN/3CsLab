@@ -20,81 +20,55 @@ public class AnimationFlagConfigAsset : ConfigAsset<int, AnimationFlagConfigItem
         string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
         if (AssetDatabase.IsValidFolder(assetPath))
         {
-            ScriptableObject asset = ScriptableObject.CreateInstance<AnimationFlagConfigAsset>();
+            AnimationFlagConfigAsset asset = ScriptableObject.CreateInstance<AnimationFlagConfigAsset>();
+            asset.items = new List<AnimationFlagConfigItem>();
             var uniqueFileName = AssetDatabase.GenerateUniqueAssetPath(assetPath + "/AnimationFlagConfigAsset.asset");
             UnityEditor.AssetDatabase.CreateAsset(asset, uniqueFileName);
             return;
         }
     }
+
+    public override void Add()
+    {
+        string assetPath = AssetDatabase.GetAssetPath(this);
+
+        if (string.IsNullOrEmpty(assetPath))
+            return;
+
+        AnimationFlagConfigItem itemObj = ScriptableObject.CreateInstance<AnimationFlagConfigItem>();
+        itemObj.name = "AnimationFlagConfigItem_" + items.Count;
+
+        //AssetDatabase.CreateAsset(itemObj, $"Assets/Dev/Lab/Odin/Resources/ConfigAssets/{itemObj.name}");
+
+        //AnimationFlagConfigItem itemObj = new AnimationFlagConfigItem(0,"");
+        this.items.Add(itemObj);
+
+        AssetDatabase.AddObjectToAsset(itemObj, assetPath);
+
+        EditorUtility.SetDirty(this);
+
+        AssetDatabase.SaveAssets();
+
+        AnimationFlagConfig.OnAssetDirty();
+    }
+
+    public override void RemoveAt(int index)
+    {
+        if (index >= items.Count)
+            return;
+        var item = this.items[index];
+        if (item == null)
+            return;
+        string assetPath = AssetDatabase.GetAssetPath(item);
+        if (!string.IsNullOrEmpty(assetPath))
+            AssetDatabase.RemoveObjectFromAsset(item);
+
+        EditorUtility.SetDirty(this);
+
+        AssetDatabase.SaveAssets();
+
+        items.RemoveAt(index);
+        AnimationFlagConfig.OnAssetDirty();
+    }
 #endif
-}
-
-[InlineProperty]
-public struct AnimationFlagConfigItem
-{
-    [ValidateInput("id_valid", "动画id需要大于0, 主手武器id需要是10000的倍数")]
-    public int id;
-
-    [ValidateInput("strValue_valid","字符串不能为空")]
-    public string strValue;
-
-    #region Odin Valid
-    private bool id_valid(int value)
-    {
-        return value > 0;
-    }
-    private bool strValue_valid(string value)
-    {
-        return !string.IsNullOrEmpty(value);
-    }
-    #endregion
-
-    public static readonly AnimationFlagConfigItem Empty = new() {
-           id = -1, 
-           strValue = String.Empty,
-        };
-
-    public bool IsEmpty()
-    {
-        return this == Empty;
-    }
-
-    public static bool operator ==(AnimationFlagConfigItem lhs,AnimationFlagConfigItem rhs)
-    {
-        if(lhs.id != rhs.id) return false;  
-        if(lhs.strValue != rhs.strValue) return false; 
-            
-        return true;
-    }
-    
-    public static bool operator !=(AnimationFlagConfigItem lhs,AnimationFlagConfigItem rhs)
-    {
-        if(lhs.id == rhs.id) return false;  
-        if(lhs.strValue == rhs.strValue) return false; 
-            
-        return true;
-    }
-
-    public static implicit operator KeyValuePair<int,AnimationFlagConfigItem>(AnimationFlagConfigItem item)
-    {
-        return new KeyValuePair<int, AnimationFlagConfigItem>(item.id, item);
-    }
-    
-    public string ToString()
-    {
-        var sb = new System.Text.StringBuilder();
-        
-        sb.AppendLine($"[ToString] {this.GetType().Name} = ");
-        sb.AppendLine($"{{");
-        
-        foreach (FieldInfo field in this.GetType().GetFields())
-        {
-            // 获取字段的名称和值
-            string fieldName = field.Name;
-            object fieldValue = field.GetValue(this);
-            sb.AppendLine(string.Format("{0} = {1}",fieldName,fieldValue));
-        }
-        sb.AppendLine($"}}");
-        return sb.ToString();
-    }
 }
