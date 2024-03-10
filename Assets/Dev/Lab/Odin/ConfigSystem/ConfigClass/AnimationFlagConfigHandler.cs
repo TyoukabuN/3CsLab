@@ -5,13 +5,15 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEditor;
 
-[OdinSerializeType]
+[Serializable]
 [HideLabel]
 public class AnimationFlagConfigHandler
 {
     //[InlineButton(action:"SetAnimationFlagConfigHandle",label:"Set")]
     private int configId = 0;
 
+    [InlineButton(action: "SetAnimationFlagConfigHandle", label: "Set")]
+    [EnableGUI]
     [ShowInInspector]
     public int ConfigId { 
         get
@@ -23,9 +25,9 @@ public class AnimationFlagConfigHandler
         }
     }
 
-    [HideIf("@true")]
+    //[HideIf("@true")]
     public AnimationFlagConfigItem weaponConfig;
-    [HideIf("@true")]
+    //[HideIf("@true")]
     public AnimationFlagConfigItem stateConfig;
 
     public int WeaponId => weaponConfig ? weaponConfig.id : 0;

@@ -23,13 +23,10 @@ using UnityEditor;
 [Serializable]
 public class TestJW : MonoBehaviour
 {
-    [InlineButton(action: "SetAnimationFlagConfigHandle", label: "Set")]
+
     public AnimationFlagConfigHandler configHandler;
 
-    private void SetAnimationFlagConfigHandle()
-    {
-        AnimationFlagConfigSelector.Show(configHandler.WeaponId, configHandler.StateId, OnConfigIdChange);
-    }
+
     private void OnConfigIdChange(AnimationFlagConfigItem item, bool selected)
     {
         if (item == null)

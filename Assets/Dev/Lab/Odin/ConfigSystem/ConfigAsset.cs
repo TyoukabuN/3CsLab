@@ -11,9 +11,11 @@ public abstract class ConfigAsset<IdType,ItemType> : ConfigAsset
     public int id;
 
     [TableList]
-    [ListDrawerSettings(CustomAddFunction = "Add", CustomRemoveIndexFunction = "RemoveAt")]
+    [ListDrawerSettings(
+        CustomAddFunction = "Add", 
+        CustomRemoveIndexFunction = "RemoveAt"
+    )]
     public List<ItemType> items;
-
     public abstract void Add();
     public abstract void RemoveAt(int index);
 }

@@ -57,10 +57,7 @@ public class AnimationFlagConfigAsset : ConfigAsset<int, AnimationFlagConfigItem
         if (index >= items.Count)
             return;
         var item = this.items[index];
-        if (item == null)
-            return;
-        string assetPath = AssetDatabase.GetAssetPath(item);
-        if (!string.IsNullOrEmpty(assetPath))
+        if (item != null)
             AssetDatabase.RemoveObjectFromAsset(item);
 
         EditorUtility.SetDirty(this);
