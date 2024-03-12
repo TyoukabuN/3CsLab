@@ -7,10 +7,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="TestConfig", menuName ="ConfigsAsset/TestConfig", order = 7)]
 public class TestConfigAsset : SerializedScriptableObject
 {
+    [TableList]
     [ListDrawerSettings(
         CustomAddFunction = "Add",
-        CustomRemoveIndexFunction = "RemoveAt"
-        )]
+        CustomRemoveIndexFunction = "RemoveAt")]
     public List<TestConfigItem> assets = new List<TestConfigItem>();
 
     public void Add()

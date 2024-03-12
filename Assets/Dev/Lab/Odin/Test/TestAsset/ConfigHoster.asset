@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f666a6bed339e144aab1a2fdd65a2d1f, type: 3}
+  m_Name: ConfigHoster
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 4211813771313073197, guid: b99dce8273caecd419118096dc051ba0, type: 2}
+    - {fileID: 7372620819915818310, guid: b99dce8273caecd419118096dc051ba0, type: 2}
+    - {fileID: 2090865577540281654, guid: b99dce8273caecd419118096dc051ba0, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: subConfigHoster
+      Entry: 7
+      Data: 0|SubConfigHoster, Assembly-CSharp
+    - Name: animationFlagConfigHandler
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: lists
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[SomeClass, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 2|SomeClass, Assembly-CSharp
+    - Name: handler
+      Entry: 7
+      Data: 3|AnimationFlagConfigHandler, Assembly-CSharp
+    - Name: weaponConfig
+      Entry: 10
+      Data: 0
+    - Name: stateConfig
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|SomeClass, Assembly-CSharp
+    - Name: handler
+      Entry: 7
+      Data: 5|AnimationFlagConfigHandler, Assembly-CSharp
+    - Name: weaponConfig
+      Entry: 10
+      Data: 2
+    - Name: stateConfig
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  configItem: {fileID: 0}
+  clip: {fileID: 7400000, guid: 187a4b182f1c23a49b31cacdcb2b0bc2, type: 2}
+  intValue: 1
+  strValue: 1
+  handler:
+    weaponConfig: {fileID: 0}
+    stateConfig: {fileID: 0}

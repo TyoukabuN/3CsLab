@@ -2,14 +2,14 @@
 using System;
 using Animancer.Examples.StateMachines;
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
 using Sirenix.Serialization;
 using UnityEditor;
+using UnityEngine;
 
 [Serializable]
-[HideLabel]
 public class AnimationFlagConfigHandler
 {
-    //[InlineButton(action:"SetAnimationFlagConfigHandle",label:"Set")]
     private int configId = 0;
 
     [InlineButton(action: "SetAnimationFlagConfigHandle", label: "Set")]
@@ -33,8 +33,12 @@ public class AnimationFlagConfigHandler
     public int WeaponId => weaponConfig ? weaponConfig.id : 0;
     public int StateId => stateConfig ? stateConfig.id : 0;
 
-    private void SetAnimationFlagConfigHandle()
+#if UNITY_EDITOR
+    [NonSerialized]
+    public UnityEngine.ScriptableObject host;
+    public  void SetAnimationFlagConfigHandle()
     {
+        Debug.Log(host);
         AnimationFlagConfigSelector.Show(WeaponId, StateId, OnConfigIdChange);
     }
     private void OnConfigIdChange(AnimationFlagConfigItem item, bool selected)
@@ -47,5 +51,20 @@ public class AnimationFlagConfigHandler
             stateConfig = selected ? item : null;
 
         configId = ConfigId;
+
+        if (host != null)
+        {
+            Debug.Log("[Save]");
+            EditorUtility.SetDirty(host);
+            AssetDatabase.SaveAssets();
+        }
     }
+
+    [OnInspectorInit]
+    public void OnInspectorInit(InspectorProperty property)
+    {
+        host = property.GetFirstParentOfValue<ScriptableObject>(5);
+        Debug.Log(host);
+    }
+#endif
 }
