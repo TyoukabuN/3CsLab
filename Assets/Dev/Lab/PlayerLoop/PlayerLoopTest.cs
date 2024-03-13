@@ -142,10 +142,10 @@ public class PlayerLoopTest : MonoBehaviour
 
         public void SetPlayerLoop()
         {
-            var playerLoop = PlayerLoop.GetDefaultPlayerLoop();
-            if (rootReference != null)
-                playerLoop = rootReference.ConvertToPlayerLoop();
-            PlayerLoop.SetPlayerLoop(playerLoop);
+            if (rootReference == null)
+                PlayerLoop.SetPlayerLoop(PlayerLoop.GetDefaultPlayerLoop());
+            else
+                PlayerLoop.SetPlayerLoop(rootReference);
         }
 
         private Dictionary<Type, FindResult> _cache = new Dictionary<Type, FindResult>();
@@ -236,6 +236,10 @@ public class PlayerLoopTest : MonoBehaviour
                 }
                 result.subSystemList = subs.ToArray();
                 return result;
+            }
+            public static implicit operator PlayerLoopSystem(PlayerLoopSystemReference reference)
+            {
+                return reference.ConvertToPlayerLoop();
             }
         }
 
