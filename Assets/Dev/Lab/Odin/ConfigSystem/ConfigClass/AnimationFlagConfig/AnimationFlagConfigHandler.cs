@@ -1,6 +1,7 @@
 
 using System;
 using Animancer.Examples.StateMachines;
+using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Serialization;
@@ -12,7 +13,10 @@ public class AnimationFlagConfigHandler
 {
     private int configId = 0;
 
-    [InlineButton(action: "SetAnimationFlagConfigHandle", label: "Set")]
+//    [InlineButton("@SetConfigItem(#(configItem).ParentValueProperty", "Set")]
+
+
+    [InlineButton(action: "@SetAnimationFlagConfigHandle(#(ConfigId))", label: "Set")]
     [EnableGUI]
     [ShowInInspector]
     public int ConfigId { 
@@ -36,10 +40,24 @@ public class AnimationFlagConfigHandler
 #if UNITY_EDITOR
     [NonSerialized]
     public UnityEngine.ScriptableObject host;
-    public  void SetAnimationFlagConfigHandle()
+    public  void SetAnimationFlagConfigHandle(InspectorProperty inspectorProperty)
     {
-        Debug.Log(host);
+        var _host = GetHost(inspectorProperty);
+        if (_host != null)
+            host = (UnityEngine.ScriptableObject)_host.ValueEntry.WeakSmartValue;
+
         AnimationFlagConfigSelector.Show(WeaponId, StateId, OnConfigIdChange);
+    }
+    public InspectorProperty GetHost(InspectorProperty inspectorProperty)
+    {
+        var parent = inspectorProperty.ParentValueProperty;
+        while(parent != null)
+        {
+            if (parent.ValueEntry.WeakSmartValue is ScriptableObject)
+                return parent;
+            parent = parent.ParentValueProperty;
+        }
+        return parent;
     }
     private void OnConfigIdChange(AnimationFlagConfigItem item, bool selected)
     {

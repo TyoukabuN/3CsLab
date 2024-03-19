@@ -18,7 +18,6 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 4211813771313073197, guid: b99dce8273caecd419118096dc051ba0, type: 2}
     - {fileID: 7372620819915818310, guid: b99dce8273caecd419118096dc051ba0, type: 2}
-    - {fileID: 2090865577540281654, guid: b99dce8273caecd419118096dc051ba0, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -64,11 +63,11 @@ MonoBehaviour:
       Entry: 7
       Data: 5|AnimationFlagConfigHandler, Assembly-CSharp
     - Name: weaponConfig
-      Entry: 10
-      Data: 2
+      Entry: 6
+      Data: 
     - Name: stateConfig
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 

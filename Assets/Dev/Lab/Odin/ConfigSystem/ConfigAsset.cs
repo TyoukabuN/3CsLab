@@ -5,9 +5,11 @@ using System.Text;
 using System;
 using UnityEngine.Serialization;
 using System.Security.Policy;
+using UnityEditor;
 
 public abstract class ConfigAsset<IdType,ItemType> : ConfigAsset
 {
+    public ConfigAsset<IdType, ItemType> metaConfig;
     public int id;
 
     [TableList]
@@ -16,8 +18,18 @@ public abstract class ConfigAsset<IdType,ItemType> : ConfigAsset
         CustomRemoveIndexFunction = "RemoveAt"
     )]
     public List<ItemType> items;
+
+#if UNITY_EDITOR
     public abstract void Add();
     public abstract void RemoveAt(int index);
+
+    public virtual void Save()
+    {
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
+        AnimationFlagConfig.OnAssetDirty();
+    }
+#endif 
 }
 
 public abstract class ConfigAsset : SerializedScriptableObject
