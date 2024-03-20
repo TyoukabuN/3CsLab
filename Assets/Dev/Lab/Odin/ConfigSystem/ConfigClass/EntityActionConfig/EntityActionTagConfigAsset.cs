@@ -1,4 +1,5 @@
 using LS.Game;
+using LS;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using System;
@@ -7,6 +8,8 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using System.IO;
+using UnityEditor.VersionControl;
+using static EntityActionTagConfigAsset;
 
 public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfigItem>
 {
@@ -67,13 +70,14 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
     {
         string assetPath = AssetDatabase.GetAssetPath(this);
 
-        string folderPath = Path.GetDirectoryName(assetPath);
-        if (!AssetDatabase.IsValidFolder(folderPath))
-        {
-            Debug.Log($"[InValidFolder] {folderPath}");
-        }
+        //string folderPath = Path.GetDirectoryName(assetPath);
+        //if (!AssetDatabase.IsValidFolder(folderPath))
+        //{
+        //    Debug.Log($"[InValidFolder] {folderPath}");
+        //}
 
-        assetPath = Path.Combine(folderPath, "TestClass.cs");
+        //assetPath = Path.Combine(folderPath, "Assets/Dev/Lab/Odin/ConfigSystem/ConfigClass/EntityActionConfig/TestClass.cs");
+        assetPath = "Assets/Dev/Lab/Odin/ConfigSystem/CharacterActionWrap.Gen.cs";
 
         for (int i = 0; i < EntityActionTagConfig.ConfigAsset.items.Count; i++)
         {
@@ -82,12 +86,44 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         //
         var builder = new CSharpScriptBuilder(assetPath);
 
-        using (builder.BeginClass("TestClass"))
+        using (builder.BeginNameSpace("LS.Game"))
         {
-
+            //using (builder.BeginClass("ActionTagWrap", "public partial"))
+            //{
+            AppendStringMemberTag(builder, typeof(LSBehaviourTag_Character));
+            AppendStringMemberTag(builder, typeof(LSStateTag_Character));
+            AppendStringMemberTag(builder, typeof(LSBehaviourTag_Enemy));
+            AppendStringMemberTag(builder, typeof(LSStateTag_Enemy));
+            //
+            AppendEnumTag(builder,typeof(CharacterAction));
+            AppendEnumTag(builder, typeof(EnemyAction));
+            AppendEnumTag(builder, typeof(SailAction));
         }
         builder.Gen();
+    }
 
+    public void AppendEnumTag(CSharpScriptBuilder builder, Type type)
+    {
+        using (builder.BeginClass($"{type.Name}Wrap"))
+        {
+            foreach (var field in type.GetEnumValues())
+            {
+                builder.AppendLine($"public static ActionTagWrap {field} = new ActionTagWrap({type.FullName}.{field});");
+            }
+        }
+    }
+    public void AppendStringMemberTag(CSharpScriptBuilder builder, Type type)
+    {
+        using (builder.BeginClass($"{type.Name}Wrap"))
+        {
+            var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
+            for (int i = 0; i < fields.Length; i++)
+            {
+                TagInfo tagInfo = new TagInfo(fields[i]);
+                //
+                builder.AppendLine($"public static ActionTagWrap {tagInfo.valueStr} = new ActionTagWrap({type.FullName}.{fields[i].Name});");
+            }
+        }
     }
 
     public struct TagInfo
@@ -113,7 +149,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         if (presetAttr == null)
             return;
 
-        Add(prefix_id, prefix_id/10000 ,presetAttr.Category);
+        Add(prefix_id / 10000, prefix_id/10000 , type.Name, presetAttr.Category);
 
         //Debug.Log(presetAttr.Category);
         //Debug.Log(presetAttr.isBehaviourTag);
@@ -123,13 +159,28 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         for (int i = 0; i < fields.Length; i++)
         {
             TagInfo tagInfo = new TagInfo(fields[i]);
-            Add(prefix_id + i + 1, prefix_id / 10000,tagInfo.valueStr,tagInfo.labelStr, tagInfo.tagIconStr);
+            //
+            int id = prefix_id + i + 1;
+            string valueStr = $"{type.Name}.{tagInfo.valueStr}";
+            string labelStr = tagInfo.labelStr;
+            string tagIconStr = tagInfo.tagIconStr;
+            //
+            Add(id, prefix_id / 10000, valueStr, labelStr, tagIconStr);
         }
     }
 
     public void AddFromEnumType<EnumType>(int prefix_id, string assetPath) where EnumType : Enum
     {
-        foreach (var field in typeof(EnumType).GetEnumValues())
+        Type type = typeof(EnumType);
+
+        var presetAttr = type.GetCustomAttribute(typeof(HunterClassLabelTextAttribute), true) as HunterClassLabelTextAttribute;
+        if (presetAttr == null)
+            Add(prefix_id / 10000, prefix_id / 10000, type.Name);
+        else
+            Add(prefix_id / 10000, prefix_id / 10000, type.Name, presetAttr.Text);
+
+
+        foreach (var field in type.GetEnumValues())
         {
             //id and strValue
             object fieldName = field;
@@ -138,16 +189,15 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
             itemObj.name = "EntityActionConfigItem_" + items.Count;
             itemObj.id = prefix_id + fieldValue;
             itemObj.category = prefix_id / 10000;
-            itemObj.strValue = field.ToString();
+            itemObj.strValue = $"{type.Name}.{field}";;
             //desc
-            var label = typeof(EnumType).GetField(fieldName.ToString()).GetCustomAttribute<LabelTextAttribute>(false);
+            var label = type.GetField(fieldName.ToString()).GetCustomAttribute<LabelTextAttribute>(false);
             if (label!= null)
                 itemObj.desc = label.Text;
             //icon
             itemObj.icon = string.Empty;
 
-            this.items.Add(itemObj);
-            AssetDatabase.AddObjectToAsset(itemObj, assetPath);
+            Add(itemObj);
         }
     }
 
@@ -166,7 +216,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         {
             EntityActionTagConfigAsset asset = ScriptableObject.CreateInstance<EntityActionTagConfigAsset>();
             asset.items = new List<EntityActionTagConfigItem>();
-            var uniqueFileName = AssetDatabase.GenerateUniqueAssetPath(assetPath + "/EntityActionConfigAsset.asset");
+            var uniqueFileName = AssetDatabase.GenerateUniqueAssetPath(assetPath + $"/{nameof(EntityActionTagConfigAsset)}.asset");
             UnityEditor.AssetDatabase.CreateAsset(asset, uniqueFileName);
             return;
         }
@@ -198,7 +248,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         Save();
     }
 
-    public override void Add()
+    public override void AddElement()
     {
         string assetPath = AssetDatabase.GetAssetPath(this);
 

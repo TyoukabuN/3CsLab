@@ -28,7 +28,7 @@ public class AnimationFlagConfigAsset : ConfigAsset<int, AnimationFlagConfigItem
         }
     }
 
-    public override void Add()
+    public override void AddElement()
     {
         string assetPath = AssetDatabase.GetAssetPath(this);
 

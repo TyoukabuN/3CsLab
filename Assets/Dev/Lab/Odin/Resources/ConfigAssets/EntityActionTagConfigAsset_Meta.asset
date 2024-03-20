@@ -1,0 +1,2780 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9220432761659111891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_109
+  m_EditorClassIdentifier: 
+  id: 50021
+  category: 5
+  strValue: CharacterAction.Defend
+  desc: "\u9632\u5FA1"
+  icon: 
+--- !u!114 &-9164646720955942792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 7
+  category: 7
+  strValue: SailAction
+  desc: 
+  icon: 
+--- !u!114 &-8965326228478358968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40040
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_KNOCKDOWN
+  desc: "\u88AB\u7838\u5012"
+  icon: Icon_State_Hurt_KnockDown
+--- !u!114 &-8921826307334506055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20011
+  category: 2
+  strValue: LSStateTag_Character.STATE_SWORD_DASH_ATTACK
+  desc: "\u5251_\u51B2\u523A\u653B\u51FB"
+  icon: Icon_State_Sword_Attack
+--- !u!114 &-8877822592572366009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40037
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_KNOCKFLY_F
+  desc: "\u6B63\u9762\u53D7\u51FB\u88AB\u51FB\u98DE"
+  icon: Icon_State_Hurt_KnockFly
+--- !u!114 &-8813335403996301677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20009
+  category: 2
+  strValue: LSStateTag_Character.STATE_SWORD_NORMAL_ATTACK_2
+  desc: "\u5251_\u666E\u653B2"
+  icon: Icon_State_Sword_Attack
+--- !u!114 &-8812699060723302100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40044
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_DIE
+  desc: "\u6B7B\u4EA1"
+  icon: Icon_State_Hurt_Die
+--- !u!114 &-8805215725291842418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40002
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_TURN_AROUND
+  desc: "\u539F\u5730\u8F6C\u8EAB"
+  icon: Icon_State_TurnAround
+--- !u!114 &-8580497895317862548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40032
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_DASH_TIRED
+  desc: "\u7D2F\u4E86"
+  icon: Icon_State_Tired
+--- !u!114 &-8374678610809438028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  category: 2
+  strValue: LSStateTag_Character
+  desc: "\u89D2\u8272\u72B6\u6001\u6807\u7B7E"
+  icon: 
+--- !u!114 &-8160847026128714106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40048
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_INTERACTION4
+  desc: "\u4EA4\u4E92\u52A8\u4F5C4"
+  icon: 
+--- !u!114 &-8008745328860083838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20013
+  category: 2
+  strValue: LSStateTag_Character.STATE_SWORD_CHARGE_ATTACK
+  desc: "\u5251_\u84C4\u529B\u653B\u51FB"
+  icon: Icon_State_Sword_Attack
+--- !u!114 &-7838438895442373469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_136
+  m_EditorClassIdentifier: 
+  id: 60121
+  category: 6
+  strValue: "EnemyAction.Attack_Combo3_\u4E09\u8FDE\u51FB"
+  desc: "\u4E09\u8FDE\u51FB"
+  icon: 
+--- !u!114 &-7749147172383491328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 30001
+  category: 3
+  strValue: LSBehaviourTag_Enemy.BEHAVIOUR_IDLE
+  desc: "\u95F2\u7F6E\u884C\u4E3A"
+  icon: Icon_State_Idle
+--- !u!114 &-7457376944981411324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40011
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_RUN
+  desc: "\u5954\u8DD1"
+  icon: Icon_State_Run
+--- !u!114 &-7272429967543017977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_119
+  m_EditorClassIdentifier: 
+  id: 60010
+  category: 6
+  strValue: EnemyAction.Idle_Pose
+  desc: "\u95F2\u7F6E\u52A8\u4F5C"
+  icon: 
+--- !u!114 &-7251196638521281791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20032
+  category: 2
+  strValue: LSStateTag_Character.STATE_RD_FA
+  desc: "\u5168\u8EAB\u5E03\u5A03\u5A03\u6A21\u62DF"
+  icon: Icon_Ragdoll_Full_Active
+--- !u!114 &-7170794770336935782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40034
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_WEAK_B
+  desc: "\u80CC\u9762\u53D7\u51FB\u5C0F\u786C\u76F4"
+  icon: Icon_State_Hurt_Weak
+--- !u!114 &-7143205300600348418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 30004
+  category: 3
+  strValue: LSBehaviourTag_Enemy.BEHAVIOUR_ATTACK
+  desc: "\u653B\u51FB\u884C\u4E3A"
+  icon: Icon_State_Attack
+--- !u!114 &-7049264177499207363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_134
+  m_EditorClassIdentifier: 
+  id: 60112
+  category: 6
+  strValue: "EnemyAction.Attack_Heavy3_\u91CD\u653B\u51FB3"
+  desc: "\u91CD\u653B\u51FB3"
+  icon: 
+--- !u!114 &-6850066853665657113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20004
+  category: 2
+  strValue: LSStateTag_Character.STATE_JUMP
+  desc: "\u8DF3\u8DC3"
+  icon: Icon_State_Jump
+--- !u!114 &-6641229403646115122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20015
+  category: 2
+  strValue: LSStateTag_Character.STATE_SHIELD_SLAM
+  desc: "\u6301\u76FE_\u76FE\u51FB"
+  icon: Icon_State_Shield_Slam
+--- !u!114 &-6458624068005052672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20028
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_STUN
+  desc: "\u53D7\u51FB\u51FB\u6655"
+  icon: Icon_State_Hurt_Stun
+--- !u!114 &-6293278182556469192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40014
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_ALERT
+  desc: "\u5F15\u8D77\u8B66\u89C9"
+  icon: Icon_State_Alert
+--- !u!114 &-6232666737815811467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40025
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_COMBO_ATTACK_3
+  desc: "\u4E09\u8FDE\u51FB"
+  icon: Icon_State_ComboAttack3
+--- !u!114 &-6222922079543925777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_135
+  m_EditorClassIdentifier: 
+  id: 60120
+  category: 6
+  strValue: "EnemyAction.Attack_Combo2_\u4E24\u8FDE\u51FB"
+  desc: "\u4E24\u8FDE\u51FB"
+  icon: 
+--- !u!114 &-6083847333938976951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_126
+  m_EditorClassIdentifier: 
+  id: 60021
+  category: 6
+  strValue: EnemyAction.Vigilant_LookAround
+  desc: "\u8B66\u89C9\u73AF\u89C6"
+  icon: 
+--- !u!114 &-5816981673552165609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40039
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_KNOCKFLYING
+  desc: "\u88AB\u51FB\u98DE\u4E2D"
+  icon: Icon_State_Hurt_KnockFlying
+--- !u!114 &-5807473605306249019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
+  category: 4
+  strValue: LSStateTag_Enemy
+  desc: "\u654C\u602A\u72B6\u6001\u6807\u7B7E"
+  icon: 
+--- !u!114 &-5734145979318995624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40022
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HEAVY_ATTACK_2
+  desc: "\u91CD\u653B\u51FB2"
+  icon: Icon_State_HeavyAttack2
+--- !u!114 &-5599846133297272233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20001
+  category: 2
+  strValue: LSStateTag_Character.STATE_IDLE
+  desc: "\u9759\u606F"
+  icon: Icon_State_Idle
+--- !u!114 &-5491779457812768871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_108
+  m_EditorClassIdentifier: 
+  id: 50010
+  category: 5
+  strValue: CharacterAction.AttackRelease
+  desc: "\u653B\u51FB\u677E\u5F00\u6301\u7EED"
+  icon: 
+--- !u!114 &-5278294321147091626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_138
+  m_EditorClassIdentifier: 
+  id: 60131
+  category: 6
+  strValue: "EnemyAction.Attack_Special_\u7279\u6B8A\u62DB\u5F0F"
+  desc: "\u7279\u6B8A\u62DB\u5F0F"
+  icon: 
+--- !u!114 &-4780372331027534967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_99
+  m_EditorClassIdentifier: 
+  id: 50001
+  category: 5
+  strValue: CharacterAction.Run
+  desc: "\u51B2\u523A"
+  icon: 
+--- !u!114 &-4362172295561427072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_118
+  m_EditorClassIdentifier: 
+  id: 60004
+  category: 6
+  strValue: EnemyAction.Roll
+  desc: "\u7FFB\u6EDA"
+  icon: 
+--- !u!114 &-4093582804355263841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40036
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_HEAVY_B
+  desc: "\u80CC\u9762\u53D7\u51FB\u5927\u786C\u76F4"
+  icon: Icon_State_Hurt_Heavy
+--- !u!114 &-4036631717524219397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20021
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_WEAK_B
+  desc: "\u80CC\u9762\u53D7\u51FB\u5C0F\u786C\u76F4"
+  icon: Icon_State_Hurt_Weak
+--- !u!114 &-3905606151001786490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40008
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_IDLE_SITUP
+  desc: "\u5750\u8D77"
+  icon: Icon_State_Sit
+--- !u!114 &-3876077838665906509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20014
+  category: 2
+  strValue: LSStateTag_Character.STATE_SHIELD_BLOCKED_ATTACK
+  desc: "\u6301\u76FE_\u683C\u6321\u53CD\u51FB"
+  icon: Icon_State_Shield_Blocked_Attack
+--- !u!114 &-3681230915242932043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_117
+  m_EditorClassIdentifier: 
+  id: 60003
+  category: 6
+  strValue: EnemyAction.Jump
+  desc: "\u8DF3\u8DC3"
+  icon: 
+--- !u!114 &-3651536289157241931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_100
+  m_EditorClassIdentifier: 
+  id: 50002
+  category: 5
+  strValue: CharacterAction.Jump
+  desc: "\u8DF3\u8DC3"
+  icon: 
+--- !u!114 &-3642542867449193995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10001
+  category: 1
+  strValue: LSBehaviourTag_Character.BEHAVIOUR_IDLE
+  desc: "\u95F2\u7F6E\u884C\u4E3A"
+  icon: Icon_State_Idle
+--- !u!114 &-3432454692674270088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_131
+  m_EditorClassIdentifier: 
+  id: 60102
+  category: 6
+  strValue: "EnemyAction.Attack_Normal3_\u666E\u901A\u653B\u51FB3"
+  desc: "\u666E\u901A\u653B\u51FB3"
+  icon: 
+--- !u!114 &-3262491291028183457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40030
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_DASH_ATTACK_1
+  desc: "\u51B2\u523A\u653B\u51FB1"
+  icon: Icon_State_DashAttack1
+--- !u!114 &-3240765445793200853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20020
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_WEAK_F
+  desc: "\u6B63\u9762\u53D7\u51FB\u5C0F\u786C\u76F4"
+  icon: Icon_State_Hurt_Weak
+--- !u!114 &-3197404369205400257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40017
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_THREATEN_TARGET
+  desc: "\u5A01\u5413\u76EE\u6807"
+  icon: Icon_State_ThreatenTarget
+--- !u!114 &-3046833186748373841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40015
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_LOOK_AROUND
+  desc: "\u8B66\u89C9\u73AF\u89C6"
+  icon: Icon_State_LookAround
+--- !u!114 &-2967784265452066749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20023
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_HEAVY_B
+  desc: "\u80CC\u9762\u53D7\u51FB\u5927\u786C\u76F4"
+  icon: Icon_State_Hurt_Heavy
+--- !u!114 &-2901556953141621653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_128
+  m_EditorClassIdentifier: 
+  id: 60023
+  category: 6
+  strValue: EnemyAction.Vigilant_ThreatenTarget
+  desc: "\u5A01\u5413\u52A8\u4F5C"
+  icon: 
+--- !u!114 &-2671486914464691079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40027
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_SPECIAL_ATTACK
+  desc: "\u7279\u6B8A\u62DB\u5F0F"
+  icon: Icon_State_SpecialAttack
+--- !u!114 &-2599116027202266139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40024
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_COMBO_ATTACK_2
+  desc: "\u4E24\u8FDE\u51FB"
+  icon: Icon_State_ComboAttack2
+--- !u!114 &-2508554120207479908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  category: 1
+  strValue: LSBehaviourTag_Character
+  desc: "\u89D2\u8272\u884C\u4E3A\u6807\u7B7E"
+  icon: 
+--- !u!114 &-2459541450205890760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_115
+  m_EditorClassIdentifier: 
+  id: 60001
+  category: 6
+  strValue: EnemyAction.Walk
+  desc: "\u884C\u8D70"
+  icon: 
+--- !u!114 &-2364387841589580754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_132
+  m_EditorClassIdentifier: 
+  id: 60110
+  category: 6
+  strValue: "EnemyAction.Attack_Heavy1_\u91CD\u653B\u51FB1"
+  desc: "\u91CD\u653B\u51FB1"
+  icon: 
+--- !u!114 &-2207116539297017848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20024
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_KNOCKFLY_F
+  desc: "\u6B63\u9762\u53D7\u51FB\u88AB\u51FB\u98DE"
+  icon: Icon_State_Hurt_KnockFly
+--- !u!114 &-2044429772666455008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_114
+  m_EditorClassIdentifier: 
+  id: 60000
+  category: 6
+  strValue: EnemyAction.None
+  desc: "\u65E0"
+  icon: 
+--- !u!114 &-2016499169090204942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_104
+  m_EditorClassIdentifier: 
+  id: 50006
+  category: 5
+  strValue: CharacterAction.AimCancel
+  desc: "\u53D6\u6D88\u7784\u51C6"
+  icon: 
+--- !u!114 &-1923227593966434408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_137
+  m_EditorClassIdentifier: 
+  id: 60122
+  category: 6
+  strValue: "EnemyAction.Attack_Combo4_\u56DB\u8FDE\u51FB"
+  desc: "\u56DB\u8FDE\u51FB"
+  icon: 
+--- !u!114 &-1889875741624629835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20029
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_STAND_UP
+  desc: "\u5012\u5730\u7AD9\u8D77"
+  icon: Icon_State_Hurt_StandUp
+--- !u!114 &-1877668582193626773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_148
+  m_EditorClassIdentifier: 
+  id: 70000
+  category: 7
+  strValue: SailAction.None
+  desc: "\u65E0"
+  icon: 
+--- !u!114 &-1734428743585053396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20025
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_KNOCKFLY_B
+  desc: "\u80CC\u9762\u53D7\u51FB\u88AB\u51FB\u98DE"
+  icon: Icon_State_Hurt_KnockFly
+--- !u!114 &-1596464865475803331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_130
+  m_EditorClassIdentifier: 
+  id: 60101
+  category: 6
+  strValue: "EnemyAction.Attack_Normal2_\u666E\u901A\u653B\u51FB2"
+  desc: "\u666E\u901A\u653B\u51FB2"
+  icon: 
+--- !u!114 &-1528664586079505295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20002
+  category: 2
+  strValue: LSStateTag_Character.STATE_WALK
+  desc: "\u8D70"
+  icon: Icon_State_Move_Walk
+--- !u!114 &-1522963652946960622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_139
+  m_EditorClassIdentifier: 
+  id: 60132
+  category: 6
+  strValue: "EnemyAction.Attack_Skill_\u6280\u80FD\u62DB\u5F0F"
+  desc: "\u6280\u80FD\u62DB\u5F0F"
+  icon: 
+--- !u!114 &-1407868353861211083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_122
+  m_EditorClassIdentifier: 
+  id: 60013
+  category: 6
+  strValue: EnemyAction.Idle_Sit
+  desc: "\u5750\u4E0B"
+  icon: 
+--- !u!114 &-1231269560524446353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_103
+  m_EditorClassIdentifier: 
+  id: 50005
+  category: 5
+  strValue: CharacterAction.Aim
+  desc: "\u7784\u51C6"
+  icon: 
+--- !u!114 &-1092363857566298988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40012
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_DASH
+  desc: "\u731B\u51B2"
+  icon: Icon_State_Dash
+--- !u!114 &-1087362867750415176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40019
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_NORMAL_ATTACK_2
+  desc: "\u666E\u901A\u653B\u51FB2"
+  icon: Icon_State_NormalAttack2
+--- !u!114 &-942273278213325856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_106
+  m_EditorClassIdentifier: 
+  id: 50008
+  category: 5
+  strValue: CharacterAction.AttackCharge
+  desc: "\u653B\u51FB\u84C4\u529B"
+  icon: 
+--- !u!114 &-898731178010472369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20027
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_KNOCKDOWN
+  desc: "\u88AB\u7838\u5012"
+  icon: Icon_State_Hurt_KnockDown
+--- !u!114 &-731840110320673569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40005
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_WAKE
+  desc: "\u9192\u6765"
+  icon: Icon_State_Wake
+--- !u!114 &-712278689652083320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20005
+  category: 2
+  strValue: LSStateTag_Character.STATE_JUMP_AIRBORNE
+  desc: "\u8DF3\u8DC3\u6EDE\u7A7A"
+  icon: Icon_State_Jump_Airborne
+--- !u!114 &-617777466469220609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40013
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_AERIAL
+  desc: "\u6EDE\u7A7A"
+  icon: Icon_State_Aerial
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257afac70db6c5d44b8b3d3cfdabfff1, type: 3}
+  m_Name: EntityActionTagConfigAsset_Meta
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  metaConfig: {fileID: 0}
+  id: 0
+  items:
+  - {fileID: -2508554120207479908}
+  - {fileID: -3642542867449193995}
+  - {fileID: 8972054770835714842}
+  - {fileID: 1898375678619411725}
+  - {fileID: 8448985097576924878}
+  - {fileID: 431946510333781987}
+  - {fileID: 1315357741172337639}
+  - {fileID: -8374678610809438028}
+  - {fileID: -5599846133297272233}
+  - {fileID: -1528664586079505295}
+  - {fileID: 4672454499398245406}
+  - {fileID: -6850066853665657113}
+  - {fileID: -712278689652083320}
+  - {fileID: 5424575459774266179}
+  - {fileID: 8430967726449820335}
+  - {fileID: 1407818730478096500}
+  - {fileID: -8813335403996301677}
+  - {fileID: 4879246287149356243}
+  - {fileID: -8921826307334506055}
+  - {fileID: 3376742159840104988}
+  - {fileID: -8008745328860083838}
+  - {fileID: -3876077838665906509}
+  - {fileID: -6641229403646115122}
+  - {fileID: 5759549387072505879}
+  - {fileID: 7373221132690434284}
+  - {fileID: 4839653603867843421}
+  - {fileID: 4564913714454356199}
+  - {fileID: -3240765445793200853}
+  - {fileID: -4036631717524219397}
+  - {fileID: 2779746087457134227}
+  - {fileID: -2967784265452066749}
+  - {fileID: -2207116539297017848}
+  - {fileID: -1734428743585053396}
+  - {fileID: 8856967364949337091}
+  - {fileID: -898731178010472369}
+  - {fileID: -6458624068005052672}
+  - {fileID: -1889875741624629835}
+  - {fileID: 5129402477692467739}
+  - {fileID: 6930753369477899805}
+  - {fileID: -7251196638521281791}
+  - {fileID: 8000497765261179936}
+  - {fileID: 1773596188844118591}
+  - {fileID: -7749147172383491328}
+  - {fileID: 2796183980790959765}
+  - {fileID: 4452022584398379686}
+  - {fileID: -7143205300600348418}
+  - {fileID: 6008954726553817964}
+  - {fileID: 3019100535928502954}
+  - {fileID: -5807473605306249019}
+  - {fileID: 5330013219827034634}
+  - {fileID: -8805215725291842418}
+  - {fileID: 8204243467473259633}
+  - {fileID: 2470731855479201662}
+  - {fileID: -731840110320673569}
+  - {fileID: 868760164089869054}
+  - {fileID: 5234358324568306832}
+  - {fileID: -3905606151001786490}
+  - {fileID: 2383583920307402952}
+  - {fileID: 5998506937915714407}
+  - {fileID: -7457376944981411324}
+  - {fileID: -1092363857566298988}
+  - {fileID: -617777466469220609}
+  - {fileID: -6293278182556469192}
+  - {fileID: -3046833186748373841}
+  - {fileID: 3138287917563307137}
+  - {fileID: -3197404369205400257}
+  - {fileID: 827945532648136818}
+  - {fileID: -1087362867750415176}
+  - {fileID: 7466653769062676542}
+  - {fileID: 6287553767661304802}
+  - {fileID: -5734145979318995624}
+  - {fileID: 1844130897413701446}
+  - {fileID: -2599116027202266139}
+  - {fileID: -6232666737815811467}
+  - {fileID: 3173618304465279279}
+  - {fileID: -2671486914464691079}
+  - {fileID: 1639915135860700332}
+  - {fileID: 3381966593222449066}
+  - {fileID: -3262491291028183457}
+  - {fileID: 6020296931347276029}
+  - {fileID: -8580497895317862548}
+  - {fileID: 4987514547568087316}
+  - {fileID: -7170794770336935782}
+  - {fileID: 8995816354058193852}
+  - {fileID: -4093582804355263841}
+  - {fileID: -8877822592572366009}
+  - {fileID: 6257189637096641296}
+  - {fileID: -5816981673552165609}
+  - {fileID: -8965326228478358968}
+  - {fileID: 6873235190246378884}
+  - {fileID: 7055487474160892082}
+  - {fileID: 520762702993175360}
+  - {fileID: -8812699060723302100}
+  - {fileID: 7088951457327914894}
+  - {fileID: 4258912944570976505}
+  - {fileID: 8682415207476339287}
+  - {fileID: -8160847026128714106}
+  - {fileID: 1781878717770282895}
+  - {fileID: 2218880693948375727}
+  - {fileID: -4780372331027534967}
+  - {fileID: -3651536289157241931}
+  - {fileID: 3319462573378222081}
+  - {fileID: 3994427094441928590}
+  - {fileID: -1231269560524446353}
+  - {fileID: -2016499169090204942}
+  - {fileID: 1762600861034338854}
+  - {fileID: -942273278213325856}
+  - {fileID: 9166466886931838443}
+  - {fileID: -5491779457812768871}
+  - {fileID: -9220432761659111891}
+  - {fileID: 9016053266815252738}
+  - {fileID: 7190958880481548343}
+  - {fileID: 6005339551209811030}
+  - {fileID: 528983312749116784}
+  - {fileID: -2044429772666455008}
+  - {fileID: -2459541450205890760}
+  - {fileID: 3031850516305392543}
+  - {fileID: -3681230915242932043}
+  - {fileID: -4362172295561427072}
+  - {fileID: -7272429967543017977}
+  - {fileID: 9109410061126877576}
+  - {fileID: 6912491530085356248}
+  - {fileID: -1407868353861211083}
+  - {fileID: 5019113964719781998}
+  - {fileID: 40177906362108369}
+  - {fileID: 502405560463445310}
+  - {fileID: -6083847333938976951}
+  - {fileID: 8411461660142333675}
+  - {fileID: -2901556953141621653}
+  - {fileID: 7415063813771006179}
+  - {fileID: -1596464865475803331}
+  - {fileID: -3432454692674270088}
+  - {fileID: -2364387841589580754}
+  - {fileID: 1579933464167876729}
+  - {fileID: -7049264177499207363}
+  - {fileID: -6222922079543925777}
+  - {fileID: -7838438895442373469}
+  - {fileID: -1923227593966434408}
+  - {fileID: -5278294321147091626}
+  - {fileID: -1522963652946960622}
+  - {fileID: 6494163848885518861}
+  - {fileID: 4792094307663737990}
+  - {fileID: 6469592109942269112}
+  - {fileID: 8886131301800667270}
+  - {fileID: 7964023884807252199}
+  - {fileID: 1172296780642337534}
+  - {fileID: 4965039682845542284}
+  - {fileID: -9164646720955942792}
+  - {fileID: -1877668582193626773}
+  - {fileID: 5426819776534209450}
+  - {fileID: 8486725166470066421}
+  - {fileID: 89043067879462747}
+  - {fileID: 7085819721609953181}
+--- !u!114 &40177906362108369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_124
+  m_EditorClassIdentifier: 
+  id: 60018
+  category: 6
+  strValue: EnemyAction.Idle_Entrance
+  desc: "\u767B\u573A"
+  icon: 
+--- !u!114 &89043067879462747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_151
+  m_EditorClassIdentifier: 
+  id: 70003
+  category: 7
+  strValue: SailAction.Anchor
+  desc: "\u629B\u951A\u5F00\u5173"
+  icon: 
+--- !u!114 &431946510333781987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10005
+  category: 1
+  strValue: LSBehaviourTag_Character.BEHAVIOUR_HURT
+  desc: "\u53D7\u51FB\u884C\u4E3A"
+  icon: Icon_State_Hurt
+--- !u!114 &502405560463445310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_125
+  m_EditorClassIdentifier: 
+  id: 60020
+  category: 6
+  strValue: EnemyAction.Vigilant_Alert
+  desc: "\u8B66\u89C9\u52A8\u4F5C"
+  icon: 
+--- !u!114 &520762702993175360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40043
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_GROUND_DIE
+  desc: "\u5012\u5730\u6B7B\u4EA1"
+  icon: Icon_State_Hurt_Die
+--- !u!114 &528983312749116784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 6
+  category: 6
+  strValue: EnemyAction
+  desc: "\u654C\u602A\u52A8\u4F5C"
+  icon: 
+--- !u!114 &827945532648136818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40018
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_NORMAL_ATTACK_1
+  desc: "\u666E\u901A\u653B\u51FB1"
+  icon: Icon_State_NormalAttack1
+--- !u!114 &868760164089869054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40006
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_IDLE_SIT
+  desc: "\u5750\u4E0B"
+  icon: Icon_State_Sit
+--- !u!114 &1172296780642337534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_145
+  m_EditorClassIdentifier: 
+  id: 60202
+  category: 6
+  strValue: "EnemyAction.Interaction3_\u4EA4\u4E923"
+  desc: "\u4EA4\u4E92\u52A8\u4F5C3"
+  icon: 
+--- !u!114 &1315357741172337639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10006
+  category: 1
+  strValue: LSBehaviourTag_Character.BEHAVIOUR_SWIM
+  desc: "\u6E38\u6CF3\u884C\u4E3A"
+  icon: Icon_State_Swim
+--- !u!114 &1407818730478096500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20008
+  category: 2
+  strValue: LSStateTag_Character.STATE_SWORD_NORMAL_ATTACK_1
+  desc: "\u5251_\u666E\u653B1"
+  icon: Icon_State_Sword_Attack
+--- !u!114 &1579933464167876729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_133
+  m_EditorClassIdentifier: 
+  id: 60111
+  category: 6
+  strValue: "EnemyAction.Attack_Heavy2_\u91CD\u653B\u51FB2"
+  desc: "\u91CD\u653B\u51FB2"
+  icon: 
+--- !u!114 &1639915135860700332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40028
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_SKILL_ATTACK
+  desc: "\u6280\u80FD\u62DB\u5F0F"
+  icon: Icon_State_SkillAttack
+--- !u!114 &1762600861034338854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_105
+  m_EditorClassIdentifier: 
+  id: 50007
+  category: 5
+  strValue: CharacterAction.Shoot
+  desc: "\u53D1\u5C04"
+  icon: 
+--- !u!114 &1773596188844118591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
+  category: 3
+  strValue: LSBehaviourTag_Enemy
+  desc: "\u654C\u602A\u884C\u4E3A\u6807\u7B7E"
+  icon: 
+--- !u!114 &1781878717770282895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 5
+  category: 5
+  strValue: CharacterAction
+  desc: "\u89D2\u8272\u52A8\u4F5C"
+  icon: 
+--- !u!114 &1844130897413701446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40023
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HEAVY_ATTACK_3
+  desc: "\u91CD\u653B\u51FB3"
+  icon: Icon_State_HeavyAttack3
+--- !u!114 &1898375678619411725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10003
+  category: 1
+  strValue: LSBehaviourTag_Character.BEHAVIOUR_ATTACK
+  desc: "\u653B\u51FB\u884C\u4E3A"
+  icon: Icon_State_Attack
+--- !u!114 &2218880693948375727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_98
+  m_EditorClassIdentifier: 
+  id: 50000
+  category: 5
+  strValue: CharacterAction.None
+  desc: "\u65E0"
+  icon: 
+--- !u!114 &2383583920307402952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40009
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_ENTRANCE
+  desc: "\u767B\u573A"
+  icon: Icon_State_Entrance
+--- !u!114 &2470731855479201662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40004
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_SLEEP
+  desc: "\u7761\u89C9"
+  icon: Icon_State_Sleep
+--- !u!114 &2779746087457134227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20022
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_HEAVY_F
+  desc: "\u6B63\u9762\u53D7\u51FB\u5927\u786C\u76F4"
+  icon: Icon_State_Hurt_Heavy
+--- !u!114 &2796183980790959765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 30002
+  category: 3
+  strValue: LSBehaviourTag_Enemy.BEHAVIOUR_MOVE
+  desc: "\u79FB\u52A8\u884C\u4E3A"
+  icon: Icon_State_Walk
+--- !u!114 &3019100535928502954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 30006
+  category: 3
+  strValue: LSBehaviourTag_Enemy.BEHAVIOUR_INTERACTION
+  desc: "\u4EA4\u4E92\u884C\u4E3A"
+  icon: 
+--- !u!114 &3031850516305392543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_116
+  m_EditorClassIdentifier: 
+  id: 60002
+  category: 6
+  strValue: EnemyAction.Run
+  desc: "\u51B2\u523A"
+  icon: 
+--- !u!114 &3138287917563307137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40016
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_CONFIRM_TARGET
+  desc: "\u786E\u8BA4\u76EE\u6807"
+  icon: Icon_State_ConfirmTarget
+--- !u!114 &3173618304465279279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40026
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_COMBO_ATTACK_4
+  desc: "\u56DB\u8FDE\u51FB"
+  icon: Icon_State_ComboAttack4
+--- !u!114 &3319462573378222081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_101
+  m_EditorClassIdentifier: 
+  id: 50003
+  category: 5
+  strValue: CharacterAction.Roll
+  desc: "\u7FFB\u6EDA"
+  icon: 
+--- !u!114 &3376742159840104988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20012
+  category: 2
+  strValue: LSStateTag_Character.STATE_SWORD_CHARGING
+  desc: "\u5251_\u84C4\u529B"
+  icon: Icon_State_Sword_Attack
+--- !u!114 &3381966593222449066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40029
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_FINAL_ATTACK
+  desc: "\u7EC8\u6781\u62DB\u5F0F"
+  icon: Icon_State_FinalAttack
+--- !u!114 &3994427094441928590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_102
+  m_EditorClassIdentifier: 
+  id: 50004
+  category: 5
+  strValue: CharacterAction.Attack
+  desc: "\u653B\u51FB"
+  icon: 
+--- !u!114 &4258912944570976505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40046
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_INTERACTION2
+  desc: "\u4EA4\u4E92\u52A8\u4F5C2"
+  icon: 
+--- !u!114 &4452022584398379686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 30003
+  category: 3
+  strValue: LSBehaviourTag_Enemy.BEHAVIOUR_VIGILANT
+  desc: "\u8B66\u6212\u884C\u4E3A"
+  icon: Icon_State_Vigilant
+--- !u!114 &4564913714454356199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20019
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_NO
+  desc: "\u6CA1\u53D7\u51FB\u786C\u76F4"
+  icon: Icon_State_Hurt_No
+--- !u!114 &4672454499398245406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20003
+  category: 2
+  strValue: LSStateTag_Character.STATE_RUN
+  desc: "\u51B2\u523A"
+  icon: Icon_State_Move_Run
+--- !u!114 &4792094307663737990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_141
+  m_EditorClassIdentifier: 
+  id: 60140
+  category: 6
+  strValue: "EnemyAction.Attack_Dash1_\u51B2\u523A\u653B\u51FB1"
+  desc: "\u51B2\u523A\u653B\u51FB1"
+  icon: 
+--- !u!114 &4839653603867843421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20018
+  category: 2
+  strValue: LSStateTag_Character.STATE_SHIELD_BLOCK
+  desc: "\u6301\u76FE_\u683C\u6321"
+  icon: Icon_State_Shield_Block
+--- !u!114 &4879246287149356243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20010
+  category: 2
+  strValue: LSStateTag_Character.STATE_SWORD_NORMAL_ATTACK_3
+  desc: "\u5251_\u666E\u653B3"
+  icon: Icon_State_Sword_Attack
+--- !u!114 &4965039682845542284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_146
+  m_EditorClassIdentifier: 
+  id: 60203
+  category: 6
+  strValue: "EnemyAction.Interaction4_\u4EA4\u4E924"
+  desc: "\u4EA4\u4E92\u52A8\u4F5C4"
+  icon: 
+--- !u!114 &4987514547568087316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40033
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_WEAK_F
+  desc: "\u6B63\u9762\u53D7\u51FB\u5C0F\u786C\u76F4"
+  icon: Icon_State_Hurt_Weak
+--- !u!114 &5019113964719781998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_123
+  m_EditorClassIdentifier: 
+  id: 60014
+  category: 6
+  strValue: EnemyAction.Idle_SitUp
+  desc: "\u5750\u8D77"
+  icon: 
+--- !u!114 &5129402477692467739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20030
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_GROUND_DIE
+  desc: "\u5012\u5730\u6B7B\u4EA1"
+  icon: Icon_State_Hurt_Die
+--- !u!114 &5234358324568306832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40007
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_IDLE_SITTING
+  desc: "\u5750\u7740"
+  icon: Icon_State_Sit
+--- !u!114 &5330013219827034634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40001
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_IDLE
+  desc: "\u9759\u606F"
+  icon: Icon_State_Idle
+--- !u!114 &5424575459774266179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20006
+  category: 2
+  strValue: LSStateTag_Character.STATE_JUMP_LAND
+  desc: "\u8DF3\u8DC3"
+  icon: Icon_State_Jump_Land
+--- !u!114 &5426819776534209450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_149
+  m_EditorClassIdentifier: 
+  id: 70001
+  category: 7
+  strValue: SailAction.Interact
+  desc: "\u4EA4\u4E92"
+  icon: 
+--- !u!114 &5759549387072505879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20016
+  category: 2
+  strValue: LSStateTag_Character.STATE_SHIELD_ENTER_DEFENSE
+  desc: "\u6301\u76FE_\u8FDB\u5165\u9632\u5FA1"
+  icon: Icon_State_Shield_Enter_Defense
+--- !u!114 &5998506937915714407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40010
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_WALK
+  desc: "\u884C\u8D70"
+  icon: Icon_State_Walk
+--- !u!114 &6005339551209811030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_112
+  m_EditorClassIdentifier: 
+  id: 50099
+  category: 5
+  strValue: CharacterAction.TestTemp
+  desc: "\u6D4B\u8BD5\u7528\u4E34\u65F6\u6309\u952E"
+  icon: 
+--- !u!114 &6008954726553817964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 30005
+  category: 3
+  strValue: LSBehaviourTag_Enemy.BEHAVIOUR_HURT
+  desc: "\u53D7\u51FB\u884C\u4E3A"
+  icon: Icon_State_Hurt
+--- !u!114 &6020296931347276029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40031
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_DASH_ATTACK_2
+  desc: "\u51B2\u523A\u653B\u51FB2"
+  icon: Icon_State_DashAttack2
+--- !u!114 &6257189637096641296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40038
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_KNOCKFLY_B
+  desc: "\u80CC\u9762\u53D7\u51FB\u88AB\u51FB\u98DE"
+  icon: Icon_State_Hurt_KnockFly
+--- !u!114 &6287553767661304802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40021
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HEAVY_ATTACK_1
+  desc: "\u91CD\u653B\u51FB1"
+  icon: Icon_State_HeavyAttack1
+--- !u!114 &6469592109942269112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_142
+  m_EditorClassIdentifier: 
+  id: 60141
+  category: 6
+  strValue: "EnemyAction.Attack_Dash2_\u51B2\u523A\u653B\u51FB2"
+  desc: "\u51B2\u523A\u653B\u51FB2"
+  icon: 
+--- !u!114 &6494163848885518861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_140
+  m_EditorClassIdentifier: 
+  id: 60133
+  category: 6
+  strValue: "EnemyAction.Attack_Final_\u7EC8\u6781\u62DB\u5F0F"
+  desc: "\u7EC8\u6781\u62DB\u5F0F"
+  icon: 
+--- !u!114 &6873235190246378884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40041
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_STUN
+  desc: "\u53D7\u51FB\u51FB\u6655"
+  icon: Icon_State_Hurt_Stun
+--- !u!114 &6912491530085356248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_121
+  m_EditorClassIdentifier: 
+  id: 60012
+  category: 6
+  strValue: EnemyAction.Idle_Wake
+  desc: "\u9192\u6765"
+  icon: 
+--- !u!114 &6930753369477899805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20031
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_DIE
+  desc: "\u6B7B\u4EA1"
+  icon: Icon_State_Hurt_Die
+--- !u!114 &7055487474160892082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40042
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_STAND_UP
+  desc: "\u5012\u5730\u7AD9\u8D77"
+  icon: Icon_State_Hurt_StandUp
+--- !u!114 &7085819721609953181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_152
+  m_EditorClassIdentifier: 
+  id: 70004
+  category: 7
+  strValue: SailAction.ExitSail
+  desc: "\u9000\u51FA\u9A7E\u9A76\u8239\u53EA"
+  icon: 
+--- !u!114 &7088951457327914894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40045
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_INTERACTION1
+  desc: "\u4EA4\u4E92\u52A8\u4F5C1"
+  icon: 
+--- !u!114 &7190958880481548343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_111
+  m_EditorClassIdentifier: 
+  id: 50080
+  category: 5
+  strValue: CharacterAction.Interact
+  desc: "\u4EA4\u4E92"
+  icon: 
+--- !u!114 &7373221132690434284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20017
+  category: 2
+  strValue: LSStateTag_Character.STATE_SHIELD_DEFENDING
+  desc: "\u6301\u76FE_\u9632\u5FA1\u4E2D"
+  icon: Icon_State_Shield_Defending
+--- !u!114 &7415063813771006179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_129
+  m_EditorClassIdentifier: 
+  id: 60100
+  category: 6
+  strValue: "EnemyAction.Attack_Normal1_\u666E\u901A\u653B\u51FB1"
+  desc: "\u666E\u901A\u653B\u51FB1"
+  icon: 
+--- !u!114 &7466653769062676542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40020
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_NORMAL_ATTACK_3
+  desc: "\u666E\u901A\u653B\u51FB3"
+  icon: Icon_State_NormalAttack3
+--- !u!114 &7964023884807252199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_144
+  m_EditorClassIdentifier: 
+  id: 60201
+  category: 6
+  strValue: "EnemyAction.Interaction2_\u4EA4\u4E922"
+  desc: "\u4EA4\u4E92\u52A8\u4F5C2"
+  icon: 
+--- !u!114 &8000497765261179936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20033
+  category: 2
+  strValue: LSStateTag_Character.STATE_RD_FD
+  desc: "\u5168\u8EAB\u5E03\u5A03\u5A03\u6B7B\u4EA1"
+  icon: Icon_Ragdoll_Full_Dead
+--- !u!114 &8204243467473259633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40003
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_POSE
+  desc: "\u95F2\u7F6EPOSE"
+  icon: Icon_State_Pose
+--- !u!114 &8411461660142333675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_127
+  m_EditorClassIdentifier: 
+  id: 60022
+  category: 6
+  strValue: EnemyAction.Vigilant_ConfirmTarget
+  desc: "\u76EE\u6807\u786E\u8BA4\u52A8\u4F5C"
+  icon: 
+--- !u!114 &8430967726449820335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20007
+  category: 2
+  strValue: LSStateTag_Character.STATE_PUNCH_ATTACK_1
+  desc: "\u8D64\u624B_\u62F3\u51FB1"
+  icon: Icon_State_Attack
+--- !u!114 &8448985097576924878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10004
+  category: 1
+  strValue: LSBehaviourTag_Character.BEHAVIOUR_DEFENSE
+  desc: "\u9632\u5FA1\u884C\u4E3A"
+  icon: Icon_State_Defense
+--- !u!114 &8486725166470066421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_150
+  m_EditorClassIdentifier: 
+  id: 70002
+  category: 7
+  strValue: SailAction.EngineStartStop
+  desc: "\u8239\u53EA\u542F\u52A8\u5F00\u5173"
+  icon: 
+--- !u!114 &8682415207476339287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40047
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_INTERACTION3
+  desc: "\u4EA4\u4E92\u52A8\u4F5C3"
+  icon: 
+--- !u!114 &8856967364949337091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20026
+  category: 2
+  strValue: LSStateTag_Character.STATE_HURT_KNOCKFLYING
+  desc: "\u88AB\u51FB\u98DE\u4E2D"
+  icon: Icon_State_Hurt_KnockFlying
+--- !u!114 &8886131301800667270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_143
+  m_EditorClassIdentifier: 
+  id: 60200
+  category: 6
+  strValue: "EnemyAction.Interaction1_\u4EA4\u4E921"
+  desc: "\u4EA4\u4E92\u52A8\u4F5C1"
+  icon: 
+--- !u!114 &8972054770835714842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10002
+  category: 1
+  strValue: LSBehaviourTag_Character.BEHAVIOUR_MOVE
+  desc: "\u79FB\u52A8\u884C\u4E3A"
+  icon: Icon_State_Walk
+--- !u!114 &8995816354058193852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 40035
+  category: 4
+  strValue: LSStateTag_Enemy.STATE_HURT_HEAVY_F
+  desc: "\u6B63\u9762\u53D7\u51FB\u5927\u786C\u76F4"
+  icon: Icon_State_Hurt_Heavy
+--- !u!114 &9016053266815252738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_110
+  m_EditorClassIdentifier: 
+  id: 50070
+  category: 5
+  strValue: CharacterAction.UseItem
+  desc: "\u4F7F\u7528\u9053\u5177"
+  icon: 
+--- !u!114 &9109410061126877576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_120
+  m_EditorClassIdentifier: 
+  id: 60011
+  category: 6
+  strValue: EnemyAction.Idle_Sleep
+  desc: "\u7761\u89C9"
+  icon: 
+--- !u!114 &9166466886931838443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_107
+  m_EditorClassIdentifier: 
+  id: 50009
+  category: 5
+  strValue: CharacterAction.AttackJustRelease
+  desc: "\u653B\u51FB\u677E\u5F00\u77AC\u95F4"
+  icon: 

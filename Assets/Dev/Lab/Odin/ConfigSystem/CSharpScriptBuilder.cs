@@ -50,12 +50,12 @@ public class CSharpScriptBuilder
 
     public void AppendUsing(string nameSpace)
     {
-        AppendLine($"using {nameSpace}");
+        AppendLine($"using {nameSpace};");
     }
 
     public ScopeHandle BeginNameSpace(string nameSpace) 
     {
-        AppendLine($"using {nameSpace}");
+        AppendLine($"namespace {nameSpace}");
         return new ScopeHandle(this, true, false);
     }
 

@@ -1,40 +1,170 @@
 namespace LS.Game
 {
-    public partial class EnumWrap
-    {
-        public static EnumWrap None;
-        public static EnumWrap Run;
-        public static EnumWrap Jump;
-        public static EnumWrap Roll;
-        public static EnumWrap Attack;
-        public static EnumWrap Aim;
-        public static EnumWrap AimCancel;
-        public static EnumWrap Shoot;
-        public static EnumWrap AttackCharge;
-        public static EnumWrap AttackJustRelease;
-        public static EnumWrap AttackRelease;
-        public static EnumWrap Defend;
-        public static EnumWrap UseItem;
-        public static EnumWrap Interact;
-        public static EnumWrap TestTemp;
-
-        static EnumWrap()
-        {
-            None = new EnumWrap(CharacterAction.None);
-            Run = new EnumWrap(CharacterAction.Run);
-            Jump = new EnumWrap(CharacterAction.Jump);
-            Roll = new EnumWrap(CharacterAction.Roll);
-            Attack = new EnumWrap(CharacterAction.Attack);
-            Aim = new EnumWrap(CharacterAction.Aim);
-            AimCancel = new EnumWrap(CharacterAction.AimCancel);
-            Shoot = new EnumWrap(CharacterAction.Shoot);
-            AttackCharge = new EnumWrap(CharacterAction.AttackCharge);
-            AttackJustRelease = new EnumWrap(CharacterAction.AttackJustRelease);
-            AttackRelease = new EnumWrap(CharacterAction.AttackRelease);
-            Defend = new EnumWrap(CharacterAction.Defend);
-            UseItem = new EnumWrap(CharacterAction.UseItem);
-            Interact = new EnumWrap(CharacterAction.Interact);
-            TestTemp = new EnumWrap(CharacterAction.TestTemp);
-        }
-    }
+	public class LSBehaviourTag_CharacterWrap
+	{
+		public static ActionTagWrap BEHAVIOUR_IDLE = new ActionTagWrap(LS.LSBehaviourTag_Character.IDLE);
+		public static ActionTagWrap BEHAVIOUR_MOVE = new ActionTagWrap(LS.LSBehaviourTag_Character.MOVE);
+		public static ActionTagWrap BEHAVIOUR_ATTACK = new ActionTagWrap(LS.LSBehaviourTag_Character.ATTACK);
+		public static ActionTagWrap BEHAVIOUR_DEFENSE = new ActionTagWrap(LS.LSBehaviourTag_Character.DEFENSE);
+		public static ActionTagWrap BEHAVIOUR_HURT = new ActionTagWrap(LS.LSBehaviourTag_Character.HURT);
+		public static ActionTagWrap BEHAVIOUR_SWIM = new ActionTagWrap(LS.LSBehaviourTag_Character.SWIM);
+	}
+	public class LSStateTag_CharacterWrap
+	{
+		public static ActionTagWrap STATE_IDLE = new ActionTagWrap(LS.LSStateTag_Character.IDLE);
+		public static ActionTagWrap STATE_WALK = new ActionTagWrap(LS.LSStateTag_Character.WALK);
+		public static ActionTagWrap STATE_RUN = new ActionTagWrap(LS.LSStateTag_Character.RUN);
+		public static ActionTagWrap STATE_JUMP = new ActionTagWrap(LS.LSStateTag_Character.JUMP);
+		public static ActionTagWrap STATE_JUMP_AIRBORNE = new ActionTagWrap(LS.LSStateTag_Character.JUMP_AIRBORNE);
+		public static ActionTagWrap STATE_JUMP_LAND = new ActionTagWrap(LS.LSStateTag_Character.JUMP_LAND);
+		public static ActionTagWrap STATE_PUNCH_ATTACK_1 = new ActionTagWrap(LS.LSStateTag_Character.PUNCH_ATTACK_1);
+		public static ActionTagWrap STATE_SWORD_NORMAL_ATTACK_1 = new ActionTagWrap(LS.LSStateTag_Character.SWORD_NORMAL_ATTACK_1);
+		public static ActionTagWrap STATE_SWORD_NORMAL_ATTACK_2 = new ActionTagWrap(LS.LSStateTag_Character.SWORD_NORMAL_ATTACK_2);
+		public static ActionTagWrap STATE_SWORD_NORMAL_ATTACK_3 = new ActionTagWrap(LS.LSStateTag_Character.SWORD_NORMAL_ATTACK_3);
+		public static ActionTagWrap STATE_SWORD_DASH_ATTACK = new ActionTagWrap(LS.LSStateTag_Character.SWORD_DASH_ATTACK);
+		public static ActionTagWrap STATE_SWORD_CHARGING = new ActionTagWrap(LS.LSStateTag_Character.SWORD_CHARGING);
+		public static ActionTagWrap STATE_SWORD_CHARGE_ATTACK = new ActionTagWrap(LS.LSStateTag_Character.SWORD_CHARGE_ATTACK);
+		public static ActionTagWrap STATE_SHIELD_BLOCKED_ATTACK = new ActionTagWrap(LS.LSStateTag_Character.SHIELD_BLOCKED_ATTACK);
+		public static ActionTagWrap STATE_SHIELD_SLAM = new ActionTagWrap(LS.LSStateTag_Character.SHIELD_SLAM);
+		public static ActionTagWrap STATE_SHIELD_ENTER_DEFENSE = new ActionTagWrap(LS.LSStateTag_Character.SHIELD_ENTER_DEFENSE);
+		public static ActionTagWrap STATE_SHIELD_DEFENDING = new ActionTagWrap(LS.LSStateTag_Character.SHIELD_DEFENDING);
+		public static ActionTagWrap STATE_SHIELD_BLOCK = new ActionTagWrap(LS.LSStateTag_Character.SHIELD_BLOCK);
+		public static ActionTagWrap STATE_HURT_NO = new ActionTagWrap(LS.LSStateTag_Character.HURT_NO);
+		public static ActionTagWrap STATE_HURT_WEAK_F = new ActionTagWrap(LS.LSStateTag_Character.HURT_WEAK_F);
+		public static ActionTagWrap STATE_HURT_WEAK_B = new ActionTagWrap(LS.LSStateTag_Character.HURT_WEAK_B);
+		public static ActionTagWrap STATE_HURT_HEAVY_F = new ActionTagWrap(LS.LSStateTag_Character.HURT_HEAVY_F);
+		public static ActionTagWrap STATE_HURT_HEAVY_B = new ActionTagWrap(LS.LSStateTag_Character.HURT_HEAVY_B);
+		public static ActionTagWrap STATE_HURT_KNOCKFLY_F = new ActionTagWrap(LS.LSStateTag_Character.HURT_KNOCKFLY_F);
+		public static ActionTagWrap STATE_HURT_KNOCKFLY_B = new ActionTagWrap(LS.LSStateTag_Character.HURT_KNOCKFLY_B);
+		public static ActionTagWrap STATE_HURT_KNOCKFLYING = new ActionTagWrap(LS.LSStateTag_Character.HURT_KNOCKFLYING);
+		public static ActionTagWrap STATE_HURT_KNOCKDOWN = new ActionTagWrap(LS.LSStateTag_Character.HURT_KNOCKDOWN);
+		public static ActionTagWrap STATE_HURT_STUN = new ActionTagWrap(LS.LSStateTag_Character.HURT_STUN);
+		public static ActionTagWrap STATE_HURT_STAND_UP = new ActionTagWrap(LS.LSStateTag_Character.HURT_STAND_UP);
+		public static ActionTagWrap STATE_HURT_GROUND_DIE = new ActionTagWrap(LS.LSStateTag_Character.HURT_GROUND_DIE);
+		public static ActionTagWrap STATE_HURT_DIE = new ActionTagWrap(LS.LSStateTag_Character.HURT_DIE);
+		public static ActionTagWrap STATE_RD_FA = new ActionTagWrap(LS.LSStateTag_Character.HURT_RAGDOLL_FULL_ACTIVE);
+		public static ActionTagWrap STATE_RD_FD = new ActionTagWrap(LS.LSStateTag_Character.HURT_RAGDOLL_FULL_DEAD);
+	}
+	public class LSBehaviourTag_EnemyWrap
+	{
+		public static ActionTagWrap BEHAVIOUR_IDLE = new ActionTagWrap(LS.LSBehaviourTag_Enemy.IDLE);
+		public static ActionTagWrap BEHAVIOUR_MOVE = new ActionTagWrap(LS.LSBehaviourTag_Enemy.MOVE);
+		public static ActionTagWrap BEHAVIOUR_VIGILANT = new ActionTagWrap(LS.LSBehaviourTag_Enemy.VIGILANT);
+		public static ActionTagWrap BEHAVIOUR_ATTACK = new ActionTagWrap(LS.LSBehaviourTag_Enemy.ATTACK);
+		public static ActionTagWrap BEHAVIOUR_HURT = new ActionTagWrap(LS.LSBehaviourTag_Enemy.HURT);
+		public static ActionTagWrap BEHAVIOUR_INTERACTION = new ActionTagWrap(LS.LSBehaviourTag_Enemy.INTERACTION);
+	}
+	public class LSStateTag_EnemyWrap
+	{
+		public static ActionTagWrap STATE_IDLE = new ActionTagWrap(LS.LSStateTag_Enemy.IDLE);
+		public static ActionTagWrap STATE_TURN_AROUND = new ActionTagWrap(LS.LSStateTag_Enemy.TURN_AROUND);
+		public static ActionTagWrap STATE_POSE = new ActionTagWrap(LS.LSStateTag_Enemy.POSE);
+		public static ActionTagWrap STATE_SLEEP = new ActionTagWrap(LS.LSStateTag_Enemy.SLEEP);
+		public static ActionTagWrap STATE_WAKE = new ActionTagWrap(LS.LSStateTag_Enemy.WAKE);
+		public static ActionTagWrap STATE_IDLE_SIT = new ActionTagWrap(LS.LSStateTag_Enemy.IDLE_SIT);
+		public static ActionTagWrap STATE_IDLE_SITTING = new ActionTagWrap(LS.LSStateTag_Enemy.IDLE_SITTING);
+		public static ActionTagWrap STATE_IDLE_SITUP = new ActionTagWrap(LS.LSStateTag_Enemy.IDLE_SITUP);
+		public static ActionTagWrap STATE_ENTRANCE = new ActionTagWrap(LS.LSStateTag_Enemy.ENTRANCE);
+		public static ActionTagWrap STATE_WALK = new ActionTagWrap(LS.LSStateTag_Enemy.WALK);
+		public static ActionTagWrap STATE_RUN = new ActionTagWrap(LS.LSStateTag_Enemy.RUN);
+		public static ActionTagWrap STATE_DASH = new ActionTagWrap(LS.LSStateTag_Enemy.DASH);
+		public static ActionTagWrap STATE_AERIAL = new ActionTagWrap(LS.LSStateTag_Enemy.AERIAL);
+		public static ActionTagWrap STATE_ALERT = new ActionTagWrap(LS.LSStateTag_Enemy.ALERT);
+		public static ActionTagWrap STATE_LOOK_AROUND = new ActionTagWrap(LS.LSStateTag_Enemy.LOOK_AROUND);
+		public static ActionTagWrap STATE_CONFIRM_TARGET = new ActionTagWrap(LS.LSStateTag_Enemy.CONFIRM_TARGET);
+		public static ActionTagWrap STATE_THREATEN_TARGET = new ActionTagWrap(LS.LSStateTag_Enemy.THREATEN_TARGET);
+		public static ActionTagWrap STATE_NORMAL_ATTACK_1 = new ActionTagWrap(LS.LSStateTag_Enemy.NORMAL_ATTACK_1);
+		public static ActionTagWrap STATE_NORMAL_ATTACK_2 = new ActionTagWrap(LS.LSStateTag_Enemy.NORMAL_ATTACK_2);
+		public static ActionTagWrap STATE_NORMAL_ATTACK_3 = new ActionTagWrap(LS.LSStateTag_Enemy.NORMAL_ATTACK_3);
+		public static ActionTagWrap STATE_HEAVY_ATTACK_1 = new ActionTagWrap(LS.LSStateTag_Enemy.HEAVY_ATTACK_1);
+		public static ActionTagWrap STATE_HEAVY_ATTACK_2 = new ActionTagWrap(LS.LSStateTag_Enemy.HEAVY_ATTACK_2);
+		public static ActionTagWrap STATE_HEAVY_ATTACK_3 = new ActionTagWrap(LS.LSStateTag_Enemy.HEAVY_ATTACK_3);
+		public static ActionTagWrap STATE_COMBO_ATTACK_2 = new ActionTagWrap(LS.LSStateTag_Enemy.COMBO_ATTACK_2);
+		public static ActionTagWrap STATE_COMBO_ATTACK_3 = new ActionTagWrap(LS.LSStateTag_Enemy.COMBO_ATTACK_3);
+		public static ActionTagWrap STATE_COMBO_ATTACK_4 = new ActionTagWrap(LS.LSStateTag_Enemy.COMBO_ATTACK_4);
+		public static ActionTagWrap STATE_SPECIAL_ATTACK = new ActionTagWrap(LS.LSStateTag_Enemy.SPECIAL_ATTACK);
+		public static ActionTagWrap STATE_SKILL_ATTACK = new ActionTagWrap(LS.LSStateTag_Enemy.SKILL_ATTACK);
+		public static ActionTagWrap STATE_FINAL_ATTACK = new ActionTagWrap(LS.LSStateTag_Enemy.FINAL_ATTACK);
+		public static ActionTagWrap STATE_DASH_ATTACK_1 = new ActionTagWrap(LS.LSStateTag_Enemy.DASH_ATTACK_1);
+		public static ActionTagWrap STATE_DASH_ATTACK_2 = new ActionTagWrap(LS.LSStateTag_Enemy.DASH_ATTACK_2);
+		public static ActionTagWrap STATE_DASH_TIRED = new ActionTagWrap(LS.LSStateTag_Enemy.TIRED);
+		public static ActionTagWrap STATE_HURT_WEAK_F = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_WEAK_F);
+		public static ActionTagWrap STATE_HURT_WEAK_B = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_WEAK_B);
+		public static ActionTagWrap STATE_HURT_HEAVY_F = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_HEAVY_F);
+		public static ActionTagWrap STATE_HURT_HEAVY_B = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_HEAVY_B);
+		public static ActionTagWrap STATE_HURT_KNOCKFLY_F = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_KNOCKFLY_F);
+		public static ActionTagWrap STATE_HURT_KNOCKFLY_B = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_KNOCKFLY_B);
+		public static ActionTagWrap STATE_HURT_KNOCKFLYING = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_KNOCKFLYING);
+		public static ActionTagWrap STATE_HURT_KNOCKDOWN = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_KNOCKDOWN);
+		public static ActionTagWrap STATE_HURT_STUN = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_STUN);
+		public static ActionTagWrap STATE_HURT_STAND_UP = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_STAND_UP);
+		public static ActionTagWrap STATE_HURT_GROUND_DIE = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_GROUND_DIE);
+		public static ActionTagWrap STATE_HURT_DIE = new ActionTagWrap(LS.LSStateTag_Enemy.HURT_DIE);
+		public static ActionTagWrap STATE_INTERACTION1 = new ActionTagWrap(LS.LSStateTag_Enemy.INTERACTION1);
+		public static ActionTagWrap STATE_INTERACTION2 = new ActionTagWrap(LS.LSStateTag_Enemy.INTERACTION2);
+		public static ActionTagWrap STATE_INTERACTION3 = new ActionTagWrap(LS.LSStateTag_Enemy.INTERACTION3);
+		public static ActionTagWrap STATE_INTERACTION4 = new ActionTagWrap(LS.LSStateTag_Enemy.INTERACTION4);
+	}
+	public class CharacterActionWrap
+	{
+		public static ActionTagWrap None = new ActionTagWrap(LS.Game.CharacterAction.None);
+		public static ActionTagWrap Run = new ActionTagWrap(LS.Game.CharacterAction.Run);
+		public static ActionTagWrap Jump = new ActionTagWrap(LS.Game.CharacterAction.Jump);
+		public static ActionTagWrap Roll = new ActionTagWrap(LS.Game.CharacterAction.Roll);
+		public static ActionTagWrap Attack = new ActionTagWrap(LS.Game.CharacterAction.Attack);
+		public static ActionTagWrap Aim = new ActionTagWrap(LS.Game.CharacterAction.Aim);
+		public static ActionTagWrap AimCancel = new ActionTagWrap(LS.Game.CharacterAction.AimCancel);
+		public static ActionTagWrap Shoot = new ActionTagWrap(LS.Game.CharacterAction.Shoot);
+		public static ActionTagWrap AttackCharge = new ActionTagWrap(LS.Game.CharacterAction.AttackCharge);
+		public static ActionTagWrap AttackJustRelease = new ActionTagWrap(LS.Game.CharacterAction.AttackJustRelease);
+		public static ActionTagWrap AttackRelease = new ActionTagWrap(LS.Game.CharacterAction.AttackRelease);
+		public static ActionTagWrap Defend = new ActionTagWrap(LS.Game.CharacterAction.Defend);
+		public static ActionTagWrap UseItem = new ActionTagWrap(LS.Game.CharacterAction.UseItem);
+		public static ActionTagWrap Interact = new ActionTagWrap(LS.Game.CharacterAction.Interact);
+		public static ActionTagWrap TestTemp = new ActionTagWrap(LS.Game.CharacterAction.TestTemp);
+	}
+	public class EnemyActionWrap
+	{
+		public static ActionTagWrap None = new ActionTagWrap(LS.Game.EnemyAction.None);
+		public static ActionTagWrap Walk = new ActionTagWrap(LS.Game.EnemyAction.Walk);
+		public static ActionTagWrap Run = new ActionTagWrap(LS.Game.EnemyAction.Run);
+		public static ActionTagWrap Jump = new ActionTagWrap(LS.Game.EnemyAction.Jump);
+		public static ActionTagWrap Roll = new ActionTagWrap(LS.Game.EnemyAction.Roll);
+		public static ActionTagWrap Idle_Pose = new ActionTagWrap(LS.Game.EnemyAction.Idle_Pose);
+		public static ActionTagWrap Idle_Sleep = new ActionTagWrap(LS.Game.EnemyAction.Idle_Sleep);
+		public static ActionTagWrap Idle_Wake = new ActionTagWrap(LS.Game.EnemyAction.Idle_Wake);
+		public static ActionTagWrap Idle_Sit = new ActionTagWrap(LS.Game.EnemyAction.Idle_Sit);
+		public static ActionTagWrap Idle_SitUp = new ActionTagWrap(LS.Game.EnemyAction.Idle_SitUp);
+		public static ActionTagWrap Idle_Entrance = new ActionTagWrap(LS.Game.EnemyAction.Idle_Entrance);
+		public static ActionTagWrap Vigilant_Alert = new ActionTagWrap(LS.Game.EnemyAction.Vigilant_Alert);
+		public static ActionTagWrap Vigilant_LookAround = new ActionTagWrap(LS.Game.EnemyAction.Vigilant_LookAround);
+		public static ActionTagWrap Vigilant_ConfirmTarget = new ActionTagWrap(LS.Game.EnemyAction.Vigilant_ConfirmTarget);
+		public static ActionTagWrap Vigilant_ThreatenTarget = new ActionTagWrap(LS.Game.EnemyAction.Vigilant_ThreatenTarget);
+		public static ActionTagWrap Attack_Normal1_普通攻击1 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Normal1_普通攻击1);
+		public static ActionTagWrap Attack_Normal2_普通攻击2 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Normal2_普通攻击2);
+		public static ActionTagWrap Attack_Normal3_普通攻击3 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Normal3_普通攻击3);
+		public static ActionTagWrap Attack_Heavy1_重攻击1 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Heavy1_重攻击1);
+		public static ActionTagWrap Attack_Heavy2_重攻击2 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Heavy2_重攻击2);
+		public static ActionTagWrap Attack_Heavy3_重攻击3 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Heavy3_重攻击3);
+		public static ActionTagWrap Attack_Combo2_两连击 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Combo2_两连击);
+		public static ActionTagWrap Attack_Combo3_三连击 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Combo3_三连击);
+		public static ActionTagWrap Attack_Combo4_四连击 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Combo4_四连击);
+		public static ActionTagWrap Attack_Special_特殊招式 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Special_特殊招式);
+		public static ActionTagWrap Attack_Skill_技能招式 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Skill_技能招式);
+		public static ActionTagWrap Attack_Final_终极招式 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Final_终极招式);
+		public static ActionTagWrap Attack_Dash1_冲刺攻击1 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Dash1_冲刺攻击1);
+		public static ActionTagWrap Attack_Dash2_冲刺攻击2 = new ActionTagWrap(LS.Game.EnemyAction.Attack_Dash2_冲刺攻击2);
+		public static ActionTagWrap Interaction1_交互1 = new ActionTagWrap(LS.Game.EnemyAction.Interaction1_交互1);
+		public static ActionTagWrap Interaction2_交互2 = new ActionTagWrap(LS.Game.EnemyAction.Interaction2_交互2);
+		public static ActionTagWrap Interaction3_交互3 = new ActionTagWrap(LS.Game.EnemyAction.Interaction3_交互3);
+		public static ActionTagWrap Interaction4_交互4 = new ActionTagWrap(LS.Game.EnemyAction.Interaction4_交互4);
+	}
+	public class SailActionWrap
+	{
+		public static ActionTagWrap None = new ActionTagWrap(LS.Game.SailAction.None);
+		public static ActionTagWrap Interact = new ActionTagWrap(LS.Game.SailAction.Interact);
+		public static ActionTagWrap EngineStartStop = new ActionTagWrap(LS.Game.SailAction.EngineStartStop);
+		public static ActionTagWrap Anchor = new ActionTagWrap(LS.Game.SailAction.Anchor);
+		public static ActionTagWrap ExitSail = new ActionTagWrap(LS.Game.SailAction.ExitSail);
+	}
 }

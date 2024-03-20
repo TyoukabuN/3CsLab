@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257afac70db6c5d44b8b3d3cfdabfff1, type: 3}
+  m_Name: EntityActionTagConfigAsset
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  metaConfig: {fileID: 11400000, guid: 44c32c3065190564fb7981f382e8684a, type: 2}
+  id: 0
+  items:
+  - {fileID: 8503023446767710083}
+--- !u!114 &8503023446767710083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f23019a07fb7a419cb27775541f637, type: 3}
+  m_Name: EntityActionConfigItem_0
+  m_EditorClassIdentifier: 
+  id: 70005
+  category: 7
+  strValue: TEST_70005
+  desc: 
+  icon: 

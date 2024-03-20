@@ -14,13 +14,13 @@ public abstract class ConfigAsset<IdType,ItemType> : ConfigAsset
 
     [TableList]
     [ListDrawerSettings(
-        CustomAddFunction = "Add", 
+        CustomAddFunction = "AddElement", 
         CustomRemoveIndexFunction = "RemoveAt"
     )]
     public List<ItemType> items;
 
 #if UNITY_EDITOR
-    public abstract void Add();
+    public abstract void AddElement();
     public abstract void RemoveAt(int index);
 
     public virtual void Save()

@@ -4,34 +4,34 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-
-    
+namespace LS
+{
     #region Hero
     [MotionStateTagPreset("角色行为标签", true)]
     public static class LSBehaviourTag_Character
     {
         [LabelText("闲置行为"), TagIcon("Icon_State_Idle")]
         public const string IDLE = "BEHAVIOUR_IDLE";
-        [LabelText("移动行为"), TagIcon("Icon_State_Walk")] 
+        [LabelText("移动行为"), TagIcon("Icon_State_Walk")]
         public const string MOVE = "BEHAVIOUR_MOVE";
-        [LabelText("攻击行为"), TagIcon("Icon_State_Attack")] 
+        [LabelText("攻击行为"), TagIcon("Icon_State_Attack")]
         public const string ATTACK = "BEHAVIOUR_ATTACK";
-        [LabelText("防御行为"), TagIcon("Icon_State_Defense")] 
+        [LabelText("防御行为"), TagIcon("Icon_State_Defense")]
         public const string DEFENSE = "BEHAVIOUR_DEFENSE";
         [LabelText("受击行为"), TagIcon("Icon_State_Hurt")]
         public const string HURT = "BEHAVIOUR_HURT";
 
-        [LabelText("游泳行为"), TagIcon("Icon_State_Swim")] 
+        [LabelText("游泳行为"), TagIcon("Icon_State_Swim")]
         public const string SWIM = "BEHAVIOUR_SWIM";
     }
-    [MotionStateTagPreset("角色状态标签",false)]
+    [MotionStateTagPreset("角色状态标签", false)]
     public static class LSStateTag_Character
     {
         #region Idle
-        [LabelText("静息"), TagIcon("Icon_State_Idle")] 
+        [LabelText("静息"), TagIcon("Icon_State_Idle")]
         public const string IDLE = "STATE_IDLE";
         #endregion
-        
+
         #region Move
         [LabelText("走"), TagIcon("Icon_State_Move_Walk")]
         public const string WALK = "STATE_WALK";
@@ -45,13 +45,13 @@ using UnityEngine;
         [LabelText("跳跃"), TagIcon("Icon_State_Jump_Land")]
         public const string JUMP_LAND = "STATE_JUMP_LAND";
         #endregion
-        
+
         #region Attack
         #region 空手
         [LabelText("赤手_拳击1"), TagIcon("Icon_State_Attack")]
         public const string PUNCH_ATTACK_1 = "STATE_PUNCH_ATTACK_1";
         #endregion
-        
+
         #region 剑相关
         [LabelText("剑_普攻1"), TagIcon("Icon_State_Sword_Attack")]
         public const string SWORD_NORMAL_ATTACK_1 = "STATE_SWORD_NORMAL_ATTACK_1";
@@ -67,7 +67,7 @@ using UnityEngine;
         [LabelText("剑_蓄力攻击"), TagIcon("Icon_State_Sword_Attack")]
         public const string SWORD_CHARGE_ATTACK = "STATE_SWORD_CHARGE_ATTACK";
         #endregion
-        
+
         #region 盾相关
         [LabelText("持盾_格挡反击"), TagIcon("Icon_State_Shield_Blocked_Attack")]
         public const string SHIELD_BLOCKED_ATTACK = "STATE_SHIELD_BLOCKED_ATTACK";
@@ -75,7 +75,7 @@ using UnityEngine;
         public const string SHIELD_SLAM = "STATE_SHIELD_SLAM";
         #endregion
         #endregion
-        
+
         #region Defense
         [LabelText("持盾_进入防御"), TagIcon("Icon_State_Shield_Enter_Defense")]
         public const string SHIELD_ENTER_DEFENSE = "STATE_SHIELD_ENTER_DEFENSE";
@@ -84,7 +84,7 @@ using UnityEngine;
         [LabelText("持盾_格挡"), TagIcon("Icon_State_Shield_Block")]
         public const string SHIELD_BLOCK = "STATE_SHIELD_BLOCK";
         #endregion
-        
+
         #region Hurt
         [LabelText("没受击硬直"), TagIcon("Icon_State_Hurt_No")]
         public const string HURT_NO = "STATE_HURT_NO";
@@ -116,39 +116,39 @@ using UnityEngine;
         public const string HURT_RAGDOLL_FULL_ACTIVE = "STATE_RD_FA";
         [LabelText("全身布娃娃死亡"), TagIcon("Icon_Ragdoll_Full_Dead")]
         public const string HURT_RAGDOLL_FULL_DEAD = "STATE_RD_FD";
-        
+
         #endregion
     }
     #endregion
-    
-    
-    
+
+
+
     #region Enemy 
     // [MotionTagPreset("敌人Behaviour标签")]
-    [MotionStateTagPreset("敌怪行为标签",true)]
+    [MotionStateTagPreset("敌怪行为标签", true)]
     public static class LSBehaviourTag_Enemy
     {
         [LabelText("闲置行为"), TagIcon("Icon_State_Idle")]
         public const string IDLE = "BEHAVIOUR_IDLE";
-        [LabelText("移动行为"), TagIcon("Icon_State_Walk")] 
+        [LabelText("移动行为"), TagIcon("Icon_State_Walk")]
         public const string MOVE = "BEHAVIOUR_MOVE";
-        [LabelText("警戒行为"), TagIcon("Icon_State_Vigilant")] 
+        [LabelText("警戒行为"), TagIcon("Icon_State_Vigilant")]
         public const string VIGILANT = "BEHAVIOUR_VIGILANT";
-        [LabelText("攻击行为"), TagIcon("Icon_State_Attack")] 
+        [LabelText("攻击行为"), TagIcon("Icon_State_Attack")]
         public const string ATTACK = "BEHAVIOUR_ATTACK";
         [LabelText("受击行为"), TagIcon("Icon_State_Hurt")]
         public const string HURT = "BEHAVIOUR_HURT";
         [LabelText("交互行为"), TagIcon("")]
         public const string INTERACTION = "BEHAVIOUR_INTERACTION";
     }
-    
-    
-    [MotionStateTagPreset("敌怪状态标签",false)]
+
+
+    [MotionStateTagPreset("敌怪状态标签", false)]
     // [MotionTagPreset("敌人State标签")]
     public static class LSStateTag_Enemy
     {
         #region IDLE Behaviour
-        [LabelText("静息"), TagIcon("Icon_State_Idle")] 
+        [LabelText("静息"), TagIcon("Icon_State_Idle")]
         public const string IDLE = "STATE_IDLE";
         [LabelText("原地转身"), TagIcon("Icon_State_TurnAround")]
         public const string TURN_AROUND = "STATE_TURN_AROUND";
@@ -165,13 +165,13 @@ using UnityEngine;
         public const string IDLE_SITTING = "STATE_IDLE_SITTING";
         [LabelText("坐起"), TagIcon("Icon_State_Sit")]
         public const string IDLE_SITUP = "STATE_IDLE_SITUP";
-        
+
         [LabelText("登场"), TagIcon("Icon_State_Entrance")]
         public const string ENTRANCE = "STATE_ENTRANCE";
         #endregion
-        
+
         #region MOVE Behaviour
-        [LabelText("行走"), TagIcon("Icon_State_Walk")] 
+        [LabelText("行走"), TagIcon("Icon_State_Walk")]
         public const string WALK = "STATE_WALK";
         // [LabelText("倒退走"), TagIcon("Icon_State_WalkReverse")]
         // public const string WALK_REVERSE = "STATE_WALK_REVERSE";
@@ -184,7 +184,7 @@ using UnityEngine;
         [LabelText("滞空"), TagIcon("Icon_State_Aerial")]
         public const string AERIAL = "STATE_AERIAL";
         #endregion
-        
+
         #region VIGILANT Behaviour
         [LabelText("引起警觉"), TagIcon("Icon_State_Alert")]
         public const string ALERT = "STATE_ALERT";
@@ -195,7 +195,7 @@ using UnityEngine;
         [LabelText("威吓目标"), TagIcon("Icon_State_ThreatenTarget")]
         public const string THREATEN_TARGET = "STATE_THREATEN_TARGET";
         #endregion
-        
+
         #region ATTACK Behaviour
         [LabelText("普通攻击1"), TagIcon("Icon_State_NormalAttack1")]
         public const string NORMAL_ATTACK_1 = "STATE_NORMAL_ATTACK_1";
@@ -294,3 +294,4 @@ using UnityEngine;
     }
     #endregion
 
+}

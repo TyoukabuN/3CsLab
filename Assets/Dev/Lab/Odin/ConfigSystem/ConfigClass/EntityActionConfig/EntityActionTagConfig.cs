@@ -9,7 +9,12 @@ public static class EntityActionTagConfig
     private static bool hadInitialize = false;
     private static string configAssetName = "EntityActionTagConfigAsset";
     private static EntityActionTagConfigAsset asset = null;
-    public static EntityActionTagConfigAsset ConfigAsset { get { return asset; } }
+    public static EntityActionTagConfigAsset ConfigAsset { 
+        get {
+            if (!hadInitialize) OnInit();
+            return asset; 
+        } 
+    }
 
     public static int CategoryInterval = 10000;
 
@@ -37,7 +42,7 @@ public static class EntityActionTagConfig
 
     static EntityActionTagConfig()
     {
-        OnInit();
+        OnInit(); 
     }
 
     public static Dictionary<int, EntityActionTagConfigItem> id2ConfigItem;

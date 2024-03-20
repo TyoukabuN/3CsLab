@@ -10,7 +10,7 @@ using System.IO;
 [CreateAssetMenu(fileName = "MotionFlagConfigAsset", menuName = "ConfigsAsset/MotionFlagConfigAsset", order = 7)]
 public class MotionFlagConfigAsset : ConfigAsset<int,MotionFlagConfigItem>
 {
-    public override void Add()
+    public override void AddElement()
     {
         items.Add(new MotionFlagConfigItem());
     }
