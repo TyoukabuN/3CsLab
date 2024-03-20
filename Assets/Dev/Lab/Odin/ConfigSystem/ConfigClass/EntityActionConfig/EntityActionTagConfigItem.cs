@@ -9,6 +9,9 @@ public class EntityActionTagConfigItem : ScriptableObject
     [LabelText("id")]
     public int id;
 
+    [LabelText("category")]
+    public int category;
+
     [LabelText("strValue")]
     public string strValue;
 
@@ -25,8 +28,10 @@ public class EntityActionTagConfigItem : ScriptableObject
     public void SetupAsDefault()
     {
         id = -1;
+        category = -1;
         strValue = "";
         desc = "";
+        icon = "";
     }
     public string ToString()
     {
@@ -46,4 +51,3 @@ public class EntityActionTagConfigItem : ScriptableObject
         return sb.ToString();
     }
 }
-    

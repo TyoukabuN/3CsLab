@@ -1,15 +1,12 @@
-using Animancer.Editor;
 using LS.Game;
-using ParadoxNotion;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Net.WebSockets;
 using System.Reflection;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using System.IO;
 
 public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfigItem>
 {
@@ -18,6 +15,8 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
     [Button("用CharacterAction文件中枚举初始化配置")]
     public void ConvertFromCharacterAction()
     {
+        AssetDatabase.StartAssetEditing();
+
         //clear
         string assetPath = AssetDatabase.GetAssetPath(this);
         UnityEngine.Object[] data = AssetDatabase.LoadAllAssetsAtPath(assetPath);
@@ -57,7 +56,8 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         AddFromEnumType<CharacterAction>(GenIdPrefix(), assetPath);
         AddFromEnumType<EnemyAction>(GenIdPrefix(), assetPath);
         AddFromEnumType<SailAction>(GenIdPrefix(), assetPath);
-        
+
+        AssetDatabase.StopAssetEditing();
         Save();
     }
 
@@ -65,15 +65,29 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
     [Button("Test")]
     public void Test()
     {
-        foreach (var type in Assembly.GetExecutingAssembly().GetTypes())
+        string assetPath = AssetDatabase.GetAssetPath(this);
+
+        string folderPath = Path.GetDirectoryName(assetPath);
+        if (!AssetDatabase.IsValidFolder(folderPath))
         {
-            var attrs = type.GetCustomAttributes(typeof(MotionStateTagPresetAttribute), true);
-            if (attrs.Length > 0)
-            {
-                if (type == typeof(LSBehaviourTag_Character))
-                    AddFromEnumClassType(type,10000,"");
-            }
+            Debug.Log($"[InValidFolder] {folderPath}");
         }
+
+        assetPath = Path.Combine(folderPath, "TestClass.cs");
+
+        for (int i = 0; i < EntityActionTagConfig.ConfigAsset.items.Count; i++)
+        {
+            var config = EntityActionTagConfig.ConfigAsset.items[i];
+        }
+        //
+        var builder = new CSharpScriptBuilder(assetPath);
+
+        using (builder.BeginClass("TestClass"))
+        {
+
+        }
+        builder.Gen();
+
     }
 
     public struct TagInfo
@@ -99,7 +113,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         if (presetAttr == null)
             return;
 
-        Add(prefix_id, presetAttr.Category);
+        Add(prefix_id, prefix_id/10000 ,presetAttr.Category);
 
         //Debug.Log(presetAttr.Category);
         //Debug.Log(presetAttr.isBehaviourTag);
@@ -109,7 +123,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         for (int i = 0; i < fields.Length; i++)
         {
             TagInfo tagInfo = new TagInfo(fields[i]);
-            Add(prefix_id + i + 1, tagInfo.valueStr,tagInfo.labelStr, tagInfo.tagIconStr);
+            Add(prefix_id + i + 1, prefix_id / 10000,tagInfo.valueStr,tagInfo.labelStr, tagInfo.tagIconStr);
         }
     }
 
@@ -123,6 +137,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
             EntityActionTagConfigItem itemObj = ScriptableObject.CreateInstance<EntityActionTagConfigItem>();
             itemObj.name = "EntityActionConfigItem_" + items.Count;
             itemObj.id = prefix_id + fieldValue;
+            itemObj.category = prefix_id / 10000;
             itemObj.strValue = field.ToString();
             //desc
             var label = typeof(EnumType).GetField(fieldName.ToString()).GetCustomAttribute<LabelTextAttribute>(false);
@@ -157,10 +172,11 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         }
     }
 
-    public void Add(int id ,string strValue = "",string desc = "", string icon = "")
+    public void Add(int id ,int category, string strValue = "",string desc = "", string icon = "")
     {
         EntityActionTagConfigItem itemObj = ScriptableObject.CreateInstance<EntityActionTagConfigItem>();
         itemObj.id = id;
+        itemObj.category = category;
         itemObj.strValue = strValue;
         itemObj.desc = desc;
         itemObj.icon = icon;
