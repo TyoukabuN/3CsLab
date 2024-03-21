@@ -9,7 +9,7 @@ using UnityEditor;
 
 public abstract class ConfigAsset<IdType,ItemType> : ConfigAsset
 {
-    public ConfigAsset<IdType, ItemType> metaConfig;
+    public ConfigAsset<IdType, ItemType> meta;
     public int id;
 
     [TableList]

@@ -9,8 +9,11 @@ public class EntityActionTagConfigItem : ScriptableObject
     [LabelText("id")]
     public int id;
 
-    [LabelText("category")]
+    [LabelText("category[大类]")]
     public int category;
+
+    [LabelText("kind[小类]")]
+    public int kind;
 
     [LabelText("strValue")]
     public string strValue;
@@ -21,6 +24,10 @@ public class EntityActionTagConfigItem : ScriptableObject
     [LabelText("icon")]
     public string icon;
 
+    //for wrap
+    public string className;
+    public string fieldName;
+
     public EntityActionTagConfigItem()
     {
         SetupAsDefault();
@@ -29,6 +36,7 @@ public class EntityActionTagConfigItem : ScriptableObject
     {
         id = -1;
         category = -1;
+        kind = 1;
         strValue = "";
         desc = "";
         icon = "";

@@ -21,7 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  metaConfig: {fileID: 11400000, guid: 44c32c3065190564fb7981f382e8684a, type: 2}
+  meta: {fileID: 11400000, guid: 44c32c3065190564fb7981f382e8684a, type: 2}
   id: 0
   items:
   - {fileID: 8503023446767710083}
@@ -39,6 +39,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 70005
   category: 7
+  kind: 1
   strValue: TEST_70005
   desc: 
   icon: 
+  className: 
+  fieldName: 

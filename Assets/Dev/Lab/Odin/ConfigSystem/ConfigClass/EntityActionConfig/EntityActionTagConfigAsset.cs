@@ -10,6 +10,7 @@ using UnityEngine;
 using System.IO;
 using UnityEditor.VersionControl;
 using static EntityActionTagConfigAsset;
+using System.Linq;
 
 public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfigItem>
 {
@@ -102,6 +103,90 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         builder.Gen();
     }
 
+    [PropertyOrder(0)]
+    [Button("Test2")]
+    public void Test2()
+    {
+        string assetPath = "Assets/Dev/Lab/Odin/ConfigSystem/CharacterActionWrap.Gen.cs";
+
+        for (int i = 0; i < EntityActionTagConfig.ConfigAsset.items.Count; i++)
+        {
+            var config = EntityActionTagConfig.ConfigAsset.items[i];
+        }
+        //
+        var builder = new CSharpScriptBuilder(assetPath);
+
+        var categorys = new Dictionary<int, List<EntityActionTagConfigItem>>();
+        var asset = EntityActionTagConfig.ConfigAsset;
+        GetCategoryMap(asset, ref categorys);
+
+        using (builder.BeginNameSpace("LS.Game"))
+        {
+            for (int i = 0; i < categorys.Count; i++)
+            {
+                var list = categorys.ElementAt(i).Value;
+                if (list == null || list.Count <= 0)
+                    continue;
+                var item = list[0];
+                string className = item.className;
+                var index = item.className.LastIndexOf(".");
+                if (index >= 0)
+                    className = className.Substring(index + 1);
+
+                using (builder.BeginClass($"{className}Wrap"))
+                {
+                    for (int j = 0; j < list.Count; j++)
+                    {
+                        item = list[j];
+                        string fieldName = string.Empty;
+                        if (!string.IsNullOrEmpty(item.fieldName))
+                            fieldName = item.fieldName;
+                        else if (!string.IsNullOrEmpty(item.strValue) && item.strValue.IndexOf('.') < 0)
+                            fieldName = item.strValue;
+
+                        string paramName = string.Empty;
+                        if (!string.IsNullOrEmpty(item.className) && !string.IsNullOrEmpty(item.fieldName))
+                            paramName = $"{item.className}.{item.fieldName}";
+                        else if (!string.IsNullOrEmpty(item.fieldName))
+                            paramName = $"\"{item.fieldName}\"";
+                        else if (!string.IsNullOrEmpty(item.strValue))
+                            paramName = $"\"{item.strValue}\"";
+
+                        //[过滤]
+                        //大类的项 id < 10000
+                        if (!string.IsNullOrEmpty(item.className) && string.IsNullOrEmpty(item.fieldName))
+                            continue;
+                        if (string.IsNullOrEmpty(fieldName) || string.IsNullOrEmpty(paramName))
+                            continue;
+
+                        builder.AppendLine($"public static ActionTagWrap {fieldName} = new ActionTagWrap({paramName});");
+                    }
+                }
+            }
+        }
+        builder.Gen();
+    }
+
+    public static void GetCategoryMap(EntityActionTagConfigAsset asset,ref Dictionary<int, List<EntityActionTagConfigItem>> categorys)
+    {
+        if (asset.meta)
+            GetCategoryMap((EntityActionTagConfigAsset)asset.meta, ref categorys);
+
+        for (int i = 0; i < asset.items.Count; i++)
+        {
+            var item = asset.items[i];
+            if (!categorys.TryGetValue(item.category, out var list))
+            {
+                list = new List<EntityActionTagConfigItem>();
+                categorys[item.category] = list;
+            }
+            if (string.IsNullOrEmpty(item.strValue))
+                continue;
+            var config = asset.items[i];
+            list.Add(config);
+        }
+    }
+
     public void AppendEnumTag(CSharpScriptBuilder builder, Type type)
     {
         using (builder.BeginClass($"{type.Name}Wrap"))
@@ -149,7 +234,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         if (presetAttr == null)
             return;
 
-        Add(prefix_id / 10000, prefix_id/10000 , type.Name, presetAttr.Category);
+        Add(prefix_id / 10000, prefix_id / 10000, 1, type.Name, presetAttr.Category, string.Empty, type.FullName);
 
         //Debug.Log(presetAttr.Category);
         //Debug.Log(presetAttr.isBehaviourTag);
@@ -165,7 +250,7 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
             string labelStr = tagInfo.labelStr;
             string tagIconStr = tagInfo.tagIconStr;
             //
-            Add(id, prefix_id / 10000, valueStr, labelStr, tagIconStr);
+            Add(id, prefix_id / 10000, 1, valueStr, labelStr, tagIconStr, type.FullName, fields[i].Name);
         }
     }
 
@@ -174,11 +259,10 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         Type type = typeof(EnumType);
 
         var presetAttr = type.GetCustomAttribute(typeof(HunterClassLabelTextAttribute), true) as HunterClassLabelTextAttribute;
-        if (presetAttr == null)
-            Add(prefix_id / 10000, prefix_id / 10000, type.Name);
-        else
-            Add(prefix_id / 10000, prefix_id / 10000, type.Name, presetAttr.Text);
 
+        string desc = presetAttr == null ? string.Empty: presetAttr.Text;
+
+        Add(prefix_id / 10000, 1, prefix_id / 10000, type.Name, desc, string.Empty, type.FullName);
 
         foreach (var field in type.GetEnumValues())
         {
@@ -186,16 +270,20 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
             object fieldName = field;
             int fieldValue = (int)field;
             EntityActionTagConfigItem itemObj = ScriptableObject.CreateInstance<EntityActionTagConfigItem>();
-            itemObj.name = "EntityActionConfigItem_" + items.Count;
+            itemObj.name = $"{nameof(EntityActionTagConfigItem)}_{items.Count}";
             itemObj.id = prefix_id + fieldValue;
             itemObj.category = prefix_id / 10000;
-            itemObj.strValue = $"{type.Name}.{field}";;
+            itemObj.kind = 1;
+            itemObj.strValue = $"{type.Name}.{field}";
             //desc
             var label = type.GetField(fieldName.ToString()).GetCustomAttribute<LabelTextAttribute>(false);
             if (label!= null)
                 itemObj.desc = label.Text;
             //icon
             itemObj.icon = string.Empty;
+            //wrap
+            itemObj.className = type.FullName;
+            itemObj.fieldName = field.ToString();
 
             Add(itemObj);
         }
@@ -222,14 +310,17 @@ public class EntityActionTagConfigAsset : ConfigAsset<int, EntityActionTagConfig
         }
     }
 
-    public void Add(int id ,int category, string strValue = "",string desc = "", string icon = "")
+    public void Add(int id ,int category, int kind, string strValue = "",string desc = "", string icon = "",string className = "",string fieldName = "")
     {
         EntityActionTagConfigItem itemObj = ScriptableObject.CreateInstance<EntityActionTagConfigItem>();
         itemObj.id = id;
         itemObj.category = category;
+        itemObj.kind = kind;
         itemObj.strValue = strValue;
         itemObj.desc = desc;
         itemObj.icon = icon;
+        itemObj.className = className;
+        itemObj.fieldName = fieldName;
 
         Add(itemObj);
     }
