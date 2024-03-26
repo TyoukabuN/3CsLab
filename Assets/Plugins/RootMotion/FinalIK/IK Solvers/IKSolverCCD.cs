@@ -32,6 +32,8 @@ namespace RootMotion.FinalIK {
 		public IterationDelegate OnPreIteration;
 		
 		#endregion Main Interface
+
+		public Vector3 worldSpaceOffset = Vector3.zero;
 		
 		protected override void OnInitiate() {
 			if (firstInitiation || !Application.isPlaying) IKPosition = bones[bones.Length - 1].transform.position;
@@ -103,6 +105,8 @@ namespace RootMotion.FinalIK {
 
 						if (w >= 1) bones[i].transform.rotation = targetRotation;
 						else bones[i].transform.rotation = Quaternion.Lerp(bones[i].transform.rotation, targetRotation, w);
+
+                        bones[i].transform.position += worldSpaceOffset;
 					}
 
 					// Rotation Constraints

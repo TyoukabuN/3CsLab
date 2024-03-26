@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using RootMotion.Dynamics;
+using static RootMotion.Dynamics.Muscle;
 
 namespace RootMotion.FinalIK {
 
@@ -25,8 +27,10 @@ namespace RootMotion.FinalIK {
 			// Draw the inspector for IKSolverCCD
 			IKSolverHeuristicInspector.AddInspector(solver, !Application.isPlaying, true);
 
-			// Warning box
-			string message = string.Empty;
+            EditorGUILayout.PropertyField(solver.FindPropertyRelative("worldSpaceOffset"), new GUIContent("WorldSpaceOffset"));
+
+            // Warning box
+            string message = string.Empty;
 			if (!script.solver.IsValid(ref message)) AddWarningBox(message);
 		}
 		
